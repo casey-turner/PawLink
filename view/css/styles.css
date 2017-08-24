@@ -1,0 +1,730 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+    background-color: #00618c;
+}
+.wrapper {
+    background-color: #ededed;
+}
+
+
+h1 {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 700;
+    font-size: 2.5em;
+    color: #00618c;
+    margin: 15px 0 20px 0;
+
+}
+h2 {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 700;
+    font-size: 2.5em;
+    color: #00618c;
+    margin: 15px 0 20px 0;
+
+}
+h3 {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 700;
+    color: #00618c;
+    font-size: 1.3em;
+}
+h4 {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 700;
+    color: #00618c;
+    font-size: 1em;
+}
+a {
+    color: #252525;
+}
+a:link ,
+a:visited,
+a:hover,
+a:active,
+a:focus {
+    text-decoration: none;
+}
+
+
+.centre-flex {
+    min-height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px 0;
+}
+.centre-content {
+    text-align:  center;
+}
+.logo {
+    height: 80px;
+    margin: 5px 0;
+}
+
+img {
+    max-width: 100%;
+}
+.clear {
+    clear: both;
+}
+/*----------------Button Styles------------*/
+.orange-btn {
+    color: #FFF;
+    display: inline-block;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 700;
+    background-color: #f47907;
+    padding: 10px 20px;
+    border-radius: 40px;
+    box-shadow: 2px 2px 6px rgba(0,0,0,.1);
+    border-style: none;
+}
+.orange-btn:hover {
+    color: #FFF;
+    background-color: orange;
+}
+
+.hp-register-btn {
+    margin: 10px 20px;
+}
+.primary-nav ul li a.hp-login-btn {
+    color: #FFF;
+    padding: 10px 20px;
+    border-radius: 1000px;
+}
+/*----------------Form Elements------------*/
+#loginForm,
+#registerForm,{
+    width: 400px;
+}
+#loginForm,
+#registerForm,
+#dogRegister,
+#contact,
+#bookingForm {
+    padding: 15px 50px;
+    background-color: #FFF;
+    border-radius: 20px;
+    box-shadow: 2px 2px 6px rgba(0,0,0,.1);
+}
+#dogRegister,
+#contact,
+#bookingForm {
+    width: 100%;
+}
+
+.submit-cont {
+    text-align: center;
+}
+form legend {
+    font-family: 'Raleway', sans-serif;
+    color: #00618c;
+    font-weight: 900;
+    font-size: 2em;
+    margin: 20px 0;
+    text-align: center;
+}
+
+form label {
+    text-align: left;
+    font-family: 'Open Sans', sans-serif;
+    color: #00618c;
+}
+form a {
+    color: #00618c;
+}
+
+input[type=text],
+input[type=password],
+input[type=email],
+input[type=number],
+textarea {
+    display: block;
+    width: 100%;
+    border-radius: 2px;
+    margin-bottom: 10px;
+    padding: 7px 10px;
+    border: 1px solid #999;
+    outline: none;
+    background: #fff;
+
+}
+input[type=radio] {
+    margin-right: 10px;
+}
+input[type=submit] {
+    margin: 10px;
+}
+.password_error {
+    color: red;
+    text-align: center;
+    padding-bottom: 15px;
+    display: none;
+}
+
+/*----------------Booking Form Elements-----*/
+.flatpickr-month {
+    height: 40px;
+    background-color: #00618c;
+}
+
+.flatpickr-day.today {
+    border: 2px solid #f47907;
+}
+.flatpickr-day.selected {
+    background: #f47907;
+    border-color: #f47907;
+}
+.booking-dropdown {
+    display: none;
+    padding: 15px;
+    background: #fff;
+    border-top: 1px solid #eee;
+}
+.booking-dropdown img {
+    max-width: 25px;
+    margin: 0 !important;
+}
+.input-group {
+    padding-bottom: 5px;
+}
+.input-group-addon {
+    border: 1px solid #999;
+    border-right: 0;
+    border-bottom-left-radius: 2px;
+    border-top-left-radius: 2px;
+}
+#datepicker {
+    background: #fff;
+}
+.booking-submit {
+    text-align: right;
+    margin-bottom: 0;
+}
+.total {
+    font-family: 'Open Sans', sans-serif;
+    display: flex;
+    align-items: center;
+}
+.total h4 {
+    margin: 0;
+    font-size: 1.2em;
+}
+
+/*----------------Navigation------------*/
+
+.hp-header {
+    background-color: #FFF;
+}
+
+.primary-nav {
+    display: inline-block;
+    position: absolute;
+    right: 15px;
+}
+
+.primary-nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.primary-nav ul li {
+    display: inline-block;
+}
+
+.primary-nav ul li a {
+    padding: 32.5px 15px 16px;
+    display: inline-block;
+    line-height: 24px;
+    font-family: 'Raleway', sans-serif;
+    color: #00618c;
+    font-weight: 700;
+}
+.mobileMenu {
+    display: none;
+}
+/*----------------Logged in user sub-menu------------*/
+img.headerThumb  {
+    max-width: 40px;
+    border-radius: 1000px;
+    margin-right: 8px;
+}
+img.headerArrow  {
+    max-width: 10px;
+    margin-left: 5px;
+}
+span.headerUser {
+    font-weight: normal;
+    color: #252525;
+    font-size: .9em;
+}
+ul.subMenu {
+    display: block;
+    position: absolute;
+    right: 0;
+    background-color: #fff;
+    box-shadow: 2px 2px 6px rgba(0,0,0,.1);
+    border: #ccc;
+    z-index: 100;
+    display: none;
+}
+ul.subMenu li {
+    display: block;
+    border-bottom: 1px solid #eee;
+    padding: 5px 10px;
+
+}
+ul.subMenu li a {
+    padding: 5px;
+}
+
+@media (max-width: 767px) {
+
+    .primary-nav {
+        position: absolute;
+        left: 0;
+        background-color: #31333f;
+        z-index: 10;
+        top: 90px;
+        width: 100%;
+        display: none;
+      }
+
+    .primary-nav ul {
+        float: none;
+      }
+    .primary-nav ul li {
+        display: block;
+        padding: 0;
+      }
+    .primary-nav ul li a {
+        width: 100%;
+        border: 1px solid #444;
+        padding: 15px 20px;
+        box-sizing: border-box;
+      }
+
+    .mobileMenu {
+        display: inline-block;
+        float: right;
+        width: 60px;
+        padding-top: 10px;
+    }
+}
+
+/*----------------Dashboard Navigation Menu------------*/
+
+.dashboard-nav {
+    display: inline-block;
+}
+
+.dashboard-nav ul {
+    list-style-type: none;
+    margin-bottom: 0px;
+    padding-left: 0;
+}
+.dashboard-nav ul li {
+    display: inline-block;
+}
+.dashboard-nav ul li a {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 700;
+    color: #FFF;
+    padding: 18px 15px 14px 15px;
+    line-height: 25px;
+    display: inline-block;
+    border-bottom: 4px solid #00618c;
+}
+.dashboard-nav ul li a.current {
+    border-bottom: 4px solid #fff;
+}
+.dashboard-nav li:last-of-type {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+.dashboard-nav ul li:last-of-type a  {
+    padding: 10px 20px;
+    border-radius: 20px;
+    margin: 8px;
+    border-bottom: 0;
+}
+
+
+/*------------------------Public Pages------------------------------*/
+.banner {
+    min-height: 450px;
+    display: flex;
+    text-align: center;
+    align-items: center;
+}
+.publicPage {
+    padding: 50px 0;
+}
+
+.publicPage h1 {
+    text-align: center;
+}
+/*----------------Homepage------------*/
+.banner h2 {
+    color: #fff;
+    text-shadow: 2px 2px 6px rgba(40, 73, 124, 0.82);
+}
+
+.homepage {
+    background: url('../images/banner-02.jpg') no-repeat center center;
+    background-size: cover;
+}
+
+.hp-about h1 {
+    text-align: center;
+    margin: 0 0 60px 0;
+}
+.hp-about {
+    background-color: #ededed;
+    padding: 60px 0;
+}
+.hp-about img {
+    margin-bottom: 20px;
+}
+/*----------------About Page------------*/
+.about {
+    background: url('../images/about.jpg') no-repeat center center;
+    background-size: cover;
+}
+
+
+/*----------------FAQ Page------------*/
+.faq {
+    background: url('../images/faq.jpg') no-repeat center center;
+    background-size: cover;
+}
+
+.faq-btns {
+    text-align: center;
+}
+.faqbtn {
+    padding: 15px;
+    margin: 10px;
+    background-color: #fff;
+    border: 2px solid #00618c;
+    border-radius: 5px;
+    color: #00618c;
+    font-family: 'raleway';
+    font-weight: 700;
+    cursor: pointer;
+}
+#faqWalker {
+    display: none;
+}
+.faqContent h3 {
+    margin: 0;
+    padding-top: 50px;
+}
+.faqQuestion {
+    border-bottom: 1px solid #999;
+    padding-top: 15px;
+}
+.faqQuestion p:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.faqAnswer {
+    display: none;
+}
+.faqAnswer p:hover {
+    text-decoration: none;
+}
+/*----------------Contact Page------------*/
+
+.contact {
+    background: url('../images/contact.jpg') no-repeat center center;
+    background-size: cover;
+}
+/*--------------------------------Member Pages ---------------------------*/
+.memberPage {
+    padding: 50px 0;
+}
+
+/*----------------Dashboard Page------------*/
+
+.dashboard-box {
+    background-color: #FFF;
+    padding: 20px;
+    margin: 15px 0;
+    border-radius: 10px;
+    box-shadow: 2px 2px 6px rgba(0,0,0,.1)
+}
+
+.dashboard-box h3 {
+    margin-bottom: 20px;
+}
+.profile-box img {
+    max-width: 125px;
+    border-radius: 1000px;
+}
+.profile-box h3 {
+    display: inline-block;
+    color: #00618c;
+    position: absolute;
+    font-weight: bold;
+    margin: 20px 0 10px 20px;
+}
+.profile-box a{
+    display: inline-block;
+    margin-left: 20px;
+}
+.messages-box img{
+    margin-top: 20px;
+}
+
+.my-dogs img{
+    margin-bottom: 15px;
+    max-width: 125px;
+    border-radius: 1000px;
+}
+
+.my-dogs h4 {
+    display: inline-block;
+    position: absolute;
+    margin: 30px 0 10px 20px;
+}
+.my-dogs a {
+    margin-left: 20px;
+}
+
+.add-dog {
+    text-align: center;
+}
+/*----------------Bookings Overview ------------------*/
+.bookings {
+    border: 1px solid #ccc;
+}
+
+.booking-row {
+    background-color: #fff;
+    padding: 20px;
+    border-top: 1px solid #ccc;
+}
+
+.booking-row:first-of-type {
+    border-top: 0;
+}
+.booking-row img {
+    border-radius: 1000px;
+    max-width: 125px;
+    margin-bottom: 10px;
+}
+.booking-row p {
+    margin-bottom: 6px;
+}
+.confirmed {
+    color:  rgb(26, 182, 0);
+}
+.completed {
+    color: #00618c;
+}
+/*----------------Bookings Form ------------------*/
+.booking-details img {
+    max-width: 125px;
+    border-radius: 1000px
+}
+.booking-details {
+    margin: 0;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 20px;
+}
+
+
+
+
+/*----------------Local Search Listing------------*/
+
+.search-thumb img {
+    max-width: 125px;
+    border-radius: 1000px;
+}
+.search-thumb p {
+    margin: 10px 0
+}
+
+.search-result {
+    text-align: left;
+}
+.search-result h3 {
+    margin-top: 15px;
+}
+.search-result h4 {
+    margin: 10px 0;
+}
+.search-profile {
+    background-color: #fff;
+    padding: 15px 30px;
+    margin: 8px;
+    width: 100%;
+    border: 1px solid #ccc;
+    display: inline-block;
+    box-shadow: 2px 2px 6px rgba(0,0,0,.1)
+}
+.search-profile:last-of-type {
+    margin-bottom: 50px;
+
+}
+.search-profile a {
+    color: #555;
+}
+.search-profile:hover {
+    background-color: rgba(221, 231, 252, 0.5)
+}
+/*----------------Walker Profile Page------------*/
+
+.profile-header {
+    background-color: #f1f1f1;
+    margin: 0;
+    border: 1px solid #ccc;
+    box-shadow: 2px 2px 6px rgba(0,0,0,.1);
+}
+
+.profile-header img {
+    width: 100px;
+    border-radius: 1000px;
+    margin: 20px;
+}
+.profile-header h2 {
+    margin: 20px 0 5px 0;
+}
+.profile-header p {
+    margin-bottom: 3px;
+}
+.profile-location img {
+    width: 15px;
+    margin: 0;
+}
+.walker-profile-about {
+    border-bottom: 1px solid #ccc;
+    border-left: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    background-color: #fff;
+    box-shadow: 2px 2px 6px rgba(0,0,0,.1);
+}
+.walker-profile-about h2 {
+    font-weight: normal;
+    margin: 0px;
+    padding:  20px;
+    font-size: 1.5em
+}
+.walker-profile-about p {
+    padding: 0 20px 20px 20px;
+}
+.rates {
+    background-color: #f1f1f1;
+    border: 1px solid #ccc;
+    box-shadow: 2px 2px 6px rgba(0,0,0,.1);
+}
+.rates h3 {
+    padding: 20px;
+    text-align: center;
+}
+
+.rates .ratesRow {
+    border-top: 1px solid #ccc;
+    padding: 15px;
+    clear: both;
+    background-color: #fff
+}
+
+.ratesRow:hover {
+    background-color: rgba(0, 97, 140, 0.05);
+    cursor: pointer;
+}
+.ratesRow img {
+    margin-right: 10px;
+}
+.ratesRow h4 {
+    display: inline-block;
+}
+.ratesRow p {
+    margin-bottom: 0;
+    font-size: .9em;
+}
+.meetGreet {
+    display: inline-block;
+}
+
+.ratesRow span {
+    font-size: .8em;
+    color: #a4a4a4;
+}
+
+.ratesRow .ratesPriceBold {
+    color: #292b2c;
+    font-weight: 700;
+    font-size: 1.6em;
+}
+.ratesRow .ratesMessage {
+    text-transform: uppercase;
+    color: #00618c;
+    font-weight: 700;
+    float: right;
+    margin-top: 6px;
+}
+.ratesRow .ratesMakeBooking  {
+    text-transform: uppercase;
+    color: #00618c;
+    font-weight: 700;
+    float: right;
+    margin-top: 15px;
+}
+/*----------------Dog Profile Page------------*/
+
+.dogInfoImage {
+    box-shadow: 2px 2px 6px rgba(0,0,0,.1);
+}
+
+.dogInfo {
+    margin-top: 70px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    box-shadow: 2px 2px 6px rgba(0,0,0,.1);
+}
+.dogInfoOwner {
+    background-color: #fff;
+    box-shadow: 2px 2px 6px rgba(0,0,0,.1);
+    margin:20px 0 50px 0;
+}
+.dogInfoOwner img {
+    width: 100px;
+    border-radius: 1000px;
+    margin: 20px;
+}
+
+.dogInfoRow {
+    border-top: 1px solid #ccc;
+    padding: 7px;
+}
+.dogInfoRow:first-of-type {
+    border-top: 0;
+}
+.dogInfoRow:nth-child(even) {
+    background-color: #ededed
+}
+.dogInfoBold {
+    font-weight: 700;
+}
+.
+
+/*----------------Footer------------*/
+
+footer {
+    min-height: 50px;
+}
+
+footer p {
+    color: #FFF;
+    line-height: 50px;
+    text-align: center;
+}
