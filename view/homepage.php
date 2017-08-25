@@ -2,8 +2,7 @@
         <div class="container">
             <h2>The #1 Dog Walking App for Busy Dog Owners</h2>
             <h2>Let's Get Started</h2>
-            <a class="orange-btn hp-register-btn" href="?controller=users&action=register">Register as a dog owner</a>
-            <a class="orange-btn hp-register-btn" href="?controller=users&action=register">Register as a dog walker</a>
+            <a class="orange-btn hp-register-btn" href="?controller=users&action=register">Sign up to PawLink as a dog owner or dog walker</a>
         </div>
     </div>
     <div class="hp-about">

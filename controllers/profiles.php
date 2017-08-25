@@ -1,22 +1,25 @@
 <?php
 // Array of available actions
-$availableActions = array('profile', 'dog_register', 'dog_profile', 'search', 'dashboard');
+$availableActions = array('create_profile','profile', 'dog_register', 'dog_profile', 'search', 'dashboard');
 
 // Get action name from query string and set to variable
 if ( isset($_GET['action']) ) {
     if ( in_array($_GET['action'], $availableActions) ){
         $action = $_GET['action'];
     } else {
-        $action = 'profile';
+        $action = 'dashboard';
     }
 } else {
-    $action = 'profile';
+    $action = 'dashboard';
 }
 
 //Define the php file and page title depending on the action
 switch($action) {
     case "dashboard":
         dashboard();
+        break;
+    case "create_profile":
+        create_profile();
         break;
     case "profile":
         profile();
@@ -40,6 +43,14 @@ function dashboard() {
     $pageTitle = "Dashboard | PawLink";
     require_once('view/includes/hp_header.php');
     require_once('view/dashboard.php');
+    require_once('view/includes/hp_footer.php');
+}
+
+function create_profile() {
+    GLOBAL $action;
+    $pageTitle = "Create Your Profile | PawLink";
+    require_once('view/includes/hp_header.php');
+    require_once('view/create_profile.php');
     require_once('view/includes/hp_footer.php');
 }
 

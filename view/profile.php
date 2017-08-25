@@ -17,7 +17,6 @@ $rates = selectData('rates', array(
 
 <div class="wrapper memberPage">
     <div class="container">
-        
         <div class="row">
             <div class="col-md-8">
                 <div class="row profile-header">
