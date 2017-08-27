@@ -1,13 +1,19 @@
 <?php
 // Array of available actions
-$availableActions = array('create_profile','profile', 'dog_register', 'dog_profile', 'search', 'dashboard');
+if (isset($_SESSION['profileID'])) {
+    $availableActions = array('create_profile','profile', 'dog_register', 'dog_profile', 'search', 'dashboard');
+} else {
+    $availableActions = array('create_profile');
+}
+
 
 // Get action name from query string and set to variable
 if ( isset($_GET['action']) ) {
     if ( in_array($_GET['action'], $availableActions) ){
         $action = $_GET['action'];
     } else {
-        $action = 'dashboard';
+        header('HTTP/1.1 404 Not Found');
+        exit;
     }
 } else {
     $action = 'dashboard';

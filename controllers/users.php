@@ -5,12 +5,32 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if(isset($_POST['useremail']) && isset($_POST['password'])) {
         if ( db_authenticate(sanitiseUserInput( $_POST['useremail']), sanitiseUserInput($_POST['password'])) ) {
             $_SESSION['userstate'] = 'member';
-            header("location: ?controller=profiles&action=dashboard");
+            $_SESSION['useremail'] = sanitiseUserInput( $_POST['useremail']);
+
+            //Setting session variables based on user data
+            $userdata = selectData('users', array(
+                                        'left join' => array('table2' => 'profiles', 'column' => 'userID'),
+                                        'where'=> array('email' => $_SESSION['useremail'] ),
+                                        'return type' => 'single'
+                                        )
+                                    );
+            $_SESSION['userID'] = $userdata['userID'];
+            $_SESSION['displayName'] = $userdata['firstName']." ".substr($userdata['lastName'], 0, 1);
+
+            //Check to see if user has a profile, if not direct them to create a profile form only.
+            if ($userdata['profileID'] != null ) {
+                $_SESSION['profileID'] = $userdata['profileID'];
+                header("location: ?controller=profiles&action=dashboard");
+            } else {
+                header("location: ?controller=profiles&action=create_profile");
+            }
+
         } else {
             $errorMsg = 'Login failed. Try again';
         }
     }
 }
+
 
 // Array of available views
 $availableActions = array('login', 'register', 'logout');

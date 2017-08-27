@@ -27,15 +27,20 @@
                         <li><a href="?controller=publicpages&action=gallery">Wall of Dogs</a></li>
                         <li><a href="?controller=publicpages&action=contact">Contact</a></li>
                         <?php
-                            if (isset($_SESSION['userstate']) && ($_SESSION['userstate'] == 'member')) {  ?>
+                            if ( isset($_SESSION['userstate'] ) && ($_SESSION['userstate'] == 'member') ) {  ?>
                                 <li>
                                     <a href="#" class="menuItemHasChildren"><img src="view/images/profile_img.jpg" class="headerThumb" alt=""><span class="headerUser">Michelle</span> <img src="view/images/downArrow.png" class="headerArrow" alt=""></a>
                                     <ul class="subMenu">
-                                        <li><a href="?controller=profiles&action=dashboard">Dashboard</a></li>
-                                        <li><a href="?controller=bookings&action=booking_overview">Bookings</a></li>
-                                        <li><a href="?controller=profiles&action=messages">Messages</a></li>
-                                        <li><a href="?controller=profiles&action=profile&profileID=1">Profile</a></li>
-                                        <li><a href="?controller=users&action=logout">Log out</a></li>
+                                        <?php if (isset($_SESSION['profileID'])) {?>
+                                            <li><a href="?controller=profiles&action=dashboard">Dashboard</a></li>
+                                            <li><a href="?controller=bookings&action=booking_overview">Bookings</a></li>
+                                            <li><a href="?controller=profiles&action=messages">Messages</a></li>
+                                            <li><a href="?controller=profiles&action=profile&profileID=1">Profile</a></li>
+                                            <li><a href="?controller=users&action=logout">Log out</a></li>
+                                        <?php } else { ?>
+                                            <li><a href="?controller=profiles&action=create_profile">Create profile</a></li>
+                                            <li><a href="?controller=users&action=logout">Log out</a></li>
+                                        <?php } ?>
                                     </ul>
                                 </li>
                         <?php } else { ?>
@@ -45,7 +50,10 @@
                 </nav>
             </div>
         </header>
-        <?php if (!($action == "homepage" || $action == 'about' || $action == 'gallery' || $action == 'contact' || $action == 'faq' || $action == 'login' || $action == 'register' || $action == 'logout')) { ?>
+        <?php
+            $dashboardMenu = array ('profile', 'dog_register', 'dog_profile', 'search', 'dashboard','booking_overview', 'booking_form');
+
+            if ( in_array($action, $dashboardMenu) ) { ?>
             <div class="dashboard-menu">
                 <div class="container">
                     <nav class="dashboard-nav">
