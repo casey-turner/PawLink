@@ -1,4 +1,52 @@
 <?php
+function db_authenticate($userEmail, $password) {
+    $userLogin = selectData('users', array(
+        'select'=> ' email, password',
+        'where'=> array('email' => $userEmail ),
+        'return type' => 'single'
+        )
+    );
+
+    if(password_verify($password,$userLogin['password'])) {
+		return true;
+	} else {
+		return false;
+	}
+}
+
+
+    /*$conn = db_object();
+	if($conn == false) {
+		return false;
+	}
+
+	$sql = "SELECT * FROM users WHERE email = :email AND password = :password";
+
+	try {
+		$res = $conn->prepare($sql);
+		$res->bindParam(':email', $u);
+		$res->bindParam(':password', $p);
+		$res->execute();
+    } catch (PDOException  $e ) {
+        $_SESSION['error'] = $e;
+		return false;
+	}
+
+	if($res->rowCount() == 1) {
+		return true;
+	} else {
+		return false;
+	}*/
+
+
+//sanitise data
+function sanitiseUserInput($data) {
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+	return $data;
+}
+
 function insertData($table, $data){
     GLOBAL $db;
     if(!empty($data) && is_array($data)) {
@@ -7,7 +55,7 @@ function insertData($table, $data){
         $i = 0;
         $columnString = implode(',', array_keys($data));
         $valueString = ":".implode(',:', array_keys($data));
-        $sql = "INSERT INTO ".$table."(".columnString.") VALUES (".$valueString.")";
+        $sql = "INSERT INTO ".$table."(".$columnString.") VALUES (".$valueString.")";
         $query = $db->prepare($sql);
         print_r($data);
         foreach ($data as $key => $val) {
