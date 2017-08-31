@@ -5,13 +5,13 @@
                 <div class="dashboard-box profile-box">
                     <img src="view/images/profile_img.jpg">
                     <h3>Michelle B.</h3>
-                    <a href="?controller=profiles&action=profile">Edit profile</a>
+                    <a href="?controller=profiles&action=edit_profile">Edit profile</a>
                 </div>
                 <div class="dashboard-box my-dogs">
                     <h3>My Dogs</h3>
                     <img src="view/images/mypets-thumb1.jpg" >
                     <h4>Gabba</h4>
-                    <a href="?controller=profiles&action=dog_profile">Edit profile</a>
+                    <a href="?controller=profiles&action=edit_dog&dogID=2">Edit profile</a>
                     <div class="add-dog">
                         <a href="?controller=profiles&action=dog_register" class="hp-register-btn">Add Dog Profile</a>
                     </div>

@@ -15,28 +15,7 @@ function db_authenticate($userEmail, $password) {
 }
 
 
-    /*$conn = db_object();
-	if($conn == false) {
-		return false;
-	}
 
-	$sql = "SELECT * FROM users WHERE email = :email AND password = :password";
-
-	try {
-		$res = $conn->prepare($sql);
-		$res->bindParam(':email', $u);
-		$res->bindParam(':password', $p);
-		$res->execute();
-    } catch (PDOException  $e ) {
-        $_SESSION['error'] = $e;
-		return false;
-	}
-
-	if($res->rowCount() == 1) {
-		return true;
-	} else {
-		return false;
-	}*/
 
 
 //sanitise data
@@ -48,7 +27,7 @@ function sanitiseUserInput($data) {
 }
 
 function insertData($table, $data){
-    GLOBAL $db;
+    GLOBAL $db, $lastInsertID;
     if(!empty($data) && is_array($data)) {
         $columns = '';
         $values = '';
@@ -57,11 +36,12 @@ function insertData($table, $data){
         $valueString = ":".implode(',:', array_keys($data));
         $sql = "INSERT INTO ".$table."(".$columnString.") VALUES (".$valueString.")";
         $query = $db->prepare($sql);
-        print_r($data);
+
         foreach ($data as $key => $val) {
             $query->bindValue(':'.$key, $val);
         }
         $insert = $query->execute();
+        $lastInsertID = $db->lastInsertId();
     }
     return $insert;
 }
@@ -124,5 +104,34 @@ function selectData($table, $conditions = array()) {
         return $data;
     }
     return $data;
+}
+
+function updateData($table, $data, $conditions) {
+    GLOBAL $db;
+    if (!empty($data) && is_array($data)) {
+        $colvalSet ='';
+        $whereSql = '';
+        $i = 0;
+        /*if (!array_key_exists('modified', $data)) {
+            $data['modified'] = date("y-m-d h-i-s");
+        }*/
+        foreach ($data as $key => $value) {
+            $pre = ($i > 0)?', ':'';
+            $colvalSet .= $pre.$key."='".$value."'";
+            $i++;
+        }
+        if (!empty($conditions) && is_array($conditions)){
+            $whereSql .= ' WHERE ';
+            $i = 0;
+            foreach ($conditions as $key => $value) {
+                $pre = ($i > 0)? ' AND ':'';
+                $whereSql .= $pre.$key." = '".$value."'";
+            }
+        }
+        $sql  = "UPDATE ".$table." SET ".$colvalSet.$whereSql;
+        $query = $db->prepare($sql);
+        $update = $query->execute();
+    }
+    return $update;
 }
  ?>
