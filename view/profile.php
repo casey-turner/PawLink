@@ -1,20 +1,3 @@
-<?php
-// Use the select data function to get profile and user data from the database and insert into page
-$profile = selectData('profiles', array(
-            'left join' => array('table2' => 'users', 'column' => 'userID'),
-            'where'=> array('profileID' => $profileID ),
-            'return type' => 'single'
-            )
-        );
-$rates = selectData('rates', array(
-            'where'=> array('profileID' => $profileID ),
-            'return type' => 'single'
-            )
-        );
-
- ?>
-
-
 <div class="wrapper memberPage">
     <div class="container">
         <div class="row">

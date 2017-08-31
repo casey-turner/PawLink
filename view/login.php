@@ -1,8 +1,6 @@
-
     <div class="centre-flex">
         <form class="narrow-form" id="loginForm" action="?controller=users&action=login" method="post">
             <legend>Login to PawLink</legend>
-
             <?php
             if (isset($errorMsg)) { ?>
                 <div class="errors">

@@ -1,5 +1,5 @@
     <div class="centre-flex">
-        <form class="wide-form" id="registerForm" method="post" action="?controller=users&action=register">
+        <form class="narrow-form" id="registerForm" method="post" action="?controller=users&action=register">
             <legend>Sign up to PawLink</legend>
             <div class="error_div"></div>
             <label>First name</label>

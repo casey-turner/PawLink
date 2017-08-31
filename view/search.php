@@ -2,7 +2,7 @@
     <div class="container centre-content">
         <h1>Brisbane Dog Walkers</h1>
         <div class="search-profile">
-            <a href="?controller=profiles&action=profile">
+            <a href="?controller=profiles&action=profile&profileID=14">
                 <div class="row">
                     <div class="col-3 search-thumb">
                         <img src="view/images/profile_img.jpg" />
@@ -17,7 +17,7 @@
             </a>
         </div>
         <div class="search-profile">
-            <a href="?controller=profiles&action=profile">
+            <a href="?controller=profiles&action=profile&profileID=14">
                 <div class="row">
                     <div class="col-3 search-thumb">
                         <img src="view/images/profile_img.jpg" />
@@ -32,7 +32,7 @@
             </a>
         </div>
         <div class="search-profile">
-            <a href="?controller=profiles&action=profile">
+            <a href="?controller=profiles&action=profile&profileID=14">
                 <div class="row">
                     <div class="col-3 search-thumb">
                         <img src="view/images/profile_img.jpg" />
@@ -47,7 +47,7 @@
             </a>
         </div>
         <div class="search-profile">
-            <a href="?controller=profiles&action=profile">
+            <a href="?controller=profiles&action=profile&profileID=14">
                 <div class="row">
                     <div class="col-3 search-thumb">
                         <img src="view/images/profile_img.jpg" />

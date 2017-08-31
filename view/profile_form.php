@@ -14,7 +14,7 @@
                     </legend>
                     <?php
                     if (isset($notificationMsg)) { ?>
-                        <div class="errors">
+                        <div class="notifications">
                             <?php echo $notificationMsg; ?>
                         </div>
                     <?php

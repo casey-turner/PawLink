@@ -34,8 +34,8 @@
                                         <?php if (isset($_SESSION['profileID'])) {?>
                                             <li><a href="?controller=profiles&action=dashboard">Dashboard</a></li>
                                             <li><a href="?controller=bookings&action=booking_overview">Bookings</a></li>
-                                            <li><a href="?controller=profiles&action=messages">Messages</a></li>
-                                            <li><a href="?controller=profiles&action=profile&profileID=1">Profile</a></li>
+                                            <li><a href="#">Messages</a></li>
+                                            <li><a href="?controller=profiles&action=profile&profileID=<?php echo $_SESSION['profileID']; ?>">Profile</a></li>
                                             <li><a href="?controller=users&action=logout">Log out</a></li>
                                         <?php } else { ?>
                                             <li><a href="?controller=profiles&action=create_profile">Create profile</a></li>

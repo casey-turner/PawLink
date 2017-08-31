@@ -1,13 +1,3 @@
-<?php
-// USe the select data function to get dog profile and user data from the database and insert into page
-$dogs = selectData('dogs', array(
-                            'left join' => array('table2' => 'users', 'column' => 'userID'),
-                            'where'=> array('dogID' => $dogID ),
-                            'return type' => 'single'
-                            )
-        );
- ?>
-
 <div class="wrapper">
     <div class="container">
         <div class="row">

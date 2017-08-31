@@ -55,7 +55,7 @@ function dashboard() {
 
     // Use the select data function to get dog profile and user data from the database and insert into page
     $dogs = selectData('dogs', array(
-        'where'=> array('userID' => $_SESSION['userID'] )
+        'where' => array('userID' => $_SESSION['userID'])
         )
     );
 
@@ -159,6 +159,19 @@ function profile() {
         exit;
     }
 
+    // Use the select data function to get profile and user data from the database and insert into page
+    $profile = selectData('profiles', array(
+                'left join' => array('table2' => 'users', 'column' => 'userID'),
+                'where'=> array('profileID' => $profileID ),
+                'return type' => 'single'
+                )
+            );
+    $rates = selectData('rates', array(
+                'where'=> array('profileID' => $profileID ),
+                'return type' => 'single'
+                )
+            );
+
     $pageTitle = "About Me | PawLink";
     require_once('view/includes/hp_header.php');
     require_once('view/profile.php');
@@ -212,6 +225,14 @@ function dog_profile() {
         header('HTTP/1.1 404 Not Found');
         exit;
     }
+    
+    // USe the select data function to get dog profile and user data from the database and insert into page
+    $dogs = selectData('dogs', array(
+        'left join' => array('table2' => 'users', 'column' => 'userID'),
+        'where'=> array('dogID' => $dogID ),
+        'return type' => 'single'
+        )
+    );
 
     $pageTitle = "Dog | PawLink";
     // Compile the dog profile page from page segments

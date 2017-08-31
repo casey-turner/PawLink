@@ -100,6 +100,8 @@ function selectData($table, $conditions = array()) {
     } else {
         if($query->rowCount() > 0) {
             $data = $query->fetchAll();
+        } else {
+            return false;
         }
         return $data;
     }
