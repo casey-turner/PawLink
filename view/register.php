@@ -1,5 +1,5 @@
     <div class="centre-flex">
-        <form id="registerForm" method="post" action="?controller=users&action=register">
+        <form class="wide-form" id="registerForm" method="post" action="?controller=users&action=register">
             <legend>Sign up to PawLink</legend>
             <div class="error_div"></div>
             <label>First name</label>
@@ -16,7 +16,7 @@
             <input type="password" name="confirmpassword">
             <div class="password_error"></div>
             <div class="submit-cont">
-                <input type="submit" class="orange-btn"></input>
+                <input type="submit" class="orange-btn">
                 <p>Already a member? <a href="?controller=users&action=login">Login here.</a></p>
             </div>
         </form>

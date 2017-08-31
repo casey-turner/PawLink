@@ -1,6 +1,6 @@
 
     <div class="centre-flex">
-        <form id="loginForm" action="?controller=users&action=login" method="post">
+        <form class="narrow-form" id="loginForm" action="?controller=users&action=login" method="post">
             <legend>Login to PawLink</legend>
 
             <?php

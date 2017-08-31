@@ -94,24 +94,17 @@ img {
     border-radius: 1000px;
 }
 /*----------------Form Elements------------*/
-#loginForm,
-#registerForm,{
+.narrow-form {
     width: 400px;
 }
-#loginForm,
-#registerForm,
-#dogRegister,
-#contact,
-#createProfile,
-#bookingForm {
+.wide-form,
+.narrow-form {
     padding: 15px 50px;
     background-color: #FFF;
     border-radius: 20px;
     box-shadow: 2px 2px 6px rgba(0,0,0,.1);
 }
-#dogRegister,
-#contact,
-#bookingForm {
+.wide-form {
     width: 100%;
 }
 

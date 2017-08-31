@@ -41,11 +41,13 @@ function login() {
 
                 //Setting session variables based on user data
                 $userdata = selectData('users', array(
+                    'select' => ' profiles.*, users.*',
                     'left join' => array('table2' => 'profiles', 'column' => 'userID'),
                     'where'=> array('email' => $_SESSION['useremail'] ),
                     'return type' => 'single'
                     )
                 );
+
                 $_SESSION['userID'] = $userdata['userID'];
                 $_SESSION['displayName'] = $userdata['firstName']." ".substr($userdata['lastName'], 0, 1);
 
@@ -55,6 +57,7 @@ function login() {
                     header("location: ?controller=profiles&action=dashboard");
                 } else {
                     header("location: ?controller=profiles&action=create_profile");
+                
                 }
 
             } else {

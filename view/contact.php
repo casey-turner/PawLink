@@ -6,7 +6,7 @@
             <div class="col-md-2">
             </div>
             <div class="col-md-8">
-                <form id="contact">
+                <form id="contact" class="wide-form">
                     <legend>Contact Us</legend>
                     <label>Your email address</label>
                     <input type="text" name="dogname">

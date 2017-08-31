@@ -1,15 +1,15 @@
 <?php
 // Use the select data function to get profile and user data from the database and insert into page
 $profile = selectData('profiles', array(
-                            'left join' => array('table2' => 'users', 'column' => 'userID'),
-                            'where'=> array('profileID' => $profileID ),
-                            'return type' => 'single'
-                            )
+            'left join' => array('table2' => 'users', 'column' => 'userID'),
+            'where'=> array('profileID' => $profileID ),
+            'return type' => 'single'
+            )
         );
 $rates = selectData('rates', array(
-                        'where'=> array('profileID' => $profileID ),
-                        'return type' => 'single'
-                        )
+            'where'=> array('profileID' => $profileID ),
+            'return type' => 'single'
+            )
         );
 
  ?>
@@ -34,7 +34,7 @@ $rates = selectData('rates', array(
                 </div>
                 <div class="walker-profile-about">
                     <h2>About <?php echo $profile['firstName']; ?></h2>
-                    <p><?php echo $profile["description"]; ?> </p>
+                    <p><?php echo $profile["profileDescription"]; ?> </p>
                 </div>
             </div>
             <div class="col-md-4">

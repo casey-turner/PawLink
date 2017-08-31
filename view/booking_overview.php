@@ -10,6 +10,7 @@
             <div class="col-md-7">
                 <h3>30 minute dog walk</h3>
                 <p>Date: 29/09/17</p>
+                <p>Time: 3:00pm</p>
                 <p>Dogs: German Shepherd - Torah</p>
                 <p>Reference: 885</p>
             </div>
@@ -27,6 +28,7 @@
             <div class="col-md-7">
                 <h3>60 minute dog walk</h3>
                 <p>Date: 17/08/17</p>
+                <p>Time: 10:30am</p>
                 <p>Dogs: Maltese - Jess, Cavalier - Lily</p>
                 <p>Reference: 750</p>
             </div>
