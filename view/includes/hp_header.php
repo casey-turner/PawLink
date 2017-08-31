@@ -29,7 +29,7 @@
                         <?php
                             if ( isset($_SESSION['userstate'] ) && ($_SESSION['userstate'] == 'member') ) {  ?>
                                 <li>
-                                    <a href="#" class="menuItemHasChildren"><img src="view/images/profile_img.jpg" class="headerThumb" alt=""><span class="headerUser">Michelle</span> <img src="view/images/downArrow.png" class="headerArrow" alt=""></a>
+                                    <a href="#" class="menuItemHasChildren"><img src="view/images/profile_img.jpg" class="headerThumb" alt=""><span class="headerUser"><?php echo $_SESSION['firstName']; ?></span> <img src="view/images/downArrow.png" class="headerArrow" alt=""></a>
                                     <ul class="subMenu">
                                         <?php if (isset($_SESSION['profileID'])) {?>
                                             <li><a href="?controller=profiles&action=dashboard">Dashboard</a></li>
@@ -60,8 +60,8 @@
                         <ul>
                             <li><a href="?controller=profiles&action=dashboard"<?php if ($action == "dashboard") { echo 'class="current"';} ?>>Dashboard</a></li>
                             <li><a href="?controller=bookings&action=booking_overview" <?php if ($action == "booking_overview") { echo 'class="current"';} ?>>Bookings</a></li>
-                            <li><a href="?controller=profiles&action=messages" <?php if ($action == "messages") { echo 'class="current"';} ?> >Messages</a></li>
-                            <li><a href="?controller=profiles&action=profile&profileID=1"<?php if ($action == "profile") { echo 'class="current"';} ?>>Profile</a></li>
+                            <li><a href="#" <?php if ($action == "messages") { echo 'class="current"';} ?> >Messages</a></li>
+                            <li><a href="?controller=profiles&action=profile&profileID=<?php echo $_SESSION['profileID']; ?>"<?php if ($action == "profile") { echo 'class="current"';} ?>>Profile</a></li>
                             <li><a href="?controller=profiles&action=search" class="orange-btn">View Local Dog Walkers</a></li>
                         </ul>
                     </nav>

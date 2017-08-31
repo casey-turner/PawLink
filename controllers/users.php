@@ -47,9 +47,10 @@ function login() {
                     'return type' => 'single'
                     )
                 );
-
+                
                 $_SESSION['userID'] = $userdata['userID'];
                 $_SESSION['displayName'] = $userdata['firstName']." ".substr($userdata['lastName'], 0, 1);
+                $_SESSION['firstName'] = $userdata['firstName'];
 
                 //Check to see if user has a profile, if not direct them to create a profile form only.
                 if ($userdata['profileID'] != null ) {
@@ -57,7 +58,7 @@ function login() {
                     header("location: ?controller=profiles&action=dashboard");
                 } else {
                     header("location: ?controller=profiles&action=create_profile");
-                
+
                 }
 
             } else {

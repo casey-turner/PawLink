@@ -4,14 +4,23 @@
             <div class="col-md-4">
                 <div class="dashboard-box profile-box">
                     <img src="view/images/profile_img.jpg">
-                    <h3>Michelle B.</h3>
+                    <h3><?php echo $_SESSION['displayName'] ?></h3>
                     <a href="?controller=profiles&action=edit_profile">Edit profile</a>
                 </div>
                 <div class="dashboard-box my-dogs">
                     <h3>My Dogs</h3>
-                    <img src="view/images/mypets-thumb1.jpg" >
-                    <h4>Gabba</h4>
-                    <a href="?controller=profiles&action=edit_dog&dogID=2">Edit profile</a>
+                    <?php
+                    if (!empty($dogs)) {
+                        foreach ($dogs as $dog) { ?>
+                             <div class="dog-row">
+                                 <img src="view/images/mypets-thumb1.jpg" >
+                                 <h4><?php echo $dog['dogName']; ?></h4>
+                                 <a href="?controller=profiles&action=edit_dog&dogID=<?php echo $dog['dogID']; ?>">Edit profile</a>
+                             </div>
+                    <?php
+                        }
+                    }
+                    ?>
                     <div class="add-dog">
                         <a href="?controller=profiles&action=dog_register" class="hp-register-btn">Add Dog Profile</a>
                     </div>

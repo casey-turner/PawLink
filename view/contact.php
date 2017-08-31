@@ -9,7 +9,7 @@
                 <form id="contact" class="wide-form">
                     <legend>Contact Us</legend>
                     <label>Your email address</label>
-                    <input type="text" name="dogname">
+                    <input type="text" name="dogname" value="<?php if ( isset($_SESSION['useremail']) ) { echo $_SESSION['useremail']; } ?>">
                     <label>Subject</label>
                     <input type="text" name="breed">
                     <div class="form-group">

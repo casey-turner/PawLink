@@ -52,6 +52,13 @@ switch($action) {
 
 function dashboard() {
     GLOBAL $action;
+
+    // Use the select data function to get dog profile and user data from the database and insert into page
+    $dogs = selectData('dogs', array(
+        'where'=> array('userID' => $_SESSION['userID'] )
+        )
+    );
+
     $pageTitle = "Dashboard | PawLink";
     require_once('view/includes/hp_header.php');
     require_once('view/dashboard.php');
@@ -94,13 +101,13 @@ function create_profile() {
 function edit_profile() {
     GLOBAL $action;
 
-    if ( isset($_SESSION['profileID']) ) {
-        $profile = selectData('profiles', array(
-            'where'=> array('profileID' => $_SESSION['profileID'] ),
-            'return type' => 'single'
-            )
-        );
-    }
+
+    $profile = selectData('profiles', array(
+        'where'=> array('profileID' => $_SESSION['profileID'] ),
+        'return type' => 'single'
+        )
+    );
+
 
     //Process the form to update a user profile on PawLink
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
