@@ -64,7 +64,7 @@ function create_profile() {
     //Process the form to create a user profile on PawLink
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-        //Map sanitised user inputs to variables
+        //Map sanitised user's profile inputs to variables
         $profileTitle = !empty($_POST['profileTitle']) ? sanitiseUserInput($_POST['profileTitle']) : null;
         $profileDescription = !empty($_POST['profileDescription']) ? sanitiseUserInput($_POST['profileDescription']) : null;
         //$profilePhoto = !empty($_POST['profilePhoto']) ? sanitiseUserInput($_POST['profilePhoto']) : null;
@@ -93,6 +93,48 @@ function create_profile() {
 
 function edit_profile() {
     GLOBAL $action;
+
+    if ( isset($_SESSION['profileID']) ) {
+        $profile = selectData('profiles', array(
+            'where'=> array('profileID' => $_SESSION['profileID'] ),
+            'return type' => 'single'
+            )
+        );
+    }
+
+    //Process the form to update a user profile on PawLink
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+        //Map sanitised user inputs to variables
+        $profileTitle = !empty($_POST['profileTitle']) ? sanitiseUserInput($_POST['profileTitle']) : null;
+        $profileDescription = !empty($_POST['profileDescription']) ? sanitiseUserInput($_POST['profileDescription']) : null;
+        //$profilePhoto = !empty($_POST['profilePhoto']) ? sanitiseUserInput($_POST['profilePhoto']) : null;
+
+
+        try {
+            $profileData = array(
+                'profileTitle' => $profileTitle,
+                'profileDescription' => $profileDescription,
+                'userID' => $_SESSION['userID']
+                //'profilePhoto' => $profilePhoto,
+            );
+            $updateWhere = array(
+                'profileID' => $_SESSION['profileID']
+            );
+            updateData('profiles', $profileData, $updateWhere);
+            $notificationMsg = 'Success, your profile has been updated';
+
+            $profile = selectData('profiles', array(
+                'where'=> array('profileID' => $_SESSION['profileID'] ),
+                'return type' => 'single'
+                )
+            );
+        } catch (PDOexception $e) {
+            echo "Error:".$e -> getMessage();
+            die();
+        }
+    }
+
     $pageTitle = "Edit My Profile | Pawlink";
     require_once('view/includes/hp_header.php');
     require_once('view/profile_form.php');
@@ -102,14 +144,14 @@ function edit_profile() {
 function profile() {
     GLOBAL $action, $profileID;
     // Get profile ID from query string and set to variable
-    if ($action == 'profile') {
-        if ( !empty($_GET['profileID']) ) {
-            $profileID = sanitiseUserInput($_GET['profileID']);
-        } else {
-            header('HTTP/1.1 404 Not Found');
-            exit;
-        }
+
+    if ( !empty($_GET['profileID']) ) {
+        $profileID = sanitiseUserInput($_GET['profileID']);
+    } else {
+        header('HTTP/1.1 404 Not Found');
+        exit;
     }
+
     $pageTitle = "About Me | PawLink";
     require_once('view/includes/hp_header.php');
     require_once('view/profile.php');
@@ -130,7 +172,7 @@ function dog_register() {
 
 
         try {
-            $registrationData = array(
+            $dogData = array(
                 'dogName' => $dogName,
                 //'dogPhoto' => $dogPhoto,
                 'breed' => $breed,
@@ -139,7 +181,7 @@ function dog_register() {
                 'dogDescription' => $dogDescription,
                 'userID' => $_SESSION['userID']
             );
-            insertData('dogs', $registrationData);
+            insertData('dogs', $dogData);
             header("location: ?controller=profiles&action=dashboard");
         } catch (PDOexception $e) {
             echo "Error:".$e -> getMessage();
