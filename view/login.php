@@ -1,5 +1,5 @@
     <div class="centre-flex">
-        <form class="narrow-form" id="loginForm" action="?controller=users&action=login" method="post">
+        <form class="narrow-form" id="loginForm" action="?controller=users&action=login" method="post" data-parsley-validate>
             <legend>Login to PawLink</legend>
             <?php
             if (isset($errorMsg)) { ?>
@@ -9,8 +9,8 @@
             <?php
             }
             ?>
-            <input placeholder="Email" type="email" name="useremail">
-            <input placeholder="Password" type="password" name="password">
+            <input placeholder="Email" type="email" name="useremail" required>
+            <input placeholder="Password" type="password" name="password" required>
             <div class="submit-cont">
                 <input class="orange-btn" type="submit" name="submit">
                 <p>Not yet a member? <a href="?controller=users&action=register">Sign up here.</a></p>

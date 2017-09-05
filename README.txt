@@ -12,6 +12,8 @@ The View is comprised of the user interface files, the HTML, CSS, JavaScript and
 
 Using an MVC folder structure helps with writing better organised, and therefore more maintainable code.  Further, using this method, code repitition is very minimal as it separates the data and business logic from the display.
 
+Forms are validated using Parsley JS a a javascript form validation library.
+
 # Deployment
 
 A copy of the sql database has been provided in the /sql folder. Database credentials need to be updated in the model/db.php file.

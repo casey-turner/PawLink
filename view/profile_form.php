@@ -4,7 +4,7 @@
             <div class="col-md-2">
             </div>
             <div class="col-md-8">
-                <form class="wide-form" id="createProfile" method="post" action="?controller=profiles&action=<?php echo $action; ?>">
+                <form class="wide-form" id="createProfile" method="post" action="?controller=profiles&action=<?php echo $action; ?>" data-parsley-validate>
                     <legend>
                     <?php if ($action == 'create_profile') { ?>
                         Create Your Profile
@@ -21,10 +21,10 @@
                     }
                     ?>
                     <label>Profile title</label>
-                    <input type="text" name="profileTitle" value="<?php if ( isset($profile['profileTitle']) ) {echo $profile['profileTitle'];} ?>">
+                    <input type="text" name="profileTitle" value="<?php if ( isset($profile['profileTitle']) ) {echo $profile['profileTitle'];} ?>" required>
                     <div class="form-group">
                         <label for="comment">Short description:</label>
-                            <textarea rows="5" name="profileDescription"><?php if ( isset($profile['profileDescription']) ) {echo $profile['profileDescription'];} ?></textarea>
+                            <textarea rows="5" name="profileDescription" required><?php if ( isset($profile['profileDescription']) ) {echo $profile['profileDescription'];} ?> </textarea>
                     </div>
                     <img src="view/images/upload-photo.png"  />
                     <div class="submit-cont">
