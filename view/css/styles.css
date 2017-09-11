@@ -157,6 +157,36 @@ input[type=submit] {
     display: none;
 }
 
+.entry-form input[type=text],
+ .entry-form input[type=password],
+ .entry-form input[type=email] {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    width: calc(100% - 40px);
+}
+.entry-form .input-group {
+    flex-wrap: wrap;
+}
+.input-icon {
+    height: 40px;
+    width: 40px;
+    background: #eee;
+    padding: 5px;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+    border: 1px solid #999;
+    border-right: 0;
+}
+.input-icon img {
+    max-height: 100%;
+    max-width: 100%;
+    height: auto;
+    width: auto;
+}
+.modal-close {
+    margin-right: -30px;
+}
+
 /*----------------Booking Form Elements-----*/
 .flatpickr-month {
     height: 40px;
@@ -220,7 +250,6 @@ select.parsley-error,
 textarea.parsley-error {
   color: #B94A48;
   background-color: #F2DEDE;
-  border: 1px solid #EED3D7;
 }
 
 .parsley-errors-list {

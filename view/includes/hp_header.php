@@ -45,7 +45,8 @@
                                     </ul>
                                 </li>
                         <?php } else { ?>
-                                <li><a href="?controller=users&action=login" class="orange-btn hp-login-btn">Login</a></li>
+                                <!-- triggers modal -->
+                                <li><a href="?controller=users&action=login" class="orange-btn hp-login-btn" data-toggle="modal" data-target="#loginModal">Login</a></li>
                         <?php } ?>
                     </ul>
                 </nav>
