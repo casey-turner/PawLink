@@ -2,15 +2,34 @@ $( document ).ready(function() {
 
     console.log('ready');
 
-    $('input[name=confirmpassword]').on('keyup change', function () {
+    /*$('input[name=confirmpassword]').on('keyup change', function () {
         console.log('password compare');
         comparePasswords();
-     });
+    });*/
 
-     $('input[name=useremail]').change(function(){
+     /*$('input[name=useremail]').change(function(){
         console.log('email check');
         checkEmail();
-     });
+    });*/
+//-------------Login Form ---------------------
+
+$("#ajaxLoginForm").submit(function(event){
+    event.preventDefault();
+    $.ajax({
+       type: "POST",
+       url: '?controller=users&action=login',
+       data: $(this).serialize() + '&method=ajax',
+       success: function(response) {
+           if (response == 'true') {
+               window.location = "?controller=profiles&action=dashboard"
+           } else {
+               $("#ajaxLoginError").css({"display": "block"});
+               $( "#ajaxLoginError" ).html( "<p>Login failed. Try again.</p>" );
+           }
+       }
+   });
+});
+
 
 //--------------- On FAQ page-------------------
 

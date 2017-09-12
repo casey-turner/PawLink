@@ -9,20 +9,12 @@
             <div class="modal fade" id="loginModal" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">>
                 <div class="modal-dialog" role="document">
                     <div class="centre-flex">
-                        <form class="narrow-form entry-form" id="loginForm" action="?controller=users&action=login" method="post" data-parsley-validate>
+                        <form class="narrow-form entry-form" id="ajaxLoginForm" action="?controller=users&action=login" method="post" data-parsley-validate>
                             <button type="button" class="close modal-close" data-dismiss="modal" aria-label="Close">
                               <span aria-hidden="true">&times;</span>
                             </button>
                             <legend>Login to PawLink</legend>
-
-                            <?php
-                            if (isset($errorMsg)) { ?>
-                                <div class="errors">
-                                    <?php echo $errorMsg; ?>
-                                </div>
-                            <?php
-                            }
-                            ?>
+                            <div class="errors" id="ajaxLoginError"></div>
                             <div class="input-group">
                                 <span class="input-icon"><img src="view/images/email.png" alt=""></span>
                                 <input placeholder="Email" type="email" name="useremail" required>

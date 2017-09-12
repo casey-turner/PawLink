@@ -34,7 +34,7 @@ function login() {
 
     // Do authentication checks
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        if(isset($_POST['useremail']) && isset($_POST['password'])) {
+        if (isset($_POST['useremail']) && isset($_POST['password'])) {
             if ( db_authenticate(sanitiseUserInput( $_POST['useremail']), sanitiseUserInput($_POST['password'])) ) {
                 $_SESSION['userstate'] = 'member';
                 $_SESSION['useremail'] = sanitiseUserInput( $_POST['useremail']);
@@ -47,22 +47,29 @@ function login() {
                     'return type' => 'single'
                     )
                 );
-                
+
                 $_SESSION['userID'] = $userdata['userID'];
                 $_SESSION['displayName'] = $userdata['firstName']." ".substr($userdata['lastName'], 0, 1);
                 $_SESSION['firstName'] = $userdata['firstName'];
 
-                //Check to see if user has a profile, if not direct them to create a profile form only.
                 if ($userdata['profileID'] != null ) {
                     $_SESSION['profileID'] = $userdata['profileID'];
-                    header("location: ?controller=profiles&action=dashboard");
-                } else {
-                    header("location: ?controller=profiles&action=create_profile");
-
                 }
 
+                if (isset($_POST['method']) && $_POST['method'] == 'ajax') {
+                    echo 'true';
+                    exit;
+                } else {
+                    header("location: ?controller=profiles&action=dashboard");
+                    exit;
+                }
             } else {
-                $errorMsg = 'Login failed. Try again';
+                if (isset($_POST['method']) && $_POST['method'] == 'ajax') {
+                    echo 'false';
+                    exit;
+                } else {
+                    $errorMsg = 'Login failed. Try again';
+                }
             }
         }
     }
@@ -84,19 +91,31 @@ function register() {
         $email = !empty($_POST['useremail']) ? sanitiseUserInput($_POST['useremail']) : null;
         $password = !empty($_POST['password']) ? password_hash(sanitiseUserInput($_POST['password']), PASSWORD_DEFAULT) : null;
 
-        try {
-            $registrationData = array(
-                'firstName' => $firstName,
-                'lastName' => $lastName,
-                'phoneNumber' => $phoneNumber,
-                'email' => $email,
-                'password' => $password
-            );
-            insertData('users', $registrationData);
-            header("location: ?controller=users&action=login");
-        } catch (PDOexception $e) {
-            echo "Error:".$e -> getMessage();
-            die();
+        //Check if email exists int the $db
+        $emailCheck = selectData('users', array(
+            'where' => array('email' => $email),
+            'return type' => 'count'
+            )
+        );
+
+        if ($emailCheck == 0){
+            try {
+                $registrationData = array(
+                    'firstName' => $firstName,
+                    'lastName' => $lastName,
+                    'phoneNumber' => $phoneNumber,
+                    'email' => $email,
+                    'password' => $password
+                );
+                insertData('users', $registrationData);
+                header("location: ?controller=users&action=login");
+            } catch (PDOexception $e) {
+                echo "Error:".$e -> getMessage();
+                die();
+            }
+        } else {
+            //Capture post data into session variable here.
+            $_SESSION['error'] = 'The email address '.$email. ' is already registered with PawLink.';
         }
     }
 
@@ -110,10 +129,8 @@ function logout() {
     GLOBAL $action;
     session_unset();
     session_destroy();
-    $pageTitle = "Login | PawLink";
-    require_once('view/includes/hp_header.php');
-    require_once('view/homepage.php');
-    require_once('view/includes/hp_footer.php');
+    header("location: ?controller=users&action=homepage");
+    exit;
 }
 
 

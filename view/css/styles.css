@@ -150,12 +150,7 @@ input[type=radio] {
 input[type=submit] {
     margin: 10px;
 }
-.password_error {
-    color: red;
-    text-align: center;
-    padding-bottom: 15px;
-    display: none;
-}
+
 
 .entry-form input[type=text],
  .entry-form input[type=password],
@@ -185,6 +180,18 @@ input[type=submit] {
 }
 .modal-close {
     margin-right: -30px;
+}
+
+/*-----------------Form Errors--------------*/
+.password_error {
+    color: red;
+    text-align: center;
+    padding-bottom: 15px;
+    display: none;
+}
+
+#ajaxLoginError {
+    display: none;
 }
 
 /*----------------Booking Form Elements-----*/
