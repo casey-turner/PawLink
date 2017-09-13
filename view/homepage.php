@@ -2,7 +2,7 @@
         <div class="container">
             <h2>The #1 Dog Walking App for Busy Dog Owners</h2>
             <h2>Let's Get Started</h2>
-            <a class="orange-btn hp-register-btn" href="?controller=users&action=register" data-toggle="modal" data-target="#registerModal">Sign up to PawLink as a dog owner or dog walker</a>
+            <a class="orange-btn hp-register-btn" href="#" data-toggle="modal" data-target="#registerModal">Sign up to PawLink as a dog owner or dog walker</a>
         </div>
     </div>
     <div class="hp-about">
@@ -31,7 +31,7 @@
     <div class="modal fade" id="registerModal" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">>
         <div class="modal-dialog" role="document">
             <div class="centre-flex">
-                <form class="narrow-form entry-form" id="registerForm" method="post" action="?controller=users&action=register" data-parsley-validate>
+                <form class="narrow-form entry-form" id="registerForm" method="post" action="?controller=users&action=register" data-parsley-validate data-persist="garlic">
                     <button type="button" class="close modal-close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button>

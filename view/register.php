@@ -1,6 +1,8 @@
     <div class="centre-flex">
         <form class="narrow-form" id="registerForm" method="post" action="?controller=users&action=register" data-parsley-validate>
             <legend>Sign up to PawLink</legend>
+            <?php if (isset($_SESSION['error'])) {
+                echo $_SESSION['error']; } ?>
             <div class="error_div"></div>
             <label>First name</label>
             <input type="text" name="firstname" required>

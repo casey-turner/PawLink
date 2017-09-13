@@ -4,7 +4,7 @@
             <div class="col-md-2">
             </div>
             <div class="col-md-8">
-                <form class="wide-form" id="createProfile" method="post" action="?controller=profiles&action=<?php echo $action; ?>" data-parsley-validate>
+                <form class="wide-form" id="createProfile" method="post" action="?controller=profiles&action=<?php echo $action; ?>" data-parsley-validate data-persist="garlic">
                     <legend>
                     <?php if ($action == 'create_profile') { ?>
                         Create Your Profile
