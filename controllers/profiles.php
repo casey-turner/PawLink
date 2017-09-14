@@ -60,9 +60,9 @@ function dashboard() {
     );
 
     $pageTitle = "Dashboard | PawLink";
-    require_once('view/includes/hp_header.php');
+    require_once('view/includes/header.php');
     require_once('view/dashboard.php');
-    require_once('view/includes/hp_footer.php');
+    require_once('view/includes/footer.php');
 }
 
 function create_profile() {
@@ -93,9 +93,9 @@ function create_profile() {
         }
     }
     $pageTitle = "Create Your Profile | PawLink";
-    require_once('view/includes/hp_header.php');
+    require_once('view/includes/header.php');
     require_once('view/profile_form.php');
-    require_once('view/includes/hp_footer.php');
+    require_once('view/includes/footer.php');
 }
 
 function edit_profile() {
@@ -143,9 +143,9 @@ function edit_profile() {
     }
 
     $pageTitle = "Edit My Profile | Pawlink";
-    require_once('view/includes/hp_header.php');
+    require_once('view/includes/header.php');
     require_once('view/profile_form.php');
-    require_once('view/includes/hp_footer.php');
+    require_once('view/includes/footer.php');
 }
 
 function profile() {
@@ -173,9 +173,9 @@ function profile() {
             );
 
     $pageTitle = "About Me | PawLink";
-    require_once('view/includes/hp_header.php');
+    require_once('view/includes/header.php');
     require_once('view/profile.php');
-    require_once('view/includes/hp_footer.php');
+    require_once('view/includes/footer.php');
 }
 
 function dog_register() {
@@ -210,9 +210,9 @@ function dog_register() {
     }
 
     $pageTitle = "Register a Dog | PawLink";
-    require_once('view/includes/hp_header.php');
+    require_once('view/includes/header.php');
     require_once('view/dog_form.php');
-    require_once('view/includes/hp_footer.php');
+    require_once('view/includes/footer.php');
 }
 
 function dog_profile() {
@@ -225,7 +225,7 @@ function dog_profile() {
         header('HTTP/1.1 404 Not Found');
         exit;
     }
-    
+
     // USe the select data function to get dog profile and user data from the database and insert into page
     $dogs = selectData('dogs', array(
         'left join' => array('table2' => 'users', 'column' => 'userID'),
@@ -236,9 +236,9 @@ function dog_profile() {
 
     $pageTitle = "Dog | PawLink";
     // Compile the dog profile page from page segments
-    require_once('view/includes/hp_header.php');
+    require_once('view/includes/header.php');
     require_once('view/dog_profile.php');
-    require_once('view/includes/hp_footer.php');
+    require_once('view/includes/footer.php');
 
 }
 
@@ -307,17 +307,17 @@ function edit_dog() {
 
 
     $pageTitle = "Edit Dog Profile | PawLink";
-    require_once('view/includes/hp_header.php');
+    require_once('view/includes/header.php');
     require_once('view/dog_form.php');
-    require_once('view/includes/hp_footer.php');
+    require_once('view/includes/footer.php');
 }
 
 function search() {
     GLOBAL $action;
     $pageTitle = "Search | PawLink";
-    require_once('view/includes/hp_header.php');
+    require_once('view/includes/header.php');
     require_once('view/search.php');
-    require_once('view/includes/hp_footer.php');
+    require_once('view/includes/footer.php');
 }
 
 

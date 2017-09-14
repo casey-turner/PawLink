@@ -75,9 +75,9 @@ function login() {
     }
 
     $pageTitle = "Login | PawLink";
-    require_once('view/includes/hp_header.php');
+    require_once('view/includes/header.php');
     require_once('view/login.php');
-    require_once('view/includes/hp_footer.php');
+    require_once('view/includes/footer.php');
 }
 
 function register() {
@@ -120,9 +120,9 @@ function register() {
     }
 
     $pageTitle = "Register | PawLink";
-    require_once('view/includes/hp_header.php');
+    require_once('view/includes/header.php');
     require_once('view/register.php');
-    require_once('view/includes/hp_footer.php');
+    require_once('view/includes/footer.php');
 }
 
 function logout() {

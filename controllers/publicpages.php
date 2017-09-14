@@ -38,40 +38,40 @@ switch($action) {
 function homepage() {
     GLOBAL $action;
     $pageTitle = "Trusted, local dog walkers | PawLink";
-    require_once('view/includes/hp_header.php');
+    require_once('view/includes/header.php');
     require_once('view/homepage.php');
-    require_once('view/includes/hp_footer.php');
+    require_once('view/includes/footer.php');
 }
 
 function gallery() {
     GLOBAL $action;
     $pageTitle = "Wall of Dogs | PawLink";
-    require_once('view/includes/hp_header.php');
+    require_once('view/includes/header.php');
     require_once('view/gallery.php');
-    require_once('view/includes/hp_footer.php');
+    require_once('view/includes/footer.php');
 }
 
 function about() {
     GLOBAL $action;
     $pageTitle = "About Us| PawLink";
-    require_once('view/includes/hp_header.php');
+    require_once('view/includes/header.php');
     require_once('view/about.php');
-    require_once('view/includes/hp_footer.php');
+    require_once('view/includes/footer.php');
 }
 
 function contact() {
     GLOBAL $action;
     $pageTitle = "Contact Us| PawLink";
-    require_once('view/includes/hp_header.php');
+    require_once('view/includes/header.php');
     require_once('view/contact.php');
-    require_once('view/includes/hp_footer.php');
+    require_once('view/includes/footer.php');
 }
 
 function faq() {
     GLOBAL $action;
     $pageTitle = "Frequently Ask Questions | PawLink";
-    require_once('view/includes/hp_header.php');
+    require_once('view/includes/header.php');
     require_once('view/faq.php');
-    require_once('view/includes/hp_footer.php');
+    require_once('view/includes/footer.php');
 }
 ?>

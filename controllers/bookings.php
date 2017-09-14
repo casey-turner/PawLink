@@ -38,15 +38,15 @@ switch($action) {
 function booking_overview() {
     GLOBAL $action;
     $pageTitle = "Bookings | PawLink";
-    require_once('view/includes/hp_header.php');
+    require_once('view/includes/header.php');
     require_once('view/booking_overview.php');
-    require_once('view/includes/hp_footer.php');
+    require_once('view/includes/footer.php');
 }
 function booking_form() {
     GLOBAL $action;
     $pageTitle = "Bookings | PawLink";
-    require_once('view/includes/hp_header.php');
+    require_once('view/includes/header.php');
     require_once('view/booking_form.php');
-    require_once('view/includes/hp_footer.php');
+    require_once('view/includes/footer.php');
 }
  ?>
