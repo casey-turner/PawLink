@@ -31,7 +31,7 @@
     <div class="modal fade" id="registerModal" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">>
         <div class="modal-dialog" role="document">
             <div class="centre-flex">
-                <form class="narrow-form entry-form" id="registerForm" method="post" action="?controller=users&action=register" data-parsley-validate data-persist="garlic">
+                <form class="narrow-form entry-form" id="registerForm" method="post" action="?controller=users&action=register" data-parsley-validate >
                     <button type="button" class="close modal-close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button>

@@ -29,7 +29,8 @@ $("#ajaxLoginForm").submit(function(event){
        }
    });
 });
-
+//-----------------Local and Session storage for form values ----------------
+$("#ajaxLoginForm").formcache();
 
 //--------------- On FAQ page-------------------
 
