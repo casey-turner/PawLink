@@ -11,6 +11,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.7.2/parsley.min.js"></script>
         <link rel="stylesheet" href="https://unpkg.com/flatpickr/dist/flatpickr.min.css">
         <script src="https://unpkg.com/flatpickr"></script>
+        <link href="view/css/croppie.css" rel="stylesheet" type="text/css">
         <link href="view/css/styles.css" rel="stylesheet" type="text/css">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     </head>
