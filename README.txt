@@ -20,6 +20,8 @@ A copy of the sql database has been provided in the /sql folder. Database creden
 
 Application runs relative to the index.php file.
 
+***Ensure that the uploads directory inside the View folder has write permissions***
+
 # Major To Do Items
 
 - Profile & dog photo upload (and possibly edit)

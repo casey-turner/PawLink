@@ -68,6 +68,7 @@ img {
 .clear {
     clear: both;
 }
+
 /*----------------Button Styles------------*/
 .orange-btn {
     color: #FFF;
@@ -93,10 +94,8 @@ img {
     padding: 10px 20px;
     border-radius: 1000px;
 }
-#deleteImage {
-    display: none;
 
-}
+
 /*----------------Form Elements------------*/
 .narrow-form {
     width: 400px;
@@ -157,7 +156,9 @@ input[type=file] {
 input[type=submit] {
     margin: 10px;
 }
-
+input[type=file] {
+    display: block;
+}
 
 .entry-form input[type=text],
  .entry-form input[type=password],
@@ -255,7 +256,7 @@ input[type=submit] {
     margin-bottom: 15px;
 }
 
-#deleteImage {
+.deleteImage {
     display: none;
     color: #fff;
     background: #c0392b;
@@ -264,9 +265,16 @@ input[type=submit] {
     padding: 5px 10px;
     border-radius: 2px;
 }
-#deleteImage img {
+.deleteImage img {
     width: 15px;
     padding: 1px 1px 5px 1px;
+}
+
+.showElement {
+    display: block;
+}
+input[type=file].hideElement {
+    display: none;
 }
 
 /*----------------Parsley Form Validation------------*/

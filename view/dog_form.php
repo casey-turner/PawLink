@@ -1,31 +1,3 @@
-<?php
-if(isset($_FILES['image'])){
-    $errors= array();
-    $file_name = $_FILES['image']['name'];
-    $file_size = $_FILES['image']['size'];
-    $file_tmp = $_FILES['image']['tmp_name'];
-    $file_type = $_FILES['image']['type'];
-    $file_ext=strtolower(end(explode('.',$_FILES['image']['name'])));
-
-    $expensions= array("jpeg","jpg","png");
-
-    if(in_array($file_ext,$expensions)=== false){
-        $errors[]="extension not allowed, please choose a JPEG or PNG file.";
-    }
-
-    if($file_size > 2097152) {
-        $errors[]='File size must be excately 2 MB';
-    }
-
-    if(empty($errors)==true) {
-        move_uploaded_file($file_tmp,"images/".$file_name);
-        echo "Success";
-    } else {
-        print_r($errors);
-    }
-}
- ?>
-
 <div class="wrapper memberPage">
     <div class="container">
         <div class="row">
@@ -44,6 +16,12 @@ if(isset($_FILES['image'])){
                     if (isset($notificationMsg)) { ?>
                         <div class="notifications">
                             <?php echo $notificationMsg; ?>
+                        </div>
+                    <?php
+                    }
+                    if (isset($errorMsg)) { ?>
+                        <div class="errors">
+                            <?php echo $errorMsg; ?>
                         </div>
                     <?php
                     }
@@ -66,11 +44,13 @@ if(isset($_FILES['image'])){
                         <textarea rows="5" name="dogDescription" required><?php if ( isset($dogs['dogDescription']) ) { echo $dogs['dogDescription']; } ?></textarea>
                     </div>
                     <label>Upload a profile image</label>
-                    <input type="file" name="" class="item-img" id="profileImage" accept="image/*"/>
+                    <input type="file" class="item-img <?php if ( !empty($dogs['dogProfileImage']) ){ echo 'hideElement'; } ?>" id="profileImageSelect" accept="image/*"/>
+                    <input type="hidden" name="deleteDogProfileImage" value="">
+                    <input type="hidden" name="newDogProfileImage" value="">
                     <div class=" image-output">
-                        <img src="" alt="" id="item-img-output" />
+                        <img src="<?php if ( !empty($dogs['dogProfileImage']) ){ echo 'view/uploads/'.$dogs['dogProfileImage']; } ?>" alt="" id="item-img-output" />
                     </div>
-                    <button type="button" name="button" id="deleteImage"> <span><img src="view/images/remove.png" alt=""></span> Remove</button>
+                    <button type="button" name="button" class="deleteImage <?php if ( !empty($dogs['dogProfileImage']) ){ echo 'showElement'; } ?>"> <span><img src="view/images/remove.png" alt=""></span> Remove</button>
                     <!-- Modal -->
                     <div id="cropImagePop" class="modal fade" tabindex="-1" role="dialog">
                         <div class="modal-dialog" role="document">

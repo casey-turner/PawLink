@@ -37,13 +37,13 @@ $("#ajaxLoginForm").submit(function(event){
 
 
 //-----------------Dog Profile Image Upload Modal ---------------
-var $uploadCrop,
+        var $uploadCrop,
 		tempFilename,
 		rawImg,
 		imageId;
 		function readFile(input) {
  			if (input.files && input.files[0]) {
-              var reader = new FileReader();
+                var reader = new FileReader();
 	            reader.onload = function (e) {
 					$('.upload-demo').addClass('ready');
 					$('#cropImagePop').modal('show');
@@ -82,27 +82,30 @@ var $uploadCrop,
         });
 
         $('.clearImageBtn').on('click', function (){
-            $('#profileImage').val('');
+            $('#profileImageSelect').val('');
         });
 
 		$('#cropImageBtn').on('click', function (ev) {
-            $('#profileImage').hide();
-            $('#deleteImage').show();
+            $('#profileImageSelect').hide();
+            $('.deleteImage').show();
 			$uploadCrop.croppie('result', {
 				type: 'base64',
 				format: 'jpeg',
 				size: {width: 250, height: 250}
 			}).then(function (resp) {
 				$('#item-img-output').attr('src', resp);
+                $( "input[name='newDogProfileImage']").val(resp);
 				$('#cropImagePop').modal('hide');
 			});
 		});
 
-        $('#deleteImage').on('click', function (){
+        $('.deleteImage').on('click', function (){
             $('#item-img-output').attr('src', '');
-            $('#profileImage').val('');
-            $('#profileImage').show();
-            $('#deleteImage').hide();
+            $( "input[name='newDogProfileImage']").val('');
+            $( "input[name='deleteDogProfileImage']").val('true');
+            $('#profileImageSelect').val('');
+            $('#profileImageSelect').show();
+            $('.deleteImage').hide();
         });
 
 
