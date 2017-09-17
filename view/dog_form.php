@@ -45,8 +45,8 @@
                     </div>
                     <label>Upload a profile image</label>
                     <input type="file" class="item-img <?php if ( !empty($dogs['dogProfileImage']) ){ echo 'hideElement'; } ?>" id="profileImageSelect" accept="image/*"/>
-                    <input type="hidden" name="deleteDogProfileImage" value="">
-                    <input type="hidden" name="newDogProfileImage" value="">
+                    <input type="hidden" class="deleteProfileImage" name="deleteDogProfileImage" value="">
+                    <input type="hidden" class="profileImageOutput" name="dogProfileImage" value="">
                     <div class=" image-output">
                         <img src="<?php if ( !empty($dogs['dogProfileImage']) ){ echo 'view/uploads/'.$dogs['dogProfileImage']; } ?>" alt="" id="item-img-output" />
                     </div>

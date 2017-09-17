@@ -94,15 +94,15 @@ $("#ajaxLoginForm").submit(function(event){
 				size: {width: 250, height: 250}
 			}).then(function (resp) {
 				$('#item-img-output').attr('src', resp);
-                $( "input[name='newDogProfileImage']").val(resp);
+                $( ".profileImageOutput").val(resp);
 				$('#cropImagePop').modal('hide');
 			});
 		});
 
         $('.deleteImage').on('click', function (){
             $('#item-img-output').attr('src', '');
-            $( "input[name='newDogProfileImage']").val('');
-            $( "input[name='deleteDogProfileImage']").val('true');
+            $( ".profileImageOutput").val('');
+            $( ".deleteProfileImage").val('true');
             $('#profileImageSelect').val('');
             $('#profileImageSelect').css("display","block");
             $('.deleteImage').hide();
