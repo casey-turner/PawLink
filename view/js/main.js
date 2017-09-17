@@ -104,7 +104,7 @@ $("#ajaxLoginForm").submit(function(event){
             $( "input[name='newDogProfileImage']").val('');
             $( "input[name='deleteDogProfileImage']").val('true');
             $('#profileImageSelect').val('');
-            $('#profileImageSelect').show();
+            $('#profileImageSelect').css("display","block");
             $('.deleteImage').hide();
         });
 
