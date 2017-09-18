@@ -16,6 +16,14 @@
                               <span aria-hidden="true">&times;</span>
                             </button>
                             <legend>Login to PawLink</legend>
+                            <?php
+                            if (isset($errorMsg)) { ?>
+                                <div class="errors">
+                                    <?php echo $errorMsg; ?>
+                                </div>
+                            <?php
+                            }
+                            ?>
                             <div class="errors" id="ajaxLoginError"></div>
                             <div class="input-group">
                                 <span class="input-icon"><img src="view/images/email.png" alt=""></span>

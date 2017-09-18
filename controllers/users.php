@@ -87,7 +87,6 @@ function register() {
 
         $firstName = !empty($_POST['firstname']) ? sanitiseUserInput($_POST['firstname']) : null;
         $lastName = !empty($_POST['lastname']) ? sanitiseUserInput($_POST['lastname']) : null;
-        $phoneNumber = !empty($_POST['phone']) ? sanitiseUserInput($_POST['phone']) : null;
         $email = !empty($_POST['useremail']) ? sanitiseUserInput($_POST['useremail']) : null;
         $password = !empty($_POST['password']) ? password_hash(sanitiseUserInput($_POST['password']), PASSWORD_DEFAULT) : null;
 
@@ -98,24 +97,43 @@ function register() {
             )
         );
 
-        if ($emailCheck == 0){
+        if ($emailCheck == 0) {
             try {
                 $registrationData = array(
                     'firstName' => $firstName,
                     'lastName' => $lastName,
-                    'phoneNumber' => $phoneNumber,
                     'email' => $email,
                     'password' => $password
                 );
                 insertData('users', $registrationData);
-                header("location: ?controller=users&action=login");
+
+                if (isset($_POST['method']) && $_POST['method'] == 'ajax') {
+                    echo 'true';
+                    exit;
+                } else {
+                    header("location: ?controller=profiles&action=dashboard");
+                    exit;
+                }
+
             } catch (PDOexception $e) {
-                echo "Error:".$e -> getMessage();
-                die();
+                if (isset($_POST['method']) && $_POST['method'] == 'ajax') {
+                    echo 'sql error';
+                    exit;
+                } else {
+                    echo "Error:".$e -> getMessage();
+                    exit;
+                }
             }
         } else {
-            //Capture post data into session variable here.
-            $_SESSION['error'] = 'The email address '.$email. ' is already registered with PawLink.';
+            if (isset($_POST['method']) && $_POST['method'] == 'ajax') {
+                echo 'false';
+                exit;
+            } else {
+                //Capture post data into session variable here.
+                $_SESSION['error'] = 'The email address '.$email. ' is already registered with PawLink.';
+                exit;
+            }
+
         }
     }
 
@@ -129,7 +147,7 @@ function logout() {
     GLOBAL $action;
     session_unset();
     session_destroy();
-    header("location: ?controller=users&action=homepage");
+    header("location: ?controller=publicpages&action=homepage");
     exit;
 }
 

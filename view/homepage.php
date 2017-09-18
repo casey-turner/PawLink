@@ -31,13 +31,14 @@
     <div class="modal fade" id="registerModal" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">>
         <div class="modal-dialog" role="document">
             <div class="centre-flex">
-                <form class="narrow-form entry-form" id="registerForm" method="post" action="?controller=users&action=register" data-parsley-validate >
+                <form class="narrow-form entry-form" id="ajaxRegisterForm" method="post" action="?controller=users&action=register" data-parsley-validate >
                     <button type="button" class="close modal-close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button>
                     <legend>Sign up to PawLink</legend>
                     <?php if (isset($_SESSION['error'])) {
                         echo $_SESSION['error']; } ?>
+                    <div id="ajaxRegisterError"></div>
                     <div class="error_div"></div>
                     <div class="input-group">
                         <span class="input-icon"><img src="view/images/user.png" alt=""></span>

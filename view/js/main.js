@@ -33,10 +33,27 @@ $("#ajaxLoginForm").submit(function(event){
 
 //---------------Registration Form -----------------------------
 
+$("#ajaxRegisterForm").submit(function(event){
+    event.preventDefault();
+    $.ajax({
+       type: "POST",
+       url: '?controller=users&action=register',
+       data: $(this).serialize() + '&method=ajax',
+       success: function(response) {
+           if (response == 'true') {
+               window.location = "?controller=profiles&action=dashboard"
+           } else if (response =='sql error') {
+               $("#ajaxRegisterError").css({"display": "block"});
+               $( "#ajaxRegisterError" ).html( "<p>Registration failed. Try again.</p>" );
+           } else {
+               $("#ajaxRegisterError").css({"display": "block"});
+               $( "#ajaxRegisterError" ).html( "<p>The email address "+ $("input[name='useremail']").val()+ " is already registered with PawLink.</p>" );
+           }
+       }
+   });
+});
 
-
-
-//-----------------Dog Profile Image Upload Modal ---------------
+//-----------------Forms Image Upload Modal ---------------
         var $uploadCrop,
 		tempFilename,
 		rawImg,
