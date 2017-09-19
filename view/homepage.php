@@ -29,9 +29,9 @@
     </div>
     <!--Registration Modal -->
     <div class="modal fade" id="registerModal" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">>
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog modal-lg" role="document">
             <div class="centre-flex">
-                <form class="narrow-form entry-form" id="ajaxRegisterForm" method="post" action="?controller=users&action=register" data-parsley-validate >
+                <form class="wide-form entry-form" id="ajaxRegisterForm" method="post" action="?controller=users&action=register" data-parsley-validate >
                     <button type="button" class="close modal-close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button>
@@ -40,27 +40,58 @@
                         echo $_SESSION['error']; } ?>
                     <div id="ajaxRegisterError"></div>
                     <div class="error_div"></div>
-                    <div class="input-group">
-                        <span class="input-icon"><img src="view/images/user.png" alt=""></span>
-                        <input placeholder="First name" type="text" name="firstname" required>
+                    <div class="row">
+                        <div class="col-md-6 input-group">
+                            <span class="input-icon"><img src="view/images/user.png" alt=""></span>
+                            <input placeholder="First name" type="text" name="firstname" required>
+                        </div>
+                        <div class="col-md-6 input-group">
+                            <span class="input-icon"><img src="view/images/user.png" alt=""></span>
+                            <input placeholder="Last name" type="text" name="lastname" required>
+                        </div>
                     </div>
-                    <div class="input-group">
-                        <span class="input-icon"><img src="view/images/user.png" alt=""></span>
-                        <input placeholder="Last name" type="text" name="lastname" required>
+                    <div class="row">
+                        <div class="col-md-6 input-group">
+                            <span class="input-icon"><img src="view/images/email.png" alt=""></span>
+                            <input placeholder="Email" type="email" name="useremail" required>
+                        </div>
+                        <div class="col-md-6 input-group">
+                            <span class="input-icon"><img src="view/images/phone.png" alt=""></span>
+                            <input placeholder="Phone number" type="text" name="phone" required>
+                        </div>
                     </div>
-                    <div class="input-group">
-                        <span class="input-icon"><img src="view/images/email.png" alt=""></span>
-                        <input placeholder="Email" type="email" name="useremail" required>
+                    <div class="row">
+                        <div class="col-md-6 input-group">
+                            <span class="input-icon"><img src="view/images/address.png" alt=""></span>
+                            <input placeholder="Address" type="text" name="address" required>
+                        </div>
+                        <div class="col-md-6 input-group">
+                            <span class="input-icon"><img src="view/images/address.png" alt=""></span>
+                            <input placeholder="Suburb" type="text" name="suburb" required>
+                        </div>
                     </div>
-                    <div class="input-group">
-                        <span class="input-icon"><img src="view/images/password.png" alt=""></span>
-                        <input placeholder="Password" type="password" name="password" id="password" required minlength="8">
+                    <div class="row">
+                        <div class="col-md-6 input-group">
+                            <span class="input-icon"><img src="view/images/address.png" alt=""></span>
+                            <input placeholder="State" type="text" name="state" required>
+                        </div>
+                        <div class="col-md-6 input-group">
+                            <span class="input-icon"><img src="view/images/address.png" alt=""></span>
+                            <input placeholder="Postcode" type="text" name="postcode" minlength="4" maxlength="4" required>
+                        </div>
                     </div>
-                    <div class="input-group">
-                        <span class="input-icon"><img src="view/images/password.png" alt=""></span>
-                        <input placeholder="Confirm password" type="password" name="confirmpassword" data-parsley-equalto="#password"	required>
+                    <div class="row">
+                        <div class="col-md-6 input-group">
+                            <span class="input-icon"><img src="view/images/password.png" alt=""></span>
+                            <input placeholder="Password" type="password" name="password" id="password" required minlength="8">
+                        </div>
+
+                        <div class="col-md-6 input-group">
+                            <span class="input-icon"><img src="view/images/password.png" alt=""></span>
+                            <input placeholder="Confirm password" type="password" name="confirmpassword" data-parsley-equalto="#password"	required>
+                        </div>
                     </div>
-                    <div class="password_error"></div>
+
                     <div class="submit-cont">
                         <input type="submit" class="orange-btn">
                         <p>Already a member? <a href="?controller=users&action=login">Login here.</a></p>

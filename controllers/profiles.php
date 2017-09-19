@@ -123,7 +123,7 @@ function create_profile() {
 
         if ( !isset($errorMsg) ) {
             try {
-                $registrationData = array(
+                $profileData = array(
                     'profileTitle' => $profileTitle,
                     'profileDescription' => $profileDescription,
                     'userID' => $_SESSION['userID']
@@ -132,14 +132,14 @@ function create_profile() {
                 if (!is_null($deleteProfileImage) || !is_null($profilePhoto) ){
                     $profileData['profileImage'] = $imageName;
                 }
-                
-                insertData('profiles', $registrationData);
+
+                insertData('profiles', $profileData);
                 $_SESSION['profileID'] = $lastInsertID;
 
                 if ( !empty($imageName) ) {
                     file_put_contents('view/uploads/'.$imageName, $profilePhoto);
+                    $_SESSION['profileImage'] = $imageName;
                 }
-
                 header("location: ?controller=profiles&action=dashboard");
             } catch (PDOexception $e) {
                 echo "Error:".$e -> getMessage();
@@ -212,6 +212,9 @@ function edit_profile() {
 
                 if ( !empty($imageName) ) {
                     file_put_contents('view/uploads/'.$imageName, $profilePhoto);
+                    $_SESSION['profileImage'] = $imageName;
+                } else {
+                    unset($_SESSION['profileImage']);
                 }
                 $notificationMsg = 'Success, your profile has been updated';
 

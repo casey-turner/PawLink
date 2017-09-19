@@ -45,6 +45,9 @@ a:active,
 a:focus {
     text-decoration: none;
 }
+a:focus{
+    outline: none;
+}
 
 
 .centre-flex {
@@ -81,7 +84,9 @@ img {
     box-shadow: 2px 2px 6px rgba(0,0,0,.1);
     border-style: none;
 }
-.orange-btn:hover {
+.orange-btn:hover,
+.orange-btn:active,
+.orange-btn:focus {
     color: #FFF;
     background-color: orange;
 }
@@ -145,6 +150,7 @@ textarea {
     border: 1px solid #999;
     outline: none;
     background: #fff;
+    height: max-content;
 
 }
 input[type=radio] {
@@ -166,6 +172,7 @@ input[type=file] {
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
     width: calc(100% - 40px);
+    border: 1px solid #999;
 }
 .entry-form .input-group {
     flex-wrap: wrap;

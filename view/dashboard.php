@@ -3,7 +3,11 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="dashboard-box profile-box">
-                    <img src="view/images/profile_img.jpg">
+                    <img src= "<?php if (isset($_SESSION['profileImage'])) {
+                                        echo 'view/uploads/'.$_SESSION['profileImage'];
+                                    } else {
+                                        echo 'view/uploads/defaultProfile';
+                                    } ?> ">
                     <h3><?php echo $_SESSION['displayName'] ?></h3>
                     <a href="?controller=profiles&action=edit_profile">Edit profile</a>
                 </div>

@@ -51,6 +51,7 @@ function login() {
                 $_SESSION['userID'] = $userdata['userID'];
                 $_SESSION['displayName'] = $userdata['firstName']." ".substr($userdata['lastName'], 0, 1);
                 $_SESSION['firstName'] = $userdata['firstName'];
+                $_SESSION['profileImage'] = $userdata['profileImage'];
 
                 if ($userdata['profileID'] != null ) {
                     $_SESSION['profileID'] = $userdata['profileID'];
@@ -88,6 +89,11 @@ function register() {
         $firstName = !empty($_POST['firstname']) ? sanitiseUserInput($_POST['firstname']) : null;
         $lastName = !empty($_POST['lastname']) ? sanitiseUserInput($_POST['lastname']) : null;
         $email = !empty($_POST['useremail']) ? sanitiseUserInput($_POST['useremail']) : null;
+        $phone = !empty($_POST['phone']) ? sanitiseUserInput($_POST['phone']) : null;
+        $address = !empty($_POST['address']) ? sanitiseUserInput($_POST['address']) : null;
+        $suburb = !empty($_POST['suburb']) ? sanitiseUserInput($_POST['suburb']) : null;
+        $state = !empty($_POST['state']) ? sanitiseUserInput($_POST['state']) : null;
+        $postcode = !empty($_POST['postcode']) ? sanitiseUserInput($_POST['postcode']) : null;
         $password = !empty($_POST['password']) ? password_hash(sanitiseUserInput($_POST['password']), PASSWORD_DEFAULT) : null;
 
         //Check if email exists int the $db
@@ -103,17 +109,17 @@ function register() {
                     'firstName' => $firstName,
                     'lastName' => $lastName,
                     'email' => $email,
+                    'phone' => $phone,
+                    'address' => $address,
+                    'suburb' => $suburb,
+                    'state' => $state,
+                    'postcode' => $postcode,
                     'password' => $password
                 );
                 insertData('users', $registrationData);
 
-                if (isset($_POST['method']) && $_POST['method'] == 'ajax') {
-                    echo 'true';
-                    exit;
-                } else {
-                    header("location: ?controller=profiles&action=dashboard");
-                    exit;
-                }
+                login();
+                exit;
 
             } catch (PDOexception $e) {
                 if (isset($_POST['method']) && $_POST['method'] == 'ajax') {

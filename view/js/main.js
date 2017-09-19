@@ -41,7 +41,7 @@ $("#ajaxRegisterForm").submit(function(event){
        data: $(this).serialize() + '&method=ajax',
        success: function(response) {
            if (response == 'true') {
-               window.location = "?controller=profiles&action=dashboard"
+               window.location = "?controller=profiles&action=create_profile"
            } else if (response =='sql error') {
                $("#ajaxRegisterError").css({"display": "block"});
                $( "#ajaxRegisterError" ).html( "<p>Registration failed. Try again.</p>" );

@@ -30,7 +30,11 @@
                         <?php
                             if ( isset($_SESSION['userstate'] ) && ($_SESSION['userstate'] == 'member') ) {  ?>
                                 <li>
-                                    <a href="#" class="menuItemHasChildren"><img src="view/images/profile_img.jpg" class="headerThumb" alt=""><span class="headerUser"><?php echo $_SESSION['firstName']; ?></span> <img src="view/images/downArrow.png" class="headerArrow" alt=""></a>
+                                    <a href="#" class="menuItemHasChildren"><img src= "<?php if (isset($_SESSION['profileImage'])) {
+                                                        echo 'view/uploads/'.$_SESSION['profileImage'];
+                                                    } else {
+                                                        echo 'view/uploads/defaultProfile.png';
+                                                    } ?>" class="headerThumb" alt=""><span class="headerUser"><?php echo $_SESSION['firstName']; ?></span> <img src="view/images/downArrow.png" class="headerArrow" alt=""></a>
                                     <ul class="subMenu">
                                         <?php if (isset($_SESSION['profileID'])) {?>
                                             <li><a href="?controller=profiles&action=dashboard">Dashboard</a></li>
