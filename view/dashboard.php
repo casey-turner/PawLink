@@ -16,7 +16,7 @@
                             <a href="?controller=profiles&action=edit_profile">Edit profile</a>
                         </div>
                     </div>
-                    <a href="?controller=profiles&action=add_rates" class="dashboard-btn">Become a Dog Walker</a>
+                    <a href="?controller=profiles&action=rates" class="dashboard-btn">Become a Dog Walker</a>
                 </div>
                 <div class="dashboard-box my-dogs">
                     <h3>My Dogs</h3>

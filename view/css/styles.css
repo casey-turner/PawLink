@@ -331,7 +331,9 @@ input[type=file].hideElement {
     display: none;
     margin-top: 15px;
 }
-
+#rates .hasRates {
+    display: block;
+}
 /*----------------Parsley Form Validation------------*/
 input.parsley-success,
 select.parsley-success,
