@@ -126,6 +126,18 @@ $("#ajaxRegisterForm").submit(function(event){
         });
 
 
+
+//------------------Dog Walking Rates Page ---------------------------------
+    $('#offerWalking').change(function() {
+        if (this.checked) {
+            $('.setRates').slideDown(200);
+        } else {
+            $('.setRates').slideUp(200);
+        }
+    });
+
+
+
 //-----------------Local and Session storage for form values ----------------
 $("#ajaxLoginForm").formcache();
 
@@ -163,6 +175,7 @@ $("#ajaxLoginForm").formcache();
         var extra = $('#30Walk').data('extra');
         var total = rate + ($('#30WalkExtra').val() - 1) * extra;
         $("#30Walk").html(total);
+        $(".total h4").css({"display": "block"});
     });
 
 //calculates cost of 60 minute walk
@@ -171,6 +184,7 @@ $("#ajaxLoginForm").formcache();
         var extra = $('#60Walk').data('extra');
         var total = rate + ($('#60WalkExtra').val() - 1) * extra;
         $("#60Walk").html(total);
+        $(".total h4").css({"display": "block"});
     });
 
 

@@ -4,7 +4,11 @@
             <div class="col-md-8">
                 <div class="row profile-header">
                     <div class="col-sm-2">
-                        <img src="view/images/profile_img.jpg" />
+                        <img src= "<?php if (isset($_SESSION['profileImage'])) {
+                                            echo 'view/uploads/'.$_SESSION['profileImage'];
+                                        } else {
+                                            echo 'view/uploads/defaultProfile';
+                                        } ?> " />
                     </div>
                     <div class="col-sm-10">
                         <h2><?php echo $profile['profileTitle']; ?></h2>
@@ -47,7 +51,7 @@
                         <div class="booking-dropdown">
                             <form id="30minForm">
                                 <div class="input-group">
-                                    <span class="input-group-addon"><img src="view/images/date.png"></span>
+                                    <span class="input-icon"><img src="view/images/date.png"></span>
                                     <input type="text" class="form-control" placeholder="Date & Time" id="datepicker">
                                 </div>
                                 <script>
@@ -56,7 +60,7 @@
 
                                 </script>
                                 <div class="input-group">
-                                    <span class="input-group-addon"><img src="view/images/dog.png"></span>
+                                    <span class="input-icon"><img src="view/images/dog.png"></span>
                                     <input id="30WalkExtra" type="number" class="form-control" placeholder="Number of Dogs" min="1" max="4">
                                 </div>
                                 <div class="row">
@@ -87,16 +91,16 @@
                         <div class="booking-dropdown">
                             <form id="60minForm">
                                 <div class="input-group">
-                                    <span class="input-group-addon"><img src="view/images/date.png"></span>
-                                    <input type="text" class="form-control" placeholder="Date & Time" id="datepicker">
+                                    <span class="input-icon"><img src="view/images/date.png"></span>
+                                    <input type="text" class="form-control flatpickr-input active" placeholder="Date & Time" id="datepicker2">
                                 </div>
                                 <script>
 
-                                $("#datepicker").flatpickr({enableTime: true});
+                                $("#datepicker2").flatpickr({enableTime: true});
 
                                 </script>
                                 <div class="input-group">
-                                    <span class="input-group-addon"><img src="view/images/dog.png"></span>
+                                    <span class="input-icon"><img src="view/images/dog.png"></span>
                                     <input id="60WalkExtra" type="number" class="form-control" placeholder="Number of Dogs" min="1" max="4">
                                 </div>
                                 <div class="row">

@@ -99,8 +99,25 @@ img {
     padding: 10px 20px;
     border-radius: 1000px;
 }
+.dashboard-btn {
+    display: block;
+    background: #00618c;
+    color: #fff;
+    padding: 10px;
+    font-size: .9em;
+    text-align: center;
+    font-weight: 700;
+    margin-top: 25px;
+    border-radius: 3px;
+}
+.dashboard-btn:hover {
+    color: #FFF;
+    background: #f47907;
+}
 
-
+.dashboard-btn:focus {
+    color: #FFF;
+}
 /*----------------Form Elements------------*/
 .narrow-form {
     width: 400px;
@@ -166,14 +183,17 @@ input[type=file] {
     display: block;
 }
 
-.entry-form input[type=text],
- .entry-form input[type=password],
- .entry-form input[type=email] {
+.input-group input {
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
     width: calc(100% - 40px);
     border: 1px solid #999;
 }
+
+.input-group {
+    padding-bottom: 5px;
+}
+
 .entry-form .input-group {
     flex-wrap: wrap;
 }
@@ -213,6 +233,7 @@ input[type=file] {
 .flatpickr-month {
     height: 40px;
     background-color: #00618c;
+    color: #fff;
 }
 
 .flatpickr-day.today {
@@ -222,26 +243,22 @@ input[type=file] {
     background: #f47907;
     border-color: #f47907;
 }
+.flatpickr-prev-month svg,
+.flatpickr-next-month svg {
+    fill: #fff;
+}
+
 .booking-dropdown {
     display: none;
     padding: 15px;
     background: #fff;
     border-top: 1px solid #eee;
 }
-.booking-dropdown img {
-    max-width: 25px;
-    margin: 0 !important;
+.booking-dropdown .input-group .form-control {
+    padding: 9px;
+    margin-bottom: 10px;
 }
-.input-group {
-    padding-bottom: 5px;
-}
-.input-group-addon {
-    border: 1px solid #999;
-    border-right: 0;
-    border-bottom-left-radius: 2px;
-    border-top-left-radius: 2px;
-}
-#datepicker {
+.form-control[readonly]{
     background: #fff;
 }
 .booking-submit {
@@ -256,6 +273,7 @@ input[type=file] {
 .total h4 {
     margin: 0;
     font-size: 1.2em;
+    display: none;
 }
 /*----------------Profile Forms------------------*/
 #item-img-output {
@@ -282,6 +300,36 @@ input[type=file] {
 }
 input[type=file].hideElement {
     display: none;
+}
+/*----------------Rates Form Elements----------------*/
+.toggle-handle {
+    color: #333;
+    background-color: #fff;
+    border-color: #ccc;
+}
+.toggle {
+    color: #333;
+    background-color: #eee;
+    border-color: #adadad;
+
+}
+.checkbox-inline .toggle {
+    margin-left: 0;
+}
+.btn-primary {
+    background-color: #00618c;
+    border-color: #00618c;
+}
+.btn-primary:hover {
+    background-color: #00618c;
+    border-color: #00618c;
+}
+.dollar-icon {
+    padding-left: 3px;
+}
+.setRates {
+    display: none;
+    margin-top: 15px;
 }
 
 /*----------------Parsley Form Validation------------*/
@@ -572,38 +620,20 @@ ul.subMenu li a {
     border-radius: 1000px;
 }
 .profile-box h3 {
-    display: inline-block;
-    color: #00618c;
-    position: absolute;
-    font-weight: bold;
-    margin: 20px 0 10px 20px;
+    margin-bottom: 10px
 }
-.profile-box a{
-    display: inline-block;
-    margin-left: 20px;
-}
+
 .messages-box img{
     margin-top: 20px;
 }
 
 .my-dogs img{
-    margin-bottom: 15px;
     max-width: 125px;
     border-radius: 1000px;
 }
 
-.my-dogs h4 {
-    display: inline-block;
-    position: absolute;
-    margin: 30px 0 10px 20px;
-}
-.my-dogs a {
-    margin-left: 20px;
-}
 
-.add-dog {
-    text-align: center;
-}
+
 /*----------------Bookings Overview ------------------*/
 .bookings {
     border: 1px solid #ccc;
@@ -643,9 +673,6 @@ ul.subMenu li a {
     background-color: #fff;
     border-radius: 20px;
 }
-
-
-
 
 /*----------------Local Search Listing------------*/
 
