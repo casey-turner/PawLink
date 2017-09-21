@@ -1,7 +1,9 @@
 <?php
 // Array of available actions
 if (isset($_SESSION['profileID'])) {
-    $availableActions = array('create_profile','profile', 'dog_register', 'dog_profile', 'search', 'dashboard', 'edit_profile', 'edit_dog');
+    $availableActions = array('create_profile','profile', 'dog_register',
+                        'dog_profile', 'search', 'dashboard', 'edit_profile',
+                        'edit_dog', 'rates');
 } else {
     $availableActions = array('create_profile');
 }
@@ -24,26 +26,29 @@ switch($action) {
     case "dashboard":
         dashboard();
         break;
+    case "profile":
+        profile();
+        break;
     case "create_profile":
         create_profile();
         break;
     case "edit_profile":
         edit_profile();
         break;
-    case "profile":
-        profile();
+    case "dog_profile":
+        dog_profile();
         break;
     case "dog_register":
         dog_register();
         break;
-    case "dog_profile":
-        dog_profile();
+    case "edit_dog":
+        edit_dog();
+        break;
+    case "rates":
+        rates();
         break;
     case "search":
         search();
-        break;
-    case "edit_dog":
-        edit_dog();
         break;
     default:
         dashboard();
@@ -425,6 +430,90 @@ function edit_dog() {
     require_once('view/dog_form.php');
     require_once('view/includes/footer.php');
 }
+
+function rates() {
+    GLOBAL $action;
+
+    $rates = selectData('rates', array(
+        'where'=> array('profileID' => $_SESSION['profileID'] ),
+        'return type' => 'single'
+        )
+    );
+
+    //Process post data
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+        if ( !empty($_POST['status']) && $_POST['status'] == 'active' ) {
+            $status = 'active';
+        } else {
+            $status = 'inactive';
+        }
+
+        $walk30 = !empty($_POST['walk30']) ? sanitiseUserInput($_POST['walk30']) : null;
+        $walk60 = !empty($_POST['walk60']) ? sanitiseUserInput($_POST['walk60']) : null;
+        $extraDog = !empty($_POST['extraDog']) ? sanitiseUserInput($_POST['extraDog']) : null;
+
+        if ( !is_null($walk30) && !is_null($walk60) && !is_null($extraDog) ) {
+            try {
+                $ratesData = array(
+                    'status' => $status,
+                    'walk30' => $walk30,
+                    'walk60' => $walk60,
+                    'extraDog' => $extraDog,
+                    'profileID' => $_SESSION['profileID']
+                );
+
+                if ( empty($rates['priceID']) ) {
+                    insertData('rates', $ratesData);
+                    $notificationMsg = 'Success, your dog walking rates have been set!';
+                } else {
+                    $updateWhere = array(
+                        'profileID' => $_SESSION['profileID']
+                    );
+                    updateData('rates', $ratesData, $updateWhere);
+                    $notificationMsg = 'Success, your dog walking rates have been updated!';
+                    $rates = selectData('rates', array(
+                        'where'=> array('profileID' => $_SESSION['profileID'] ),
+                        'return type' => 'single'
+                        )
+                    );
+                }
+
+                if (isset($_POST['method']) && $_POST['method'] == 'ajax') {
+                    echo 'true';
+
+                    exit;
+                } else {
+                    $_SESSION['notificationMsg'] = esdrgf;
+
+                    exit;
+                }
+
+            } catch (PDOexception $e) {
+                echo "Error:".$e -> getMessage();
+                die();
+            }
+        } else {
+
+            if (isset($_POST['method']) && $_POST['method'] == 'ajax') {
+                echo 'false';
+                exit;
+            } else {
+                $errorMsg = 'Error saving rates.' ;
+            }
+
+        }
+
+    }
+
+
+    $pageTitle = "Register as Dog Walker | PawLink";
+    require_once('view/includes/header.php');
+    require_once('view/rates_form.php');
+    require_once('view/includes/footer.php');
+
+}
+
 
 function search() {
     GLOBAL $action;

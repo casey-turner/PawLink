@@ -134,6 +134,40 @@ $("#ajaxRegisterForm").submit(function(event){
         } else {
             $('.setRates').slideUp(200);
         }
+
+        $.ajax({
+           type: "POST",
+           url: '?controller=profiles&action=rates',
+           data: $('#rates').serialize() + '&method=ajax',
+           success: function(response) {
+               if (response == 'true') {
+                   console.log('success');
+               } else {
+                   console.log('fail');
+                //   $("#ajaxLoginError").css({"display": "block"});
+                  // $( "#ajaxLoginError" ).html( "<p>Error saving rates. Try again.</p>" );
+               }
+           }
+       });
+
+    });
+
+
+    $("#rates").submit(function(event){
+        event.preventDefault();
+        $.ajax({
+           type: "POST",
+           url: '?controller=profiles&action=rates',
+           data: $(this).serialize() + '&method=ajax',
+           success: function(response) {
+               if (response == 'true') {
+                   window.location = "?controller=profiles&action=dashboard"
+               } else {
+                   $("#ajaxLoginError").css({"display": "block"});
+                   $( "#ajaxLoginError" ).html( "<p>Login failed. Try again.</p>" );
+               }
+           }
+       });
     });
 
 

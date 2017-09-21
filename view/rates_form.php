@@ -14,7 +14,7 @@
                     <?php
                     }
                     ?>
-                    <label class="checkbox-inline"><input id="offerWalking" type="checkbox"  data-toggle="toggle"  data-off="No" data-on="Yes"<?php if ( isset($rates['priceID']) ) {echo 'checked';} ?>>  I offer dog walking services</label>
+                    <label class="checkbox-inline"><input id="offerWalking" name="status" value="active"  type="checkbox"  data-toggle="toggle"  data-off="No" data-on="Yes"<?php if ( isset($rates['priceID']) ) {echo 'checked';} ?>>  I offer dog walking services</label>
                     <div class="setRates <?php if ( isset($rates['priceID']) ) {echo 'hasRates';} ?>" >
                         <label>Rate for 30 minute dog walk</label>
                         <div class="input-group">
