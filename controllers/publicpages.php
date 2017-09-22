@@ -45,6 +45,9 @@ function homepage() {
 
 function gallery() {
     GLOBAL $action;
+
+    $dogs = selectData('dogs', array('select'=> ' dogName, dogProfileImage, breed'));    
+
     $pageTitle = "Wall of Dogs | PawLink";
     require_once('view/includes/header.php');
     require_once('view/gallery.php');

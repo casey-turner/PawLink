@@ -89,6 +89,7 @@ img {
 .orange-btn:focus {
     color: #FFF;
     background-color: orange;
+    outline: none;
 }
 
 .hp-register-btn {
@@ -334,6 +335,36 @@ input[type=file].hideElement {
 #rates .hasRates {
     display: block;
 }
+/* ----------------Form Errors & notifications ----------*/
+
+.notification {
+    display: none;
+    background-color: #dff0d8;
+    border-color: #d0e9c6;
+    color: #3c763d;
+    padding: .75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: .25rem;
+}
+    .notification.notificationShow {
+        display: block;
+    }
+
+.error {
+    display: none;
+    background-color: #f2dede;
+    border-color: #ebcccc;
+    color: #a94442;
+    padding: .75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: .25rem;
+}
+    .error.errorShow {
+        display: block;
+    }
+
 /*----------------Parsley Form Validation------------*/
 input.parsley-success,
 select.parsley-success,
@@ -367,6 +398,7 @@ textarea.parsley-error {
 .parsley-errors-list.filled {
   opacity: 1;
 }
+
 /*----------------Navigation------------*/
 
 .hp-header {
@@ -599,6 +631,18 @@ ul.subMenu li a {
     background: url('../images/contact.jpg') no-repeat center center;
     background-size: cover;
 }
+
+/*--------------------------Wall of Dogs Picture Gallery-------------------*/
+.grid-item {
+    width: 20%;
+    padding: 0 10px 10px 0;
+}
+    .grid-item .dog-masonary {
+        padding: 15px;
+        background: #00618c;
+        color: #fff;
+    }
+
 /*--------------------------------Member Pages ---------------------------*/
 .memberPage {
     padding: 50px 0;

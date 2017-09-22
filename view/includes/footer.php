@@ -2,6 +2,8 @@
             <div class="container">
                 <p>© 2017 PawLink.com.au. All Rights Reserved.<p>
             </div>
+            <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+            <script src="https://unpkg.com/scrollreveal/dist/scrollreveal.min.js"></script>
             <script src="view/js/formcache.js"></script>
             <script src="view/js/croppie.min.js"></script>
             <script src="view/js/main.js"></script>
