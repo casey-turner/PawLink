@@ -184,15 +184,12 @@ jQuery(document).ready(function($) {
        });
     });
 
-
-
     //-----------------Local and Session storage for form values ----------------
     $("#ajaxLoginForm").formcache();
 
     //-------------------Wall of Paws Dog Gallery ------------------
     $('.grid').masonry({
       itemSelector: '.grid-item',
-      
     });
 
     window.sr = ScrollReveal();
@@ -201,8 +198,8 @@ jQuery(document).ready(function($) {
         scale: 0.5,
         origin: 'top',
         distance: '50px',
-
      });
+
     //--------------- On FAQ page-------------------
 
     // toggles the answer div  of questions
@@ -312,6 +309,45 @@ function checkEmail(){
     $(".error_div").html("Invalid email");
     $(".error_div").css({"display": "block"});
     return false;
+}
 
+//------------------Search Local Walkers-----------------------
+function searchWalkers() {
+    $.ajax({
+       type: "GET",
+       url: '?controller=search&action=search_walkers',
+       success: function(response) {
+            response = JSON.parse(response);
+            console.log(response);
 
+            $.each(response, function () {
+                $(".searchResults").append(
+                    '<div class="search-profile">'+
+                        '<a href="?controller=profiles&action=profile&profileID='+this.profileID+'">'+
+                            '<div class="row">'+
+                                '<div class="col-3 search-thumb">'+
+                                    '<img src="view/uploads/'+this.profileImage+'" >'+
+                                    '<p>'+this.firstName+' '+this.lastName+'.'+'</p>'+
+                                '</div>'+
+                                '<div class="col-9 search-result">'+
+                                    '<h3>'+this.profileTitle+'</h3>'+
+                                    '<h4>'+this.suburb+'</h4>'+
+                                    '<p>'+trimProfileDescription(this.profileDescription,250)+'</p>'+
+                                '</div>'+
+                            '</div>'+
+                        '</a>'+
+                    '</div>'
+                );
+            });
+
+       }
+    });
+}
+
+function trimProfileDescription(text,length) {
+    var trimmedText = text.substring(0, length);
+    var lastIndex = trimmedText.lastIndexOf(" ");
+    trimmedText = trimmedText.substring(0, lastIndex)+'...';
+
+    return trimmedText;
 }

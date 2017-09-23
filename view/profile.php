@@ -4,8 +4,8 @@
             <div class="col-md-8">
                 <div class="row profile-header">
                     <div class="col-sm-2">
-                        <img src= "<?php if (isset($_SESSION['profileImage'])) {
-                                            echo 'view/uploads/'.$_SESSION['profileImage'];
+                        <img src= "<?php if (isset($profile['profileImage'])) {
+                                            echo 'view/uploads/'.$profile['profileImage'];
                                         } else {
                                             echo 'view/uploads/defaultProfile';
                                         } ?> " />
@@ -43,7 +43,7 @@
                             <p><?php echo $profile['firstName']; ?> will walk your dog</p>
                             <span>(Additional dogs $<?php echo $rates['extraDog']; ?> each)</span>
                             <div class="ratesPrice">
-                                <span class="ratesPriceBold">$<?php echo $rates['30walk']; ?></span><span>/30 minutes</span>
+                                <span class="ratesPriceBold">$<?php echo $rates['walk30']; ?></span><span>/30 minutes</span>
                                 <span class="ratesMakeBooking">Make Booking</span>
                             </div>
                             <div class="clear"></div>
@@ -66,7 +66,7 @@
                                 <div class="row">
                                     <div class="col-6 total">
                                         <h4>
-                                            Total $<span id="30Walk" data-rate="<?php echo $rates['30walk']; ?>" data-extra="<?php echo $rates['extraDog']; ?>"><?php echo $rates['30walk']; ?></span>
+                                            Total $<span id="30Walk" data-rate="<?php echo $rates['walk30']; ?>" data-extra="<?php echo $rates['extraDog']; ?>"><?php echo $rates['30walk']; ?></span>
                                         </h4>
                                     </div>
                                     <div class="col-6 booking-submit">
@@ -83,7 +83,7 @@
                             <p><?php echo $profile['firstName']; ?> will walk your dog</p>
                             <span>(Additional dogs $<?php echo $rates['extraDog']; ?> each)</span>
                             <div class="ratesPrice">
-                                <span class="ratesPriceBold">$<?php echo $rates['60walk']; ?></span><span>/60 minutes</span>
+                                <span class="ratesPriceBold">$<?php echo $rates['walk60']; ?></span><span>/60 minutes</span>
                                 <span class="ratesMakeBooking">Make Booking</span>
                             </div>
                             <div class="clear"></div>
@@ -106,7 +106,7 @@
                                 <div class="row">
                                     <div class="col-6 total">
                                         <h4>
-                                            Total $<span id="60Walk" data-rate="<?php echo $rates['60walk']; ?>" data-extra="<?php echo $rates['extraDog']; ?>"><?php echo $rates['60walk']; ?></span>
+                                            Total $<span id="60Walk" data-rate="<?php echo $rates['walk60']; ?>" data-extra="<?php echo $rates['extraDog']; ?>"><?php echo $rates['60walk']; ?></span>
                                         </h4>
                                     </div>
                                     <div class="col-6 booking-submit">

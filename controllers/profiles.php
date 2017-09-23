@@ -2,7 +2,7 @@
 // Array of available actions
 if (isset($_SESSION['profileID'])) {
     $availableActions = array('create_profile','profile', 'dog_register',
-                        'dog_profile', 'search', 'dashboard', 'edit_profile',
+                        'dog_profile', 'dashboard', 'edit_profile',
                         'edit_dog', 'rates');
 } else {
     $availableActions = array('create_profile');
@@ -120,7 +120,7 @@ function create_profile() {
             //Verify base64 data
             if ( base64_encode(base64_decode($profilePhoto)) === $profilePhoto){
                 $profilePhoto = base64_decode($profilePhoto);
-                $imageName = $_SESSION['profileID'].time().'.jpg';
+                $imageName = $_SESSION['userID'].time().'.jpg';
             } else {
                 $errorMsg = 'Invalid image, please try again.' ;
             }
@@ -192,7 +192,7 @@ function edit_profile() {
             //Verify base64 data
             if ( base64_encode(base64_decode($profilePhoto)) === $profilePhoto){
                 $profilePhoto = base64_decode($profilePhoto);
-                $imageName = $_SESSION['profileID'].time().'.jpg';
+                $imageName = $_SESSION['userID'].time().'.jpg';
             } else {
                 $errorMsg = 'Invalid image, please try again.' ;
             }
@@ -289,7 +289,7 @@ function dog_register() {
             //Verify base64 data
             if ( base64_encode(base64_decode($dogPhoto)) === $dogPhoto){
                 $dogPhoto = base64_decode($dogPhoto);
-                $imageName = $dogID.time().'.jpg';
+                $imageName = $_SESSION['userID'].time().'.jpg';
             } else {
                 $errorMsg = 'Invalid image, please try again.' ;
             }
@@ -380,7 +380,7 @@ function edit_dog() {
             //Verify base64 data
             if ( base64_encode(base64_decode($dogPhoto)) === $dogPhoto){
                 $dogPhoto = base64_decode($dogPhoto);
-                $imageName = $dogID.time().'.jpg';
+                $imageName = $_SESSION['userID'].time().'.jpg';
             } else {
                 $errorMsg = 'Invalid image, please try again.' ;
             }
@@ -465,13 +465,26 @@ function rates() {
 
                 if ( empty($rates['priceID']) ) {
                     insertData('rates', $ratesData);
-                    $notificationMsg = 'Success, your dog walking rates have been set!';
+
+                    if (isset($_POST['method']) && $_POST['method'] == 'ajax') {
+                        $ajaxResponse = 'inserted';
+                    } else {
+                        $_SESSION['notificationMsg'] = 'Success, your dog walking rates have been set!';
+                    }
+
+
                 } else {
                     $updateWhere = array(
                         'profileID' => $_SESSION['profileID']
                     );
                     updateData('rates', $ratesData, $updateWhere);
-                    $notificationMsg = 'Success, your dog walking rates have been updated!';
+
+                    if (isset($_POST['method']) && $_POST['method'] == 'ajax') {
+                        $ajaxResponse = 'updated';
+                    } else {
+                        $_SESSION['notificationMsg'] = 'Success, your dog walking rates have been updated!';
+                    }
+
                     $rates = selectData('rates', array(
                         'where'=> array('profileID' => $_SESSION['profileID'] ),
                         'return type' => 'single'
@@ -480,12 +493,7 @@ function rates() {
                 }
 
                 if (isset($_POST['method']) && $_POST['method'] == 'ajax') {
-                    echo 'true';
-
-                    exit;
-                } else {
-                    $_SESSION['notificationMsg'] = esdrgf;
-
+                    echo $ajaxResponse;
                     exit;
                 }
 
@@ -499,7 +507,7 @@ function rates() {
                 echo 'false';
                 exit;
             } else {
-                $errorMsg = 'Error saving rates.' ;
+                $_SESSION['errorMsg'] = 'Error saving rates, please try again.' ;
             }
 
         }
@@ -512,15 +520,6 @@ function rates() {
     require_once('view/rates_form.php');
     require_once('view/includes/footer.php');
 
-}
-
-
-function search() {
-    GLOBAL $action;
-    $pageTitle = "Search | PawLink";
-    require_once('view/includes/header.php');
-    require_once('view/search.php');
-    require_once('view/includes/footer.php');
 }
 
 

@@ -7,7 +7,7 @@ $db = db_object();
 // Array of available controllers, depending on the session user state
 if (isset($_SESSION['userstate']) && ($_SESSION['userstate'] == 'member')) {
     if (isset($_SESSION['profileID'])) {
-        $availableControllers = array('bookings', 'feedback', 'messages', 'payments', 'profiles', 'publicpages', 'users');
+        $availableControllers = array('bookings', 'feedback', 'messages', 'payments', 'profiles', 'publicpages', 'users', 'search');
     } else {
         $availableControllers = array('users', 'publicpages', 'profiles');
     }

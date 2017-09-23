@@ -46,8 +46,8 @@ function insertData($table, $data){
 
 function selectData($table, $conditions = array()) {
     GLOBAL $db;
-    $sql = 'SELECT';
-    //select column list or * all
+    $sql = 'SELECT ';
+    //select column list or *  all
     $sql .= array_key_exists("select", $conditions)?$conditions['select']:'*';
     $sql .= ' FROM '.$table;
     //left join - if any
@@ -58,6 +58,14 @@ function selectData($table, $conditions = array()) {
         $sql .= $table.'.'.$conditions['left join']['column'];
         $sql .= ' = ';
         $sql .= $conditions['left join']['table2'].'.'.$conditions['left join']['column'];
+    }
+    if(array_key_exists("left join2", $conditions)) {
+        $sql .= ' LEFT JOIN ';
+        $sql .= $conditions['left join2']['table3'];
+        $sql .= ' ON ';
+        $sql .= $table.'.'.$conditions['left join2']['column'];
+        $sql .= ' = ';
+        $sql .= $conditions['left join2']['table3'].'.'.$conditions['left join2']['column'];
     }
     //where conditions - if any
     if(array_key_exists("where", $conditions)) {
@@ -96,7 +104,7 @@ function selectData($table, $conditions = array()) {
         }
     } else {
         if($query->rowCount() > 0) {
-            $data = $query->fetchAll();
+            $data = $query->fetchAll(PDO::FETCH_ASSOC);
         } else {
             return false;
         }
