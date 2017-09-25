@@ -31,7 +31,7 @@
     <div class="modal fade" id="registerModal" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">>
         <div class="modal-dialog modal-lg" role="document">
             <div class="centre-flex">
-                <form class="wide-form entry-form" id="ajaxRegisterForm" method="post" action="?controller=users&action=register" data-parsley-validate >
+                <form class="wide-form entry-form" id="ajaxRegisterForm" method="post" action="?controller=users&action=register" data-parsley-validate data-persist="garlic">
                     <button type="button" class="close modal-close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button>
@@ -73,22 +73,22 @@
                     <div class="row">
                         <div class="col-md-6 input-group">
                             <span class="input-icon"><img src="view/images/address.png" alt=""></span>
-                            <input placeholder="State" type="text" name="state" required>
+                            <input placeholder="State" type="text" name="state" required data-storage="false">
                         </div>
                         <div class="col-md-6 input-group">
                             <span class="input-icon"><img src="view/images/address.png" alt=""></span>
-                            <input placeholder="Postcode" type="text" name="postcode" minlength="4" maxlength="4" required>
+                            <input placeholder="Postcode" type="text" name="postcode" minlength="4" maxlength="4" required data-storage="false">
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-6 input-group">
                             <span class="input-icon"><img src="view/images/password.png" alt=""></span>
-                            <input placeholder="Password" type="password" name="password" id="password" required minlength="8">
+                            <input placeholder="Password" type="password" name="password" id="password" required minlength="8" data-storage="false">
                         </div>
 
                         <div class="col-md-6 input-group">
                             <span class="input-icon"><img src="view/images/password.png" alt=""></span>
-                            <input placeholder="Confirm password" type="password" name="confirmpassword" data-parsley-equalto="#password"	required>
+                            <input placeholder="Confirm password" type="password" name="confirmpassword" data-parsley-equalto="#password" required data-storage="false">
                         </div>
                     </div>
 

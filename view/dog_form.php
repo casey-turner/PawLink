@@ -4,7 +4,7 @@
             <div class="col-md-2">
             </div>
             <div class="col-md-8">
-                <form class="wide-form" id="dogRegister" enctype="multipart/form-data" method="post" action="?controller=profiles&action=<?php echo $action; ?><?php if ($action == 'edit_dog' ) {echo '&dogID='.$dogID;} ?>"  data-parsley-validate>
+                <form class="wide-form" id="dogRegister" enctype="multipart/form-data" method="post" action="?controller=profiles&action=<?php echo $action; ?><?php if ($action == 'edit_dog' ) {echo '&dogID='.$dogID;} ?>"  data-parsley-validate data-persist="garlic">
                     <legend>
                     <?php if ($action == 'edit_dog') { ?>
                         Edit Dog Profile

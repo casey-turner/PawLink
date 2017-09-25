@@ -3,17 +3,22 @@
     <head>
         <meta charset="utf-8">
         <title><?php echo $pageTitle; ?></title>
+<!--Fonts-->
         <link href="https://fonts.googleapis.com/css?family=Open+Sans|Raleway:400,700,900" rel="stylesheet">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-        <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+<!--JQuery-->
         <script src="http://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+<!--Bootstrap -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
         <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.7.2/parsley.min.js"></script>
-        <link rel="stylesheet" href="https://unpkg.com/flatpickr/dist/flatpickr.min.css">
+<!-- Flatpickr - Date and time input -->
         <script src="https://unpkg.com/flatpickr"></script>
+        <link rel="stylesheet" href="https://unpkg.com/flatpickr/dist/flatpickr.min.css">
+<!--Croppie - Image upload cropping tool-->
         <link href="view/css/croppie.css" rel="stylesheet" type="text/css">
+<!--Bootstrap-->        
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+        <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
         <link href="view/css/styles.css" rel="stylesheet" type="text/css">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     </head>
@@ -59,7 +64,7 @@
             </div>
         </header>
         <?php
-            $dashboardMenu = array ('profile', 'dog_register', 'dog_profile', 'search', 'dashboard','booking_overview', 'booking_form', 'edit_profile', 'edit_dog');
+            $dashboardMenu = array ('profile', 'dog_register', 'dog_profile', 'search_page', 'dashboard','booking_overview', 'booking_form', 'edit_profile', 'edit_dog');
 
             if ( in_array($action, $dashboardMenu) ) { ?>
             <div class="dashboard-menu">
@@ -70,7 +75,7 @@
                             <li><a href="?controller=bookings&action=booking_overview" <?php if ($action == "booking_overview") { echo 'class="current"';} ?>>Bookings</a></li>
                             <li><a href="#" <?php if ($action == "messages") { echo 'class="current"';} ?> >Messages</a></li>
                             <li><a href="?controller=profiles&action=profile&profileID=<?php echo $_SESSION['profileID']; ?>"<?php if ($action == "profile") { echo 'class="current"';} ?>>Profile</a></li>
-                            <li><a href="?controller=profiles&action=search" class="orange-btn">View Local Dog Walkers</a></li>
+                            <li><a href="?controller=search&action=search_page" class="orange-btn">View Local Dog Walkers</a></li>
                         </ul>
                     </nav>
                 </div>
