@@ -168,8 +168,7 @@ textarea {
     border: 1px solid #999;
     outline: none;
     background: #fff;
-    height: max-content;
-
+    height:40px;;
 }
 input[type=radio] {
     margin-right: 10px;
@@ -182,6 +181,9 @@ input[type=submit] {
 }
 input[type=file] {
     display: block;
+}
+textarea {
+    height: auto;
 }
 
 .input-group input {
@@ -274,7 +276,6 @@ input[type=file] {
 .total h4 {
     margin: 0;
     font-size: 1.2em;
-    display: none;
 }
 /*----------------Profile Forms------------------*/
 #item-img-output {
@@ -312,8 +313,11 @@ input[type=file].hideElement {
     color: #333;
     background-color: #eee;
     border-color: #adadad;
-
 }
+    .toggle .toggle-group .btn {
+        line-height: 22px!important
+    }
+    
 .checkbox-inline .toggle {
     margin-left: 0;
 }
@@ -371,7 +375,7 @@ select.parsley-success,
 textarea.parsley-success {
   color: #468847;
   background-color: #DFF0D8;
-  border: 1px solid #D6E9C6;
+  border: 1px solid #999;
 }
 
 input.parsley-error,
@@ -379,6 +383,7 @@ select.parsley-error,
 textarea.parsley-error {
   color: #B94A48;
   background-color: #F2DEDE;
+  border: 1px solid #999;
 }
 
 .parsley-errors-list {
@@ -746,7 +751,7 @@ ul.subMenu li a {
     width: 100%;
     border: 1px solid #ccc;
     display: inline-block;
-    box-shadow: 2px 2px 6px rgba(0,0,0,.1)
+    box-shadow: 2px 2px 6px rgba(0,0,0,.1);
 }
 .search-profile:last-of-type {
     margin-bottom: 50px;
@@ -756,7 +761,7 @@ ul.subMenu li a {
     color: #555;
 }
 .search-profile:hover {
-    background-color: rgba(221, 231, 252, 0.5)
+    background-color: rgba(221, 231, 252, 0.5);
 }
 /*----------------Walker Profile Page------------*/
 
@@ -772,7 +777,8 @@ ul.subMenu li a {
     border-radius: 1000px;
     margin: 20px;
 }
-.profile-header h2 {
+.profile-header h3 {
+    font-size: 2em;
     margin: 20px 0 5px 0;
 }
 .profile-header p {
@@ -893,8 +899,12 @@ ul.subMenu li a {
 .dogInfoBold {
     font-weight: 700;
 }
-.
+/*----------------Search page---------*/
 
+#map {
+    width: 100%;
+    height: 800px;
+}
 /*----------------Footer------------*/
 
 footer {

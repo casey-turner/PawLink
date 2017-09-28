@@ -55,10 +55,7 @@ jQuery(document).ready(function($) {
     });
 
     //-----------------Forms Image Upload Modal ---------------
-    var $uploadCrop,
-	tempFilename,
-	rawImg,
-	imageId;
+    var $uploadCrop, tempFilename, rawImg, imageId;
 	function readFile(input) {
 			if (input.files && input.files[0]) {
             var reader = new FileReader();
@@ -236,7 +233,7 @@ jQuery(document).ready(function($) {
         var extra = $('#30Walk').data('extra');
         var total = rate + ($('#30WalkExtra').val() - 1) * extra;
         $("#30Walk").html(total);
-        $(".total h4").css({"display": "block"});
+
     });
 
     //calculates cost of 60 minute walk
@@ -245,9 +242,30 @@ jQuery(document).ready(function($) {
         var extra = $('#60Walk').data('extra');
         var total = rate + ($('#60WalkExtra').val() - 1) * extra;
         $("#60Walk").html(total);
-        $(".total h4").css({"display": "block"});
+
     });
 
+    $("#walk30min").submit(function(event){
+        event.preventDefault();
+
+        $.ajax({
+           type: "POST",
+           url: '?controller=bookings&action=create',
+           data: $(this).serialize() + '&method=ajax',
+           success: function(response) {
+               if (response == 'inserted') {
+                   $("#walk30min").css({"display": "none"});
+                   $( ".notification" ).html( "Success, your dog walking rates have been set!" );
+               } else if (response == 'updated') {
+                   $(".notification").css({"display": "block"});
+                   $( ".notification" ).html( "Success, your dog walking rates have been updated!" );
+              } else {
+                   $(".error").css({"display": "block"});
+                   $( ".error" ).html( "Error saving rates, please try again." );
+              }
+           }
+       });
+    });
 
     //--------------- Member sub menu -------------------
     // sub menu functionality
@@ -325,13 +343,13 @@ function searchWalkers() {
        success: function(response) {
             response = JSON.parse(response);
 
-            /*var map = new google.maps.Map(document.getElementById('map'), {
-              zoom: 12,
-              center: new google.maps.LatLng(‎27.4698, 153.0251),
-              mapTypeId: google.maps.MapTypeId.ROADMAP
+            var map = new google.maps.Map(document.getElementById('map'), {
+                center:new google.maps.LatLng(-27.470125, 153.021072),
+                zoom:12,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
             });
 
-            var geocoder = new google.maps.Geocoder();*/
+            var geocoder = new google.maps.Geocoder();
 
             $.each(response, function () {
 
@@ -354,11 +372,9 @@ function searchWalkers() {
                         '</a>'+
                     '</div>'
                 );
-            }); //end each
-       }
-    });
 
-        /*        geocoder.geocode({'address': this.suburb}, function(results, status) {
+
+              geocoder.geocode({'address': this.suburb+', Australia'}, function(results, status) {
                     if (status === 'OK') {
                         map.setCenter(results[0].geometry.location);
                         var marker = new google.maps.Marker({
@@ -370,8 +386,9 @@ function searchWalkers() {
                     }
                 });
 
-
-
+            }); //end each
+        }
+    });
 
 
     /*var locations = [

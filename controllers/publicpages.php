@@ -46,7 +46,11 @@ function homepage() {
 function gallery() {
     GLOBAL $action;
 
-    $dogs = selectData('dogs', array('select'=> ' dogName, dogProfileImage, breed'));    
+    $dogs = selectData('dogs', array(
+        'select'=> ' dogName, dogProfileImage, breed',
+        'order_by' => 'rand()'
+        )
+    );
 
     $pageTitle = "Wall of Dogs | PawLink";
     require_once('view/includes/header.php');

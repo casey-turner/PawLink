@@ -1,6 +1,6 @@
 <?php
 // Array of available actions
-$availableActions = array('booking_overview', 'booking_form');
+$availableActions = array('overview', 'create' );
 
 // Get action name from query string and set to variable
 if ( isset($_GET['action']) ) {
@@ -15,38 +15,65 @@ if ( isset($_GET['action']) ) {
 
 //Define the php file and page title depending on the action
 switch($action) {
-    case "booking_overview":
-        booking_overview();
+    case "overview":
+        overview();
         break;
-    case "booking_form":
-        booking_form();
-        break;
-    case "dog_register":
-        dog_register();
-        break;
-    case "dog_profile":
-        dog_profile();
-        break;
-    case "search":
-        search();
+    case "create":
+        create();
         break;
     default:
-        dashboard();
+        overview();
         break;
 }
 
-function booking_overview() {
+function overview() {
     GLOBAL $action;
     $pageTitle = "Bookings | PawLink";
     require_once('view/includes/header.php');
     require_once('view/booking_overview.php');
     require_once('view/includes/footer.php');
 }
-function booking_form() {
+
+function create() {
     GLOBAL $action;
-    $pageTitle = "Bookings | PawLink";
-    require_once('view/includes/header.php');
-    require_once('view/booking_form.php');
-    require_once('view/includes/footer.php');
+
+    // Create a new booking
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+        $dateTime = !empty($_POST['dateTime']) ? sanitiseUserInput($_POST['dateTime']) : null;
+        $noDogs = !empty($_POST['noDogs']) ? sanitiseUserInput($_POST['noDogs']) : null;
+        $duration = !empty($_POST['duration']) ? sanitiseUserInput($_POST['duration']) : null;
+        $walkerUserID = !empty($_POST['walkerUserID']) ? sanitiseUserInput($_POST['walkerUserID']) : null;
+
+        try {
+            $bookingData = array(
+                'dateTime' => $dateTime,
+                'noDogs' => $noDogs,
+                'duration' => $duration,
+                'walkerUserID' => $walkerUserID,
+                'ownerUserID' => $_SESSION['userID'],
+                'status' => 'unconfirmed'
+            );
+            insertData('bookings', $bookingData);
+
+            echo "inserted";
+
+            exit;
+
+        } catch (PDOexception $e) {
+            if (isset($_POST['method']) && $_POST['method'] == 'ajax') {
+                echo 'sql error';
+                exit;
+            } else {
+                echo "Error:".$e -> getMessage();
+                exit;
+            }
+        }
+
+
+
+    } 
 }
+
+
  ?>
