@@ -49,14 +49,15 @@
                             <div class="clear"></div>
                         </div>
                         <div class="booking-dropdown">
-                            <form id="walk30min" method="post" action="?controller=bookings&action=new">
+                            <form id="walk30min" method="post">
+                                <div class="error"></div>
                                 <div class="input-group">
                                     <span class="input-icon"><img src="view/images/date.png"></span>
-                                    <input type="text" class="form-control" placeholder="Date & Time" id="datepicker" name="dateTime">
+                                    <input type="text" class="form-control" placeholder="Date & Time" id="walk30minDateTime" name="dateTime">
                                 </div>
                                 <script>
 
-                                $("#datepicker").flatpickr({enableTime: true});
+                                $("#walk30minDateTime").flatpickr({enableTime: true});
 
                                 </script>
                                 <div class="input-group">
@@ -91,21 +92,23 @@
                             <div class="clear"></div>
                         </div>
                         <div class="booking-dropdown">
-                            <form id="walk60min" method="post" action="?controller=bookings&action=new">
+                            <form id="walk60min" method="post">
+                                <div class="error"></div>
                                 <div class="input-group">
                                     <span class="input-icon"><img src="view/images/date.png"></span>
-                                    <input type="text" class="form-control flatpickr-input active" placeholder="Date & Time" id="datepicker2" name="dateTime">
+                                    <input type="text" class="form-control flatpickr-input active" placeholder="Date & Time" id="walk60minDateTime" name="dateTime">
                                 </div>
                                 <script>
 
-                                $("#datepicker2").flatpickr({enableTime: true});
+                                $("#walk60minDateTime").flatpickr({enableTime: true});
 
                                 </script>
                                 <div class="input-group">
                                     <span class="input-icon"><img src="view/images/dog.png"></span>
                                     <input id="60WalkExtra" type="number" class="form-control" placeholder="Number of Dogs" min="1" max="4" value="1" name="noDogs">
-                                    <input type="hidden" name="duration" value="60">
                                 </div>
+                                <input type="hidden" name="duration" value="60">
+                                <input type="hidden" name="walkerUserID" value="<?php echo $profile['userID']; ?>">
                                 <div class="row">
                                     <div class="col-6 total">
                                         <h4>
@@ -118,6 +121,30 @@
                                 </div>
                             </form>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal -->
+<div id="bookingPop" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Woof!</h3>
+                <button type="button" class="close modal-close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                 </button>
+            </div>
+            <div class="modal-body">
+                <p>Your booking request has been sent, <?php echo $profile['firstName']; ?> will review your request and get back to you shortly.</p>
+                <hr />
+                <div class="bookingSummary">
+                    <h3 class="summaryTitle">Your Booking Summary</h3>
+                    <div class="summaryDetails"></div>
+                    <div class="alert alert-warning">
+                        <strong>Status:</strong> Pending
                     </div>
                 </div>
             </div>

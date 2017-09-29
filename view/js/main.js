@@ -245,8 +245,11 @@ jQuery(document).ready(function($) {
 
     });
 
-    $("#walk30min").submit(function(event){
+    //Submit 30 or 60 minute walk booking form
+    $("#walk30min,#walk60min").submit(function(event){
         event.preventDefault();
+
+        var formID = this.id;
 
         $.ajax({
            type: "POST",
@@ -254,14 +257,23 @@ jQuery(document).ready(function($) {
            data: $(this).serialize() + '&method=ajax',
            success: function(response) {
                if (response == 'inserted') {
-                   $("#walk30min").css({"display": "none"});
-                   $( ".notification" ).html( "Success, your dog walking rates have been set!" );
-               } else if (response == 'updated') {
-                   $(".notification").css({"display": "block"});
-                   $( ".notification" ).html( "Success, your dog walking rates have been updated!" );
+                   //Display booking summary modal
+                   $('#bookingPop').modal('show');
+                   //Create date time object and format for output in modal
+                   var dateTime = toJSDate($("#"+formID+"DateTime").val());
+                   var formattedDate = formatDate(dateTime);
+                   var formattedTime = formatTime(dateTime);
+                   //Booking form summary
+                   $('.summaryDetails').empty().append(
+                       '<p><strong>Time: </strong>'+formattedDate+' at '+formattedTime+'</p>'+
+                       '<p><strong>Length: </strong>'+$("#"+formID+" input[name=duration]").val()+' minutes</p>'+
+                       '<p><strong>Number of Dogs: </strong>'+$("#"+formID+" input[name=noDogs]").val()+'</p>'
+                   );
+                   //Reset booking form
+                   $( "#"+formID )[0].reset();
               } else {
-                   $(".error").css({"display": "block"});
-                   $( ".error" ).html( "Error saving rates, please try again." );
+                   $("#"+formID+" .error").css({"display": "block"});
+                   $("#"+formID+" .error").html( "Error with booking, please try again." );
               }
            }
        });
@@ -286,9 +298,7 @@ jQuery(document).ready(function($) {
        });
     });
 
-});
-
-
+}); //End document.load function
 
 // Makes sure there is a value in both password fields, then compares input values
 function comparePasswords() {
@@ -332,6 +342,51 @@ function checkEmail(){
     $(".error_div").html("Invalid email");
     $(".error_div").css({"display": "block"});
     return false;
+}
+
+//Converts flatpickr date to JS date object
+function toJSDate (dateTime) {
+
+    var dateTime = dateTime.split(" ");//dateTime[0] = date, dateTime[1] = time
+
+    var date = dateTime[0].split("-");
+    var time = dateTime[1].split(":");
+    var month = date[1] - 1;
+
+    //(year, month, day, hours, minutes, seconds, milliseconds)
+    return new Date(date[0], month, date[2], time[0], time[1], 0, 0);
+}
+
+//Formats the date portion of JS date object
+function formatDate(date) {
+  var monthNames = [
+    "January", "February", "March",
+    "April", "May", "June", "July",
+    "August", "September", "October",
+    "November", "December"
+  ];
+
+  var day = date.getDate();
+  var monthIndex = date.getMonth();
+  var year = date.getFullYear();
+
+  return day + ' ' + monthNames[monthIndex] + ' ' + year;
+}
+
+//Formats the time portion of JS date object
+function formatTime(date) {
+
+  var hours = date.getHours();
+  var minutes = date.getMinutes();
+  var ampm = hours >= 12 ? 'pm' : 'am';
+
+  hours = hours % 12;
+  hours = hours ? hours : 12; // the hour '0' should be '12'
+  minutes = minutes < 10 ? '0'+minutes : minutes;
+
+  var strTime = hours + ':' + minutes + ' ' + ampm;
+
+  return strTime;
 }
 
 //------------------Search Local Walkers-----------------------

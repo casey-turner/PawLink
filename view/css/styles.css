@@ -119,6 +119,28 @@ img {
 .dashboard-btn:focus {
     color: #FFF;
 }
+
+/*----------------Modals------------------*/
+.modal-header {
+    background: #00618c;
+
+}
+.modal-title {
+    color: #FFF;
+}
+
+.modal-content .modal-close {
+    color: #FFF;
+    text-shadow: none;
+    opacity: 1
+}
+
+@media (min-width: 576px){
+    .modal-dialog {
+        margin: 12% auto;
+    }
+}
+
 /*----------------Form Elements------------*/
 .narrow-form {
     width: 400px;
@@ -216,9 +238,7 @@ textarea {
     height: auto;
     width: auto;
 }
-.modal-close {
-    margin-right: -30px;
-}
+
 
 /*-----------------Form Errors--------------*/
 .password_error {
@@ -232,7 +252,7 @@ textarea {
     display: none;
 }
 
-/*----------------Booking Form Elements-----*/
+/*----------------Booking Form Elements & Modal Details-----*/
 .flatpickr-month {
     height: 40px;
     background-color: #00618c;
@@ -277,6 +297,14 @@ textarea {
     margin: 0;
     font-size: 1.2em;
 }
+.summaryTitle {
+    margin: 25px 0 20px;
+}
+.bookingSummary {
+    padding: 0 25px;
+}
+
+
 /*----------------Profile Forms------------------*/
 #item-img-output {
     width: 250px;
@@ -317,7 +345,7 @@ input[type=file].hideElement {
     .toggle .toggle-group .btn {
         line-height: 22px!important
     }
-    
+
 .checkbox-inline .toggle {
     margin-left: 0;
 }
@@ -667,23 +695,22 @@ ul.subMenu li a {
     margin-bottom: 20px;
 }
 .profile-box img {
-    max-width: 125px;
     border-radius: 1000px;
 }
 .profile-box h3 {
     margin-bottom: 10px
 }
 
-.messages-box img{
+.messages-box img {
     margin-top: 20px;
 }
-
-.my-dogs img{
-    max-width: 125px;
+.my-dogs img {
     border-radius: 1000px;
+    margin-bottom: 20px;
 }
-
-
+.my-dogs .dashboard-btn {
+    margin-top: 5px;
+}
 
 /*----------------Bookings Overview ------------------*/
 .bookings {
