@@ -31,7 +31,7 @@
     <div class="modal fade" id="registerModal" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">>
         <div class="modal-dialog modal-lg" role="document">
             <div class="centre-flex">
-                <form class="wide-form entry-form" id="ajaxRegisterForm" method="post" action="?controller=users&action=register" data-parsley-validate data-persist="garlic">
+                <form class="wide-form entry-form" id="ajaxRegisterForm" method="post" action="?controller=users&action=register" data-parsley-validate >
                     <button type="button" class="close modal-close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button>
@@ -93,7 +93,7 @@
                     </div>
 
                     <div class="submit-cont">
-                        <input type="submit" class="orange-btn">
+                        <input type="submit" class="orange-btn" value="Register">
                         <p>Already a member? <a href="?controller=users&action=login">Login here.</a></p>
                     </div>
                 </form>

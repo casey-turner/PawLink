@@ -10,19 +10,17 @@
             <script src="https://unpkg.com/scrollreveal/dist/scrollreveal.min.js"></script>
     <!--Parsley- Form validation -->
             <script src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.7.2/parsley.min.js"></script>
-    <!--Garlic - Form persistence -->
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/garlic.js/1.3.0/garlic.min.js"></script>
     <!--Croppie - Image upload cropping tool -->
             <script src="view/js/croppie.min.js"></script>
-            
+
             <script src="view/js/main.js"></script>
         </footer>
         <!-- Modal available only when user is not logged in -->
         <?php if ( !isset($_SESSION['userstate']) ) {?>
-            <div class="modal fade" id="loginModal" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">>
+            <div class="modal fade" id="loginModal" role="dialog">
                 <div class="modal-dialog" role="document">
                     <div class="centre-flex">
-                        <form class="narrow-form entry-form" id="ajaxLoginForm" action="?controller=users&action=login" data-persist="garlic" method="post" data-parsley-validate >
+                        <form class="narrow-form entry-form" id="ajaxLoginForm" action="?controller=users&action=login"  method="post" data-parsley-validate >
                             <button type="button" class="close modal-close" data-dismiss="modal" aria-label="Close">
                               <span aria-hidden="true">&times;</span>
                             </button>
@@ -42,11 +40,11 @@
                             </div>
                             <div class="input-group">
                                 <span class="input-icon"><img src="view/images/password.png" alt=""></span>
-                                <input placeholder="Password" type="password" name="password" required data-storage="false">
+                                <input placeholder="Password" type="password" name="password" required >
                             </div>
 
                             <div class="submit-cont">
-                                <input class="orange-btn" type="submit" name="submit">
+                                <input class="orange-btn" type="submit" value="Submit">
                                 <p>Not yet a member? <a href="?controller=users&action=register">Sign up here.</a></p>
                             </div>
                         </form>

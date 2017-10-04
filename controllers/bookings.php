@@ -28,6 +28,13 @@ switch($action) {
 
 function overview() {
     GLOBAL $action;
+
+    $bookings = selectData('bookings', array(
+        'where'=> array('ownerUserID' => $_SESSION['userID'], 'walkerUserID' => $_SESSION['userID'] ),
+
+        )
+    );
+
     $pageTitle = "Bookings | PawLink";
     require_once('view/includes/header.php');
     require_once('view/booking_overview.php');
@@ -72,7 +79,7 @@ function create() {
 
 
 
-    } 
+    }
 }
 
 
