@@ -43,6 +43,35 @@ function insertData($table, $data){
     return $insert;
 }
 
+function sqlQuery($sql, $return_type) {
+     GLOBAL $db;
+
+     $query = $db->prepare($sql);
+     $data = $query->execute();
+
+     //return single or all rows - identifying fetch function required
+     if(!empty($return_type) && $return_type != 'all') {
+         switch ($return_type) {
+             case 'count':
+                 $data = $query->rowCount();
+                 break;
+             case 'single':
+                 $data = $query->fetch(PDO::FETCH_ASSOC);
+                 break;
+             default:
+                 $data = $query->fetch(PDO::FETCH_ASSOC);
+                 break;
+         }
+     } else {
+         if($query->rowCount() > 0) {
+             $data = $query->fetchAll(PDO::FETCH_ASSOC);
+         } else {
+             return false;
+         }
+         return $data;
+     }
+     return $data;
+ }
 
 function selectData($table, $conditions = array()) {
     GLOBAL $db;
