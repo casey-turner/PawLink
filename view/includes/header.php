@@ -3,6 +3,7 @@
     <head>
         <meta charset="utf-8">
         <title><?php echo $pageTitle; ?></title>
+        <link rel="icon" href="view/images/pawlink.ico" type="image/ico">
 <!--Fonts-->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans|Raleway:400,700,900">
 <!--JQuery-->
