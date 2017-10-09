@@ -144,7 +144,7 @@
                     <h3 class="summaryTitle">Your Booking Summary</h3>
                     <div class="summaryDetails"></div>
                     <div class="alert alert-warning">
-                        <strong>Status:</strong> Pending
+                        <span><strong>Status:</strong> Pending</span>
                     </div>
                 </div>
             </div>

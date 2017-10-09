@@ -45,7 +45,8 @@ a:active,
 a:focus {
     text-decoration: none;
 }
-a:focus{
+a:focus,
+button:focus {
     outline: none;
 }
 
@@ -100,7 +101,7 @@ img {
     padding: 10px 20px;
     border-radius: 1000px;
 }
-.dashboard-btn {
+.blue-btn {
     display: block;
     background: #00618c;
     color: #fff;
@@ -111,12 +112,12 @@ img {
     margin-top: 25px;
     border-radius: 3px;
 }
-.dashboard-btn:hover {
+.blue-btn:hover {
     color: #FFF;
     background: #f47907;
 }
 
-.dashboard-btn:focus {
+.blue-btn:focus {
     color: #FFF;
 }
 
@@ -680,7 +681,15 @@ ul.subMenu li a {
 .memberPage {
     padding: 50px 0;
 }
-
+.noAlerts {
+    background: #FFF;
+    border-left: 6px solid #00618c;
+    box-shadow: 0 1px 1px rgba(0,0,0,.15);
+    padding: 20px 30px;
+}
+.noAlerts p {
+    margin-bottom: 0;
+}
 /*----------------Dashboard Page------------*/
 
 .dashboard-box {
@@ -713,18 +722,18 @@ ul.subMenu li a {
 }
 
 /*----------------Bookings Overview ------------------*/
-.bookings {
-    border: 1px solid #ccc;
-}
+
 
 .booking-row {
     background-color: #fff;
     padding: 20px;
     border-top: 1px solid #ccc;
+    border-left: 1px solid #ccc;
+    border-right: 1px solid #ccc;
 }
 
-.booking-row:first-of-type {
-    border-top: 0;
+.booking-row:last-of-type {
+    border-bottom: 1px solid #ccc;
 }
 .booking-row img {
     border-radius: 1000px;
@@ -734,12 +743,14 @@ ul.subMenu li a {
 .booking-row p {
     margin-bottom: 6px;
 }
-.confirmed {
-    color:  rgb(26, 182, 0);
+.booking-row .blue-btn {
+    display: inline;
+    margin-top: 0;
+    border: 0;
+    width: 100%;
 }
-.completed {
-    color: #00618c;
-}
+
+
 /*----------------Bookings Form ------------------*/
 .booking-details img {
     max-width: 125px;
