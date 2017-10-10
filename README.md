@@ -1,4 +1,4 @@
-# PawLink
+# :dog: PawLink :paw_prints:
 Developer: Casey Turner
 Email: casey_turner@outlook.com
 View: https://github.com/casey-turner/PawLink
@@ -24,8 +24,9 @@ Application runs relative to the index.php file.
 
 # Major To Do Items
 
-- Profile & dog photo upload (and possibly edit)
-- Rates Form and associated isset conditions, distinguishing dog walkers from owners
+- Profile & dog photo upload (and possibly edit) :ballot_box_with_check:
+- Rates Form and associated isset conditions, distinguishing dog walkers from owners :ballot_box_with_check:
 - Dog walker search functionality
 - Booking Form functionality
-- Display of all registered dogs as "Wall of Dogs" using masonry.js
+- Messaging functionality
+- Display of all registered dogs as "Wall of Dogs" using masonry.js :ballot_box_with_check:
