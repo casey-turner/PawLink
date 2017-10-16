@@ -1,6 +1,6 @@
 <?php
 // Array of available actions
-$availableActions = array('overview', 'create' );
+$availableActions = array('overview', 'create', 'confirm', 'cancel' );
 
 // Get action name from query string and set to variable
 if ( isset($_GET['action']) ) {
@@ -21,6 +21,12 @@ switch($action) {
     case "create":
         create();
         break;
+    case "confirm":
+        confirm();
+        break;
+    case "cancel":
+        cancel();
+        break;
     default:
         overview();
         break;
@@ -28,7 +34,6 @@ switch($action) {
 
 function overview() {
     GLOBAL $action;
-
 
     $bookings = sqlQuery("
         SELECT bookings.*, owner.firstName AS ownerFirstName, owner.lastName AS ownerLastName, owner.suburb AS ownerSuburb, ownerProfile.profileImage AS ownerImage, walker.firstName AS walkerFirstName, walker.lastName AS walkerLastName,  walker.suburb AS walkerSuburb, walkerProfile.profileImage AS walkerImage
@@ -38,12 +43,21 @@ function overview() {
         LEFT JOIN profiles AS ownerProfile ON ownerProfile.userID = bookings.ownerUserID
         LEFT JOIN profiles AS walkerProfile ON walkerProfile.userID = bookings.walkerUserID
         WHERE bookings.ownerUserID = {$_SESSION['userID']} OR bookings.walkerUserID = {$_SESSION['userID']}
+        ORDER BY bookings.dateTime DESC
     ", 'all');
 
     $pageTitle = "Bookings | PawLink";
     require_once('view/includes/header.php');
     require_once('view/booking_overview.php');
     require_once('view/includes/footer.php');
+}
+
+function confirm() {
+    GLOBAL $action;
+}
+
+function cancel() {
+    GLOBAL $action;
 }
 
 function create() {

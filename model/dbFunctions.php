@@ -19,7 +19,6 @@ function sanitiseUserInput($data) {
     $data = trim($data);
     $data = stripslashes($data);
     $data = htmlspecialchars($data);
-    $data = mysql_real_escape_string($data);
 	return $data;
 }
 
@@ -142,6 +141,7 @@ function selectData($table, $conditions = array()) {
     return $data;
 }
 
+//Update data function
 function updateData($table, $data, $conditions) {
     GLOBAL $db;
     if (!empty($data) && is_array($data)) {
@@ -169,5 +169,22 @@ function updateData($table, $data, $conditions) {
         $update = $query->execute();
     }
     return $update;
+}
+
+//Delete data function
+function deleteData($table, $conditions) {
+    GLOBAL $db;
+    $whereSql = '';
+    if(!empty($conditions) && is_array($conditions)) {
+        $whereSql .= ' WHERE ';
+        $i = 0;
+        foreach ($conditions as $key => $value) {
+            $pre = ($i > 0 )?' AND ':'';
+            $whereSql .= $pre.$key. " = '".$value."'";
+            $i++;
+        }
+        $deleted = $db->exec("DELETE FROM ".$table.$whereSql);
+    }
+    return $deleted;
 }
  ?>

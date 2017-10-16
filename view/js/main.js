@@ -181,7 +181,25 @@ jQuery(document).ready(function($) {
        });
     });
 
-    //-----------------Local and Session storage for form values ----------------
+    //----------------- Session storage for form values ----------------
+
+    if (sessionStorage.getItem('registerForm') !== null) {
+        var registerFormSessionStorage = JSON.parse(sessionStorage.getItem('registerForm'));
+        var field;
+        for (field in registerFormSessionStorage) {
+            $('input[name='+field+']').val( registerFormSessionStorage[field] );
+        }
+    } else {
+        var registerFormSessionStorage = {};
+    }
+
+    $("#ajaxRegisterForm input").not(":input[type=password], :input[type=submit]").change(function(){
+        var value = $(this).val();
+        var name = $(this).attr("name");
+        registerFormSessionStorage[name] = value;
+
+        sessionStorage.setItem('registerForm', JSON.stringify(registerFormSessionStorage));
+    });
 
 
 
@@ -255,6 +273,38 @@ jQuery(document).ready(function($) {
            type: "POST",
            url: '?controller=bookings&action=create',
            data: $(this).serialize() + '&method=ajax',
+           success: function(response) {
+               if (response == 'inserted') {
+                   //Display booking summary modal
+                   $('#bookingPop').modal('show');
+                   //Create date time object and format for output in modal
+                   var dateTime = toJSDate($("#"+formID+"DateTime").val());
+                   var formattedDate = formatDate(dateTime);
+                   var formattedTime = formatTime(dateTime);
+                   //Booking form summary
+                   $('.summaryDetails').empty().append(
+                       '<p><strong>Time: </strong>'+formattedDate+' at '+formattedTime+'</p>'+
+                       '<p><strong>Length: </strong>'+$("#"+formID+" input[name=duration]").val()+' minutes</p>'+
+                       '<p><strong>Number of Dogs: </strong>'+$("#"+formID+" input[name=noDogs]").val()+'</p>'
+                   );
+                   //Reset booking form
+                   $( "#"+formID )[0].reset();
+              } else {
+                   $("#"+formID+" .error").css({"display": "block"});
+                   $("#"+formID+" .error").html( "Error with booking, please try again." );
+              }
+           }
+       });
+    });
+
+    //-----------------Booking Overview Buttons----------------------
+    //Update the booking status to "confirmed"
+    $(".confirmBooking ").click(function(event){
+        event.preventDefault();
+
+        $.ajax({
+           type: "GET",
+           url: '?controller=bookings&action=confirm&id=' + $(this).data("bookingID"),
            success: function(response) {
                if (response == 'inserted') {
                    //Display booking summary modal

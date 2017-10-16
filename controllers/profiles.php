@@ -3,7 +3,7 @@
 if (isset($_SESSION['profileID'])) {
     $availableActions = array('create_profile','profile', 'dog_register',
                         'dog_profile', 'dashboard', 'edit_profile',
-                        'edit_dog', 'rates');
+                        'edit_dog','delete_dog', 'rates');
 } else {
     $availableActions = array('create_profile');
 }
@@ -43,6 +43,9 @@ switch($action) {
         break;
     case "edit_dog":
         edit_dog();
+        break;
+    case "delete_dog":
+        delete_dog();
         break;
     case "rates":
         rates();
@@ -429,6 +432,50 @@ function edit_dog() {
     require_once('view/includes/header.php');
     require_once('view/dog_form.php');
     require_once('view/includes/footer.php');
+}
+
+function delete_dog() {
+    GLOBAL $action;
+
+    //Get Book ID from the query string
+    if ( !empty($_GET['dogid']) ) {
+        $dogID = sanitiseUserInput($_GET['dogid']);
+    } else {
+        header('HTTP/1.1 404 Not Found');
+        exit;
+    }
+
+    // Use the select data function to get dog profile and user data from the database and insert into page
+    $dogs = selectData('dogs', array(
+        'where'=> array('dogID' => $dogID ),
+        'return type' => 'single'
+        )
+    );
+
+    // Match returned dog with current user ID
+    if ( $dogs['userID'] != $_SESSION['userID'] ) {
+        header('HTTP/1.1 403 Forbidden');
+        exit;
+    }
+
+    //Set table & condition variable
+    $table = 'dogs';
+    $condition = array('dogID' => $dogID);
+
+    try {
+        //Call delete function
+        deleteData( $table, $condition);
+    } catch (PDOexception $e) {
+        echo "Error:".$e -> getMessage();
+        die();
+    }
+
+    if ( !empty($dogs['dogProfileImage']) ) {
+        unlink('view/uploads/'.$dogs['dogProfileImage']);
+    }
+
+    header("location: ?controller=profiles&action=dashboard");
+    exit;
 }
 
 function rates() {
