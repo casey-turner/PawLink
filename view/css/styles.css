@@ -123,7 +123,19 @@ img {
 .blue-btn:focus {
     color: #FFF;
 }
-
+.edit-profile-btn {
+    background: #f47907;
+    color: #fff;
+    font-weight: 700;
+    padding: 5px 10px;
+    border-radius: 3px;
+    font-size: .8em;
+}
+.edit-profile-btn:hover,
+.edit-profile-btn:focus {
+    color: #FFF;
+    background-color: orange;
+}
 /*----------------Modals------------------*/
 .modal-header {
     background: #00618c;
@@ -719,6 +731,9 @@ ul.subMenu li a {
 .my-dogs img {
     border-radius: 1000px;
     margin-bottom: 20px;
+}
+.my-dogs img:last-of-type {
+    margin-bottom: 0;
 }
 .my-dogs .dashboard-btn {
     margin-top: 5px;

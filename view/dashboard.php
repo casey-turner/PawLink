@@ -13,10 +13,16 @@
                         </div>
                         <div class="col-7">
                             <h3><?php echo $_SESSION['displayName'] ?></h3>
-                            <a href="?controller=profiles&action=edit_profile">Edit profile</a>
+                            <a class="edit-profile-btn" href="?controller=profiles&action=edit_profile">Edit profile</a>
                         </div>
                     </div>
-                    <a href="?controller=profiles&action=rates" class="blue-btn">Become a Dog Walker</a>
+                    <a href="?controller=profiles&action=rates" class="blue-btn">
+                        <?php if ( isset($rates['status']) && $rates['status'] == 'active' ) { ?>
+                            Change Dog Walking Rates
+                        <?php } else if ( (isset($rates['status']) && $rates['status'] == 'inactive') || !isset($rates['status'])) {?>
+                            Become a Dog Walker
+                        <?php } ?>
+                    </a>
                 </div>
                 <div class="dashboard-box my-dogs">
                     <h3>My Dogs</h3>
@@ -33,7 +39,7 @@
                         </div>
                         <div class="col-7">
                             <h4><?php echo $dog['dogName']; ?></h4>
-                            <a href="?controller=profiles&action=edit_dog&dogID=<?php echo $dog['dogID']; ?>">Edit profile</a>
+                            <a class="edit-profile-btn" href="?controller=profiles&action=edit_dog&dogID=<?php echo $dog['dogID']; ?>">Edit profile</a>
                         </div>
                     </div>
                     <?php

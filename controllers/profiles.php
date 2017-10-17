@@ -66,6 +66,13 @@ function dashboard() {
         'where' => array('userID' => $_SESSION['userID'])
         )
     );
+    $rates = selectData('rates', array(
+        'select'=>'status',
+        'where'=> array('profileID' => $_SESSION['profileID'] ),
+        'return type' => 'single'
+        )
+    );
+
 
     $pageTitle = "Dashboard | PawLink";
     require_once('view/includes/header.php');

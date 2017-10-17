@@ -1,4 +1,7 @@
 <?php
+// Define site URL
+$site_URL = 'http://pawlink.caseyturner.com.au';
+
 require_once('model/db.php');
 require_once('model/dbFunctions.php');
 
