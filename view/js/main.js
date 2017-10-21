@@ -299,31 +299,26 @@ jQuery(document).ready(function($) {
 
     //-----------------Booking Overview Buttons----------------------
     //Update the booking status to "confirmed"
-    $(".confirmBooking ").click(function(event){
+    $(".confirmBooking").click(function(event){
         event.preventDefault();
+
+        var bookingID = $(this).data("bookingid");
 
         $.ajax({
            type: "GET",
-           url: '?controller=bookings&action=confirm&id=' + $(this).data("bookingID"),
+           url: '?controller=bookings&action=confirm&bookingid=' + $(this).data("bookingid"),
            success: function(response) {
-               if (response == 'inserted') {
-                   //Display booking summary modal
-                   $('#bookingPop').modal('show');
-                   //Create date time object and format for output in modal
-                   var dateTime = toJSDate($("#"+formID+"DateTime").val());
-                   var formattedDate = formatDate(dateTime);
-                   var formattedTime = formatTime(dateTime);
-                   //Booking form summary
-                   $('.summaryDetails').empty().append(
-                       '<p><strong>Time: </strong>'+formattedDate+' at '+formattedTime+'</p>'+
-                       '<p><strong>Length: </strong>'+$("#"+formID+" input[name=duration]").val()+' minutes</p>'+
-                       '<p><strong>Number of Dogs: </strong>'+$("#"+formID+" input[name=noDogs]").val()+'</p>'
+               if (response == 'true') {
+                   $('.confirmBooking[data-bookingid="'+bookingID+'"]').closest( ".col-md-4" ).empty().append(
+                       '<div class="alert alert-success centre-content">'+
+                            '<span><strong>Confirmed</strong></span>'+
+                        '</div>'+
+                        '<div class="">'+
+                            '<button class="blue-btn" type="button" name="button" value="Cancel Booking Request" data-bookingID="'+bookingID+'">Cancel Booking Request</button>'+
+                        '</div>'
                    );
-                   //Reset booking form
-                   $( "#"+formID )[0].reset();
               } else {
-                   $("#"+formID+" .error").css({"display": "block"});
-                   $("#"+formID+" .error").html( "Error with booking, please try again." );
+                   console.log('did not update ');
               }
            }
        });

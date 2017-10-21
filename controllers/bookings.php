@@ -54,6 +54,42 @@ function overview() {
 
 function confirm() {
     GLOBAL $action;
+
+    if ( !empty($_GET['bookingid']) ) {
+        $bookingID = sanitiseUserInput($_GET['bookingid']);
+    } else {
+        echo "false";
+        exit;
+    }
+
+    //Check to see if booking exists in the $db
+    $bookingCheck = selectData('bookings', array(
+        'where' => array('walkerUserID' => $_SESSION['userID'], 'bookingID' => $bookingID ),
+        'return type' => 'count'
+        )
+    );
+
+    if ($bookingCheck == 1) {
+        try {
+            $bookingStatus = array(
+                'status' => "confirmed"
+            );
+
+            $updateWhere = array(
+                'bookingID' => $bookingID
+            );
+            updateData('bookings', $bookingStatus, $updateWhere);
+            echo "true";
+            exit();
+
+        } catch (PDOexception $e) {
+            echo "false";
+            exit();
+        }
+    } else {
+        echo "false";
+        exit();
+    }
 }
 
 function cancel() {
