@@ -37,12 +37,12 @@
                                     <button class="blue-btn confirmBooking" type="button" name="button" value="Confirm" data-bookingID="<?php echo $booking['bookingID']; ?>">Confirm</button>
                                 </div>
                                 <div class="col-6">
-                                    <button class="blue-btn" type="button" name="button" value="Cancel" data-bookingID="<?php echo $booking['bookingID']; ?>">Cancel</button>
+                                    <button class="blue-btn cancelBooking" type="button" name="button" value="Cancel" data-bookingID="<?php echo $booking['bookingID']; ?>">Cancel</button>
                                 </div>
                             </div>
                         <?php } else { ?>
                             <div class="">
-                                <button class="blue-btn" type="button" name="button" value="Cancel Booking Request" data-bookingID="<?php echo $booking['bookingID']; ?>">Cancel Booking Request</button>
+                                <button class="blue-btn cancelBooking" type="button" name="button" value="Cancel Booking Request" data-bookingID="<?php echo $booking['bookingID']; ?>">Cancel Booking Request</button>
                             </div>
                         <?php } ?>
                  <?php } elseif ($booking['status'] == "confirmed") { ?>
@@ -50,7 +50,7 @@
                                 <span><strong>Confirmed</strong></span>
                             </div>
                             <div class="">
-                                <button class="blue-btn" type="button" name="button" value="Cancel Booking Request" data-bookingID="<?php echo $booking['bookingID']; ?>">Cancel Booking Request</button>
+                                <button class="blue-btn cancelBooking" type="button" name="button" value="Cancel Booking Request" data-bookingID="<?php echo $booking['bookingID']; ?>">Cancel Booking Request</button>
                             </div>
                 <?php } elseif ($booking['status'] == "completed") { ?>
                            <div class="alert alert-info centre-content">
@@ -72,7 +72,9 @@
             </div>
 
   <?php } ?>
-
+<pre>
+<?php var_dump ($bookingCheck); ?>
+</pre>
 
     </div>
 </div>

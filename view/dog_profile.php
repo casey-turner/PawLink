@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-4">
-                <h2><?php echo $dogs['name']; ?></h2>
+                <h2><?php echo $dogs['dogName']; ?></h2>
                 <div class="dogInfoImage">
                     <img src="view/images/dog-profile.jpg" />
                 </div>
@@ -13,7 +13,7 @@
             </div>
             <div class="col-md-8">
                     <div class="dogInfo">
-                        <div class="dogInfoRow"><h3>About <?php echo $dogs['name']; ?> the Dog</h3></div>
+                        <div class="dogInfoRow"><h3>About <?php echo $dogs['dogName']; ?> the Dog</h3></div>
                         <div class="dogInfoRow">
                             <span class="dogInfoBold">Gender:</span>
                             <span><?php echo $dogs['gender']; ?></span>
@@ -28,7 +28,7 @@
                         </div>
                         <div class="dogInfoRow">
                             <span class="dogInfoBold">Description:</span>
-                            <span><?php echo $dogs['description']; ?></span>
+                            <span><?php echo $dogs['dogDescription']; ?></span>
                         </div>
                     </div>
                 </div>

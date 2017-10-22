@@ -589,6 +589,28 @@ ul.subMenu li a {
 }
 
 
+.walkerSearchForm input {
+    display: inline-block;
+    width: 200px;
+}
+.walkerSearchForm button {
+    display: inline-block;
+    background: #f47907;
+    border: 0;
+    border-radius: 2px;
+    height: 40px;
+    width: 40px;
+    padding: 5px;
+    margin-top: 11px;
+    cursor: pointer;
+}
+.walkerSearchForm button:hover {
+    background: orange;
+}
+.walkerSearchForm img {
+    height: 18px;
+}
+
 /*------------------------Public Pages------------------------------*/
 .banner {
     min-height: 450px;
@@ -966,9 +988,9 @@ ul.subMenu li a {
 
 /*----------------Search page---------*/
 
-#map {
+#searchMap {
     width: 100%;
-    height: 800px;
+    height: 500px;
 }
 /*----------------Footer------------*/
 

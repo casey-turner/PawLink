@@ -324,6 +324,29 @@ jQuery(document).ready(function($) {
        });
     });
 
+    //Update the booking status to "Cancelled"
+    $(".cancelBooking").click(function(event){
+        event.preventDefault();
+
+        var bookingID = $(this).data("bookingid");
+
+        $.ajax({
+           type: "GET",
+           url: '?controller=bookings&action=cancel&bookingid=' + $(this).data("bookingid"),
+           success: function(response) {
+               if (response == 'true') {
+                   $('.cancelBooking[data-bookingid="'+bookingID+'"]').closest( ".col-md-4" ).empty().append(
+                       '<div class="alert alert-danger centre-content">'+
+                            '<span><strong>Cancelled</strong></span>'+
+                        '</div>'
+                   );
+              } else {
+                   console.log('did not update ');
+              }
+           }
+       });
+    });
+
     //--------------- Member sub menu -------------------
     // sub menu functionality
     $(function() {

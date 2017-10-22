@@ -22,6 +22,9 @@ function sanitiseUserInput($data) {
 	return $data;
 }
 
+
+
+
 function insertData($table, $data){
     GLOBAL $db, $lastInsertID;
     if(!empty($data) && is_array($data)) {
@@ -186,5 +189,50 @@ function deleteData($table, $conditions) {
         $deleted = $db->exec("DELETE FROM ".$table.$whereSql);
     }
     return $deleted;
+}
+
+//Geocode User Address
+function geocode_address($user_id) {
+
+    $user = selectData('users', array(
+        'where' => array('userID' => $user_id),
+        'return type' => 'single'
+        )
+    );
+
+	//get address from user meta for geocoding
+	$address_1 = $user['address'];
+	$suburb = $user['suburb'];
+	$state = $user['state'];
+    $postcode = $user['postcode'];
+
+	$address = $address_1.' '.$suburb.' '.$state.' '.$postcode.', Australia';
+
+	$url = "https://maps.googleapis.com/maps/api/geocode/json?address=".urlencode($address)."&key=AIzaSyBSsYbifNcYXGACnsjxO8OQtp5h9s9KCfU";
+	$lat_long = get_object_vars(json_decode(file_get_contents($url)));
+
+	// pick out what we need (lat,lng)
+	$geo_latitude = !empty($lat_long['results'][0]) ? $lat_long['results'][0]->geometry->location->lat : null;
+	$geo_longitude = !empty($lat_long['results'][0]) ? $lat_long['results'][0]->geometry->location->lng : null;
+
+	// save coords to user table
+    try {
+        $userData = array(
+            'latitude' => $geo_latitude,
+            'longitude' => $geo_longitude
+        );
+
+        $updateWhere = array(
+            'userID' => $user_id
+        );
+
+        updateData('users', $userData, $updateWhere);
+        return true;
+
+    } catch (PDOexception $e) {
+        return false;
+        die();
+    }
+
 }
  ?>

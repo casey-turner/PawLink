@@ -94,6 +94,50 @@ function confirm() {
 
 function cancel() {
     GLOBAL $action;
+
+    if ( !empty($_GET['bookingid']) ) {
+        $bookingID = sanitiseUserInput($_GET['bookingid']);
+    } else {
+        echo "false";
+        exit;
+    }
+
+    //Check to see if booking exists in the $db
+
+    try {
+        $bookingCheck = sqlQuery("
+            SELECT *
+            FROM bookings
+            WHERE (ownerUserID = {$_SESSION['userID']} OR walkerUserID = {$_SESSION['userID']})
+            AND bookingID = {$bookingID}
+        ", 'count');
+    } catch (PDOexception $e) {
+        echo $e;
+        exit();
+    }
+
+
+    if ($bookingCheck == 1) {
+        try {
+            $bookingStatus = array(
+                'status' => "cancelled"
+            );
+
+            $updateWhere = array(
+                'bookingID' => $bookingID
+            );
+            updateData('bookings', $bookingStatus, $updateWhere);
+            echo "true";
+            exit();
+
+        } catch (PDOexception $e) {
+            echo "false";
+            exit();
+        }
+    } else {
+        echo "false";
+        exit();
+    }
 }
 
 function create() {

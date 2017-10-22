@@ -1,6 +1,6 @@
 <?php
 // Array of available views
-$availableActions = array('login', 'register', 'logout');
+$availableActions = array('login', 'register', 'geocodeAll', 'logout');
 
 // Get action name from query string and set to variable
 if ( isset($_GET['action']) ) {
@@ -24,6 +24,9 @@ switch($action) {
     case "logout":
         logout();
         break;
+    /*case "geocodeAll":
+        geocodeAll();
+        break;*/
     default:
         login();
         break;
@@ -82,7 +85,7 @@ function login() {
 }
 
 function register() {
-    GLOBAL $action;
+    GLOBAL $action, $lastInsertID ;
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
@@ -118,6 +121,8 @@ function register() {
                 );
                 insertData('users', $registrationData);
 
+                geocode_address($lastInsertID);
+
                 login();
                 exit;
 
@@ -148,6 +153,24 @@ function register() {
     require_once('view/register.php');
     require_once('view/includes/footer.php');
 }
+
+/*function geocodeAll() {
+
+    //Get all users
+    $users = selectData('users', array());
+
+    set_time_limit(0);
+
+    foreach ($users as $user) {
+        geocode_address($user['userID']);
+    }
+
+    $users = selectData('users', array());
+
+    echo "<pre>";
+    var_dump($users);
+    echo "</pre>";
+}*/
 
 function logout() {
     GLOBAL $action;

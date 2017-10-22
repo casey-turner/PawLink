@@ -5,14 +5,18 @@
                 <div class="dashboard-box profile-box">
                     <div class="row">
                         <div class="col-5">
-                            <img src= "<?php if (isset($_SESSION['profileImage'])) {
-                                                echo 'view/uploads/'.$_SESSION['profileImage'];
-                                            } else {
-                                                echo 'view/uploads/defaultProfile';
-                                            } ?> ">
+                            <a href="?controller=profiles&action=profile&profileID=<?php echo $_SESSION['profileID']; ?>">
+                                <img src= "<?php if (isset($_SESSION['profileImage'])) {
+                                    echo 'view/uploads/'.$_SESSION['profileImage'];
+                                } else {
+                                    echo 'view/uploads/defaultProfile';
+                                } ?> ">
+                            </a>
                         </div>
                         <div class="col-7">
-                            <h3><?php echo $_SESSION['displayName'] ?></h3>
+                            <a href="?controller=profiles&action=profile&profileID=<?php echo $_SESSION['profileID']; ?>">
+                                <h3><?php echo $_SESSION['displayName'] ?></h3>
+                            </a>
                             <a class="edit-profile-btn" href="?controller=profiles&action=edit_profile">Edit profile</a>
                         </div>
                     </div>
@@ -31,11 +35,13 @@
                         foreach ($dogs as $dog) { ?>
                     <div class="row">
                         <div class="col-5">
-                            <img src= "<?php if ( isset($dog['dogProfileImage']) ) {
-                                echo 'view/uploads/'.$dog['dogProfileImage'];
-                            } else {
-                                echo 'view/uploads/defaultDog.png';
-                            }?>">
+                            <a href="?controller=profiles&action=dog_profile&dogID=<?php echo $dog['dogID']; ?>">
+                                <img src= "<?php if ( isset($dog['dogProfileImage']) ) {
+                                    echo 'view/uploads/'.$dog['dogProfileImage'];
+                                } else {
+                                    echo 'view/uploads/defaultDog.png';
+                                }?>">
+                            </a>
                         </div>
                         <div class="col-7">
                             <h4><?php echo $dog['dogName']; ?></h4>

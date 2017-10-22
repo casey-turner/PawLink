@@ -65,7 +65,7 @@
             </div>
         </header>
         <?php
-            $dashboardMenu = array ('profile', 'dog_register', 'dog_profile', 'search_page', 'dashboard','booking_overview', 'booking_form', 'edit_profile', 'edit_dog');
+            $dashboardMenu = array ('profile', 'dog_register', 'dog_profile', 'search', 'dashboard','booking_overview', 'booking_form', 'edit_profile', 'edit_dog');
 
             if ( in_array($action, $dashboardMenu) ) { ?>
             <div class="dashboard-menu">
@@ -76,7 +76,14 @@
                             <li><a href="?controller=bookings&action=booking_overview" <?php if ($action == "booking_overview") { echo 'class="current"';} ?>>Bookings</a></li>
                             <li><a href="#" <?php if ($action == "messages") { echo 'class="current"';} ?> >Messages</a></li>
                             <li><a href="?controller=profiles&action=profile&profileID=<?php echo $_SESSION['profileID']; ?>"<?php if ($action == "profile") { echo 'class="current"';} ?>>Profile</a></li>
-                            <li><a href="?controller=search&action=search_page" class="orange-btn">View Local Dog Walkers</a></li>
+                            <li>
+                                <form class="walkerSearchForm" action="?controller=search&action=search" method="get">
+                                    <input type="hidden" name="controller" value="search">
+                                    <input type="hidden" name="action" value="search">
+                                    <input type="text" name="location" value="<?php if ( isset($search_location )) { echo $search_location; } ?>" placeholder="e.g.: Coorparoo, 4151">
+                                    <button type="submit" ><img src="view/images/search_w.png" alt="PawLink"/></button>
+                                </form>
+                            </li>
                         </ul>
                     </nav>
                 </div>
