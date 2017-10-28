@@ -1,6 +1,6 @@
 <?php
 // Array of available actions
-$availableActions = array('overview', 'create', 'confirm', 'cancel' );
+$availableActions = array('overview', 'create', 'confirm', 'cancel', 'complete');
 
 // Get action name from query string and set to variable
 if ( isset($_GET['action']) ) {
@@ -26,6 +26,9 @@ switch($action) {
         break;
     case "cancel":
         cancel();
+        break;
+    case "complete":
+        complete();
         break;
     default:
         overview();
@@ -121,6 +124,46 @@ function cancel() {
         try {
             $bookingStatus = array(
                 'status' => "cancelled"
+            );
+
+            $updateWhere = array(
+                'bookingID' => $bookingID
+            );
+            updateData('bookings', $bookingStatus, $updateWhere);
+            echo "true";
+            exit();
+
+        } catch (PDOexception $e) {
+            echo "false";
+            exit();
+        }
+    } else {
+        echo "false";
+        exit();
+    }
+}
+
+function complete(){
+    GLOBAL $action;
+
+    if ( !empty($_GET['bookingid']) ) {
+        $bookingID = sanitiseUserInput($_GET['bookingid']);
+    } else {
+        echo "false";
+        exit;
+    }
+
+    //Check to see if booking exists in the $db
+    $bookingCheck = selectData('bookings', array(
+        'where' => array('ownerUserID' => $_SESSION['userID'], 'bookingID' => $bookingID ),
+        'return type' => 'count'
+        )
+    );
+
+    if ($bookingCheck == 1) {
+        try {
+            $bookingStatus = array(
+                'status' => "completed"
             );
 
             $updateWhere = array(

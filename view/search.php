@@ -2,12 +2,13 @@
 <script>
 	function initMap() {
 		var searchMap = new google.maps.Map(document.getElementById('searchMap'), {
-			zoom: 12,
+			zoom: 18,
 			center: {lat: -27.4698, lng: 153.0251},
 		});
 
 		var bounds  = new google.maps.LatLngBounds();
 		var infoWin = new google.maps.InfoWindow();
+
 
 		var searchResults = [
 			// Tutor markers
@@ -41,9 +42,9 @@
 			return marker;
 		});
 
-		// Add a marker clusterer to manage the markers.
-		var markerCluster = new MarkerClusterer(searchMap, markers,
-			{imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
+				// Add a marker clusterer to manage the markers.
+				var markerCluster = new MarkerClusterer(searchMap, markers,
+					{imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
 
 		searchMap.initialZoom = true;
 		searchMap.fitBounds(bounds);
@@ -54,7 +55,7 @@
 <script async defer	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBSsYbifNcYXGACnsjxO8OQtp5h9s9KCfU&callback=initMap"></script>
 <div class="wrapper memberPage">
     <div class="container centre-content">
-        <h1>Brisbane Dog Walkers</h1>
+        
         <div class="row">
             <div class="searchResults">
                 <script type="text/javascript">

@@ -347,6 +347,28 @@ jQuery(document).ready(function($) {
        });
     });
 
+    //Update the booking status to "completed"
+    $(".completeBooking").click(function(event){
+        event.preventDefault();
+
+        var bookingID = $(this).data("bookingid");
+
+        $.ajax({
+           type: "GET",
+           url: '?controller=bookings&action=complete&bookingid=' + $(this).data("bookingid"),
+           success: function(response) {
+               if (response == 'true') {
+                   $('.completeBooking[data-bookingid="'+bookingID+'"]').closest( ".col-md-4" ).empty().append(
+                       '<div class="alert alert-info centre-content">'+
+                            '<span><strong>Completed</strong></span>'+
+                        '</div>'
+                   );
+              } else {
+                   console.log('did not update ');
+              }
+           }
+       });
+    });
     //--------------- Member sub menu -------------------
     // sub menu functionality
     $(function() {

@@ -1,8 +1,17 @@
     <div class="banner homepage">
         <div class="container">
             <h2>The #1 Dog Walking App for Busy Dog Owners</h2>
-            <h2>Let's Get Started</h2>
-            <a class="orange-btn hp-register-btn" href="#" data-toggle="modal" data-target="#registerModal">Sign up to PawLink as a dog owner or dog walker</a>
+                <?php if ( isset($_SESSION['userstate'] ) && ($_SESSION['userstate'] == 'member') ) {
+                          if (isset($_SESSION['profileID'])) { ?>
+                            <a class="orange-btn hp-register-btn" href="?controller=search&action=search&location=">Search local dog walkers</a>
+                    <?php } else { ?>
+                            <a class="orange-btn hp-register-btn" href="?controller=profiles&action=create_profile">Create your profile</a>
+                    <?php } ?>
+                <?php } else { ?>
+                      <h2>Let's Get Started</h2>
+                        <a class="orange-btn hp-register-btn" href="#" data-toggle="modal" data-target="#registerModal">Sign up to PawLink</a>
+                <?php } ?>
+
         </div>
     </div>
     <div class="hp-about">

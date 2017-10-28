@@ -65,7 +65,7 @@
             </div>
         </header>
         <?php
-            $dashboardMenu = array ('profile', 'dog_register', 'dog_profile', 'search', 'dashboard','booking_overview', 'booking_form', 'edit_profile', 'edit_dog');
+            $dashboardMenu = array ('profile', 'dog_register', 'dog_profile', 'search', 'dashboard','booking_overview', 'booking_form', 'edit_profile', 'edit_dog', 'rates');
 
             if ( in_array($action, $dashboardMenu) ) { ?>
             <div class="dashboard-menu">
