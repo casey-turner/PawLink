@@ -38,7 +38,7 @@
                         </div>
                         <div class="col-md-4">
                             <div class="alert alert-warning centre-content">
-                                <span><strong>Pending</strong></span>
+                                <span><strong>Unconfirmed</strong></span>
                             </div>
                             <?php
                             if ($_SESSION['userID'] == $booking['walkerUserID']) { ?>

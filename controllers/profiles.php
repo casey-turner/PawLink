@@ -73,6 +73,18 @@ function dashboard() {
         )
     );
 
+    $bookings = sqlQuery("
+        SELECT bookings.*, owner.firstName AS ownerFirstName, owner.lastName AS ownerLastName,  walker.firstName AS walkerFirstName, walker.lastName AS walkerLastName
+        FROM bookings
+        LEFT JOIN users AS owner ON owner.userID = bookings.ownerUserID
+        LEFT JOIN users AS walker ON walker.userID = bookings.walkerUserID
+        LEFT JOIN profiles AS ownerProfile ON ownerProfile.userID = bookings.ownerUserID
+        LEFT JOIN profiles AS walkerProfile ON walkerProfile.userID = bookings.walkerUserID
+        WHERE (bookings.status = 'unconfirmed' OR bookings.status = 'confirmed') AND (bookings.ownerUserID = {$_SESSION['userID']} OR bookings.walkerUserID = {$_SESSION['userID']})
+        ORDER BY bookings.dateTime ASC
+        LIMIT 8
+    ", 'all');
+
 
     $pageTitle = "Dashboard | PawLink";
     require_once('view/includes/header.php');
@@ -101,6 +113,12 @@ function profile() {
     $rates = selectData('rates', array(
                 'where'=> array('profileID' => $profileID ),
                 'return type' => 'single'
+                )
+            );
+    $dogs = selectData('dogs', array(
+                'select'=> 'dogName, dogProfileImage',
+                'where'=> array('userID' => $profile['userID']),
+                'return type' => 'all'
                 )
             );
 

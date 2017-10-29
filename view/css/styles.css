@@ -730,7 +730,7 @@ ul.subMenu li a {
     padding: 20px;
     margin: 15px 0;
     border-radius: 10px;
-    box-shadow: 2px 2px 6px rgba(0,0,0,.1)
+    box-shadow: 2px 2px 6px rgba(0,0,0,.1);
 }
 
 .dashboard-box h3 {
@@ -740,7 +740,7 @@ ul.subMenu li a {
     border-radius: 1000px;
 }
 .profile-box h3 {
-    margin-bottom: 10px
+    margin-bottom: 10px;
 }
 
 .messages-box img {
@@ -750,13 +750,32 @@ ul.subMenu li a {
     border-radius: 1000px;
     margin-bottom: 20px;
 }
-.my-dogs img:last-of-type {
+.my-dogs .row:last-of-type img {
     margin-bottom: 0;
 }
-.my-dogs .dashboard-btn {
+.dashboard-add-dog-btn {
     margin-top: 5px;
 }
 
+.dashboard-booking-row {
+    padding: 10px;
+    background: #f8f8f8;
+    margin-bottom: 5px;
+    border-radius: 5px;
+}
+.dashboard-booking-row  h4 {
+    font-size: .8em;
+    margin-bottom: 0;
+}
+.dashboard-status {
+    text-transform: capitalize;
+}
+.dashboard-unconfirmed {
+    color: #8a6d3b;
+}
+.dashboard-confirmed {
+    color: #3c763d;
+}
 /*----------------Bookings Overview ------------------*/
 
 
@@ -776,6 +795,7 @@ ul.subMenu li a {
     max-width: 125px;
     margin-bottom: 10px;
 }
+
 .booking-row p {
     margin-bottom: 6px;
 }
@@ -796,7 +816,9 @@ ul.subMenu li a {
     margin-bottom: 15px;
     font-size: 1.8em;
 }
-
+.booking-group .booking-row h3 {
+    font-size: 1.3em;
+}
 /*----------------Bookings Form ------------------*/
 .booking-details img {
     max-width: 125px;
@@ -847,6 +869,30 @@ ul.subMenu li a {
 .search-profile:hover {
     background-color: rgba(221, 231, 252, 0.5);
 }
+/*---------------Own Profile Page --------------*/
+
+.ownersDogs {
+    background: #FFF;
+    padding: 20px;
+    box-shadow: 2px 2px 6px rgba(0,0,0,.1);
+}
+
+.ownersDogs img{
+    width: 100px;
+    border-radius: 1000px;
+
+}
+.ownersDogs .row {
+    margin-top: 20px;
+}
+.ownersDogs .col-7 {
+    padding-left: 0;
+}
+.ownersDogs.ownerProfileDogs .row {
+    width: 50%;
+    float: left;
+}
+
 /*----------------Walker Profile Page------------*/
 
 .profile-header {
@@ -873,6 +919,7 @@ ul.subMenu li a {
     margin: 0;
 }
 .walker-profile-about {
+    margin-bottom: 30px;
     border-bottom: 1px solid #ccc;
     border-left: 1px solid #ccc;
     border-right: 1px solid #ccc;

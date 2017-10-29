@@ -53,34 +53,73 @@
                     }
                     ?>
                     <div class="centre-content">
-                        <a href="?controller=profiles&action=dog_register" class="blue-btn">Add Dog</a>
+                        <a href="?controller=profiles&action=dog_register" class="blue-btn dashboard-add-dog-btn">Add Dog</a>
                     </div>
                 </div>
             </div>
             <div class="col-md-8">
                 <div class="dashboard-box messages-box">
                     <h3>Recent Messages</h3>
-                    <div class="row">
-                        <div class="col-sm-2">
-                            <h4>Date</h4>
-                            <p>24/07/17</p>
-                        </div>
-                        <div class="col-sm-3">
-                            <h4>From</h4>
-                            <p>Thao L.</p>
-                        </div>
-                        <div class="col-sm-6">
-                            <h4>Subject</h4>
-                            <p>One half hour walk per day Mon-Fri</p>
-                        </div>
-                        <div class="col-sm-1">
-                            <img src="view/images/read.png">
-                        </div>
-                    </div>
+                    <p>No recent messages.</p>
                 </div>
                 <div class="dashboard-box">
                     <h3>Upcoming Bookings</h3>
-                    <p>No upcoming bookings</p>
+                    <?php
+                    if(!empty($bookings)) {?>
+                        <?php
+                        foreach ($bookings as $booking) {
+                            if ($_SESSION['userID'] == $booking['ownerUserID']){
+                                $prefix = 'walker';
+                                $title = 'Dog walker';
+                            } else {
+                                $prefix = 'owner';
+                                $title = 'Dog parent';
+                            } ?>
+                            <div class="dashboard-booking-row">
+                                <div class="row">
+                                    <div class="col-sm-2">
+                                        <h4>Date</h4>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <h4><?php echo $title; ?></h4>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <h4>Service</h4>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <h4>Status</h4>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-2">
+                                        <?php echo date('d/m/y ',strtotime($booking['dateTime'])); ?>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <?php echo $booking[$prefix.'FirstName']." ".substr($booking[$prefix.'LastName'], 0,1); ?>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <?php echo $booking['duration']; ?> minute dog walk
+                                    </div>
+                                    <?php
+                                    if ($booking['status'] == 'unconfirmed') {?>
+                                        <div class="col-sm-3 dashboard-status dashboard-unconfirmed">
+                                            <strong><?php echo $booking['status']; ?></strong>
+                                        </div>
+                                    <?php
+                                    } else { ?>
+                                        <div class="col-sm-3 dashboard-status dashboard-confirmed ">
+                                            <strong><?php echo $booking['status']; ?></strong>
+                                        </div>
+                                    <?php
+                                    } ?>
+                                </div>
+                            </div>
+                        <?php
+                        }
+                    } else {
+                        echo "<p>No upcoming bookings.</p>";
+                    }
+                     ?>
                 </div>
             </div>
         </div>
