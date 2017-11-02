@@ -116,7 +116,7 @@ function profile() {
                 )
             );
     $dogs = selectData('dogs', array(
-                'select'=> 'dogName, dogProfileImage',
+                'select'=> 'dogName, dogProfileImage, dogID',
                 'where'=> array('userID' => $profile['userID']),
                 'return type' => 'all'
                 )

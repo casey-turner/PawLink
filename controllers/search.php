@@ -83,11 +83,6 @@ function search() {
     // Get paginated search results
     $results = getSearchResults($search_args,true,'all');
 
-    // If no results returned
-    if ( empty($results) ) {
-    	echo "No search results found";
-    }
-
     $pageTitle = "Find a Dog Walker | PawLink";
     require_once('view/includes/header.php');
     require_once('view/search.php');
