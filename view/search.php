@@ -17,9 +17,16 @@
 				{
 					lat: <?php echo $result['latitude'] ?>,
 					lng: <?php echo $result['longitude'] ?>,
-					info: '<p><strong>dsgdfgf</strong></p>'+
-					'<p></p>'+
-					'<p><a href="/tutors/profile//">View profile</a></p>'
+					info:
+						'<a href="?controller=profiles&action=profile&profileID=<?php echo $result['profileID']; ?>">'+
+							'<div class="gmap-info">'+
+								'<div class="gmap-info-pic"><img src="view/uploads/<?php echo $result['profileImage']; ?>" /></div>'+
+								'<div class="gmap-info-text">'+
+									'<p class="gmap-info-text-name"><?php echo $result['firstName'].' '.substr($result['lastName'], 0, 1); ?></p>'+
+									'<p><?php echo $result['suburb']; ?></p>'+
+								'</div>'+
+							'</div>'+
+						'</a>'
 				},
 			<?php
             }?>

@@ -869,6 +869,30 @@ ul.subMenu li a {
 .search-profile:hover {
     background-color: rgba(221, 231, 252, 0.5);
 }
+.gmap-info{
+    width: auto;
+}
+.gmap-info-pic{
+    display: inline-block;
+    float: left;
+}
+
+.gmap-info-pic img {
+    width: 70px;
+    border-radius: 1000px;
+}
+.gmap-info-text {
+    display: inline-block;
+    padding: 10px;
+}
+.gmap-info-text p {
+    margin-bottom: 3px;
+}
+.gmap-info-text-name {
+    font-size: 1.3em;
+    font-weight: bold;
+    color: #00618c;
+}
 /*---------------Own Profile Page --------------*/
 
 .ownersDogs {
