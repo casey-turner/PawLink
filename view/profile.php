@@ -20,13 +20,11 @@
                     </div>
                 </div>
                 <div class="walker-profile-about">
-                    <h2>About <?php echo $profile['firstName']; ?></h2>
+                    <h3>About <?php echo $profile['firstName']; ?></h3>
                     <p><?php echo $profile["profileDescription"]; ?> </p>
-                </div>
-                <?php
-                if ($_SESSION['profileID'] != $profile['profileID'] && $rates['status'] == 'active' && !empty($dogs)) { ?>
-                    <div class="ownersDogs ownerProfileDogs">
-                        <h3>
+                    <?php
+                    if ($_SESSION['profileID'] != $profile['profileID'] && $rates['status'] == 'active' && !empty($dogs)) { ?>
+                        <h3 class="walker-profile-dog">
                             <?php
                             if (count($dogs) > 1 ) {
                                 echo $profile['firstName']."'s dogs";
@@ -36,7 +34,7 @@
                         </h3>
                         <?php
                         foreach ($dogs as $dog) { ?>
-                            <div class="row">
+                            <div class="row walker-profile-dog-details">
                                 <div class="col-5">
                                     <a href="?controller=profiles&action=dog_profile&dogID=<?php echo $dog['dogID']; ?>">
                                         <img src= "<?php if ( isset($dog['dogProfileImage']) ) {
@@ -54,9 +52,9 @@
                         <?php
                         } ?>
                         <div class="clear"></div>
-                    </div>
-                <?php
-                } ?>
+                    <?php
+                    } ?>
+                </div>
             </div>
             <div class="col-md-4">
                 <?php

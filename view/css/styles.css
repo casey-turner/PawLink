@@ -947,20 +947,33 @@ ul.subMenu li a {
 }
 .walker-profile-about {
     margin-bottom: 30px;
+    padding: 25px;
     border-bottom: 1px solid #ccc;
     border-left: 1px solid #ccc;
     border-right: 1px solid #ccc;
     background-color: #fff;
     box-shadow: 2px 2px 6px rgba(0,0,0,.1);
 }
-.walker-profile-about h2 {
-    font-weight: normal;
+.walker-profile-about h3 {
     margin: 0px;
-    padding:  20px;
-    font-size: 1.5em
+    padding-bottom: 20px;
 }
+.walker-profile-about .walker-profile-dog {
+    padding-top: 25px;
+}
+.walker-profile-dog-details {
+    width: 50%;
+}
+.walker-profile-dog-details .col-7 {
+    padding-left: 0;
+}
+
 .walker-profile-about p {
-    padding: 0 20px 20px 20px;
+    margin-bottom: 0;
+}
+.walker-profile-about img {
+    width: 100px;
+    border-radius: 1000px
 }
 .rates {
     background-color: #f1f1f1;
