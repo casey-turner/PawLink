@@ -1036,27 +1036,32 @@ ul.subMenu li a {
 }
 /*----------------Dog Profile Page------------*/
 
-.dogInfoImage {
-    box-shadow: 2px 2px 6px rgba(0,0,0,.1);
-}
-
 .dogInfo {
-    margin-top: 70px;
     border: 1px solid #ccc;
+    border-top: 0;
     background-color: #fff;
     box-shadow: 2px 2px 6px rgba(0,0,0,.1);
+    padding: 25px;
 }
+
 .dogInfoOwner {
     background-color: #fff;
     box-shadow: 2px 2px 6px rgba(0,0,0,.1);
-    margin:20px 0 50px 0;
-}
-.dogInfoOwner img {
-    width: 100px;
-    border-radius: 1000px;
-    margin: 20px;
+    padding: 20px;
 }
 
+.dogInfoOwner .row {
+    margin-top: 20px
+}
+.dogInfoOwner img,
+.dogInfo img {
+    width: 100px;
+    border-radius: 1000px;
+}
+.dogInfoOwner .col-7 {
+    padding-left: 0;
+    padding-top: 30px;
+}
 .dogInfoRow {
     border-top: 1px solid #ccc;
     padding: 7px;

@@ -281,12 +281,15 @@ function dog_profile() {
     }
 
     // Use the select data function to get dog profile and user data from the database and insert into page
-    $dogs = selectData('dogs', array(
+    $dog = selectData('dogs', array(
+        'select' => "dogs.*, profiles.profileImage, users.firstName, left(users.lastName,1) AS lastName",
         'left join' => array('table2' => 'users', 'column' => 'userID'),
+        'left join2' => array('table3' => 'profiles', 'column' => 'userID'),
         'where'=> array('dogID' => $dogID ),
         'return type' => 'single'
         )
     );
+
 
     $pageTitle = "Dog | PawLink";
     // Compile the dog profile page from page segments

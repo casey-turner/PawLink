@@ -81,8 +81,10 @@
                                 </a>
                             </div>
                             <div class="col-7">
-                                <h4><?php echo $dog['dogName']; ?></h4>
-                                <a class="edit-profile-btn" href="?controller=profiles&action=edit_dog&dogID=<?php echo $dog['dogID']; ?>">View profile</a>
+                                <a href="?controller=profiles&action=dog_profile&dogID=<?php echo $dog['dogID']; ?>">
+                                    <h4><?php echo $dog['dogName']; ?></h4>
+                                </a>
+                                <a class="edit-profile-btn" href="?controller=profiles&action=dog_profile&dogID=<?php echo $dog['dogID']; ?>">View profile</a>
                             </div>
                         </div>
                     <?php
