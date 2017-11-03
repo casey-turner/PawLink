@@ -76,10 +76,10 @@
                     </div><!-- /.modal -->
                     <?php if ($action == 'edit_dog') { ?>
                         <div class="row btn-wrapper">
-                            <div class="col-md-6">
+                            <div class="col-6">
                                 <a class="orange-btn" href="?controller=profiles&action=delete_dog&dogid=<?php echo $dogs['dogID']; ?>">Delete</a>
                             </div>
-                            <div class="col-md-6 align-right">
+                            <div class="col-6 align-right">
                                 <input class="orange-btn" type="submit" value="Save">
                             </div>
                         </div>

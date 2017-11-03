@@ -42,13 +42,14 @@
                                                         echo 'view/uploads/'.$_SESSION['profileImage'];
                                                     } else {
                                                         echo 'view/uploads/defaultProfile.png';
-                                                    } ?>" class="headerThumb" alt=""><span class="headerUser"><?php echo $_SESSION['firstName']; ?></span> <img src="view/images/downArrow.png" class="headerArrow" alt=""></a>
+                                                    } ?>" class="headerThumb" alt=""><span class="headerUser"><?php echo $_SESSION['firstName']; ?></span></a>
                                     <ul class="subMenu">
                                         <?php if (isset($_SESSION['profileID'])) {?>
                                             <li><a href="?controller=profiles&action=dashboard">Dashboard</a></li>
                                             <li><a href="?controller=bookings&action=booking_overview">Bookings</a></li>
                                             <li><a href="#">Messages</a></li>
                                             <li><a href="?controller=profiles&action=profile&profileID=<?php echo $_SESSION['profileID']; ?>">Profile</a></li>
+                                            <li><a href="?controller=search&action=search&location=">Search</a></li>
                                             <li><a href="?controller=users&action=logout">Log out</a></li>
                                         <?php } else { ?>
                                             <li><a href="?controller=profiles&action=create_profile">Create profile</a></li>

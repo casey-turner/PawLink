@@ -49,7 +49,9 @@ a:focus,
 button:focus {
     outline: none;
 }
-
+button {
+    border: 0;
+}
 
 .centre-flex {
     min-height: 500px;
@@ -102,7 +104,6 @@ img {
 .primary-nav ul li a.hp-login-btn {
     color: #FFF;
     padding: 10px 20px;
-    border-radius: 1000px;
 }
 .blue-btn {
     display: block;
@@ -151,8 +152,11 @@ img {
     opacity: 1
 }
 
+/*----------------Booking Status Modals------------------*/
 
-
+.booking-status-modal-row button {
+    width: 100%;
+}
 /*----------------Form Elements------------*/
 .narrow-form {
     width: 400px;
@@ -379,6 +383,12 @@ input[type=file].hideElement {
 #rates .hasRates {
     display: block;
 }
+@media (max-width: 440px) {
+    #rates legend {
+        font-size: 1.5em;
+    }
+}
+
 /* ----------------Form Errors & notifications ----------*/
 
 .notification {
@@ -491,29 +501,45 @@ span.headerUser {
     font-weight: normal;
     color: #252525;
     font-size: .9em;
+    display: inline-block;
+    padding-right: 15px;
+    background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' fill='%23252525'><polygon points='0,0 100,0 50,50'/></svg>") no-repeat;
+    background-size: 9px;
+    background-position: calc(100% ) center;
 }
 ul.subMenu {
     display: block;
-    position: absolute;
-    right: 0;
-    background-color: #fff;
-    box-shadow: 2px 2px 6px rgba(0,0,0,.1);
-    border: #ccc;
     z-index: 100;
     display: none;
 }
 ul.subMenu li {
     display: block;
-    border-bottom: 1px solid #eee;
     padding: 5px 10px;
-
 }
 ul.subMenu li a {
     padding: 5px;
 }
 
-@media (max-width: 767px) {
+@media (min-width: 992px) {
+    .primary-nav {
+        display: inline-block !important;
+    }
+    ul.subMenu {
+        position: absolute;
+        right: 0;
+        background-color: #fff;
+        box-shadow: 2px 2px 6px rgba(0,0,0,.1);
+        border: #ccc;
+    }
+    ul.subMenu li {
+        border-bottom: 1px solid #eee;
+    }
+}
 
+@media (max-width: 991px) {
+    .container {
+        width: 100%;
+    }
     .primary-nav {
         position: absolute;
         left: 0;
@@ -522,22 +548,38 @@ ul.subMenu li a {
         top: 90px;
         width: 100%;
         display: none;
-      }
+    }
 
     .primary-nav ul {
         float: none;
-      }
+    }
     .primary-nav ul li {
         display: block;
         padding: 0;
-      }
+    }
     .primary-nav ul li a {
         width: 100%;
         border: 1px solid #444;
         padding: 15px 20px;
         box-sizing: border-box;
-      }
-
+        color: #fff;
+    }
+    .primary-nav ul li a.hp-login-btn{
+        padding: 15px 20px;
+    }
+    .primary-nav ul li a.orange-btn {
+        background-color: rgba(0,0,0,0);
+        border-radius: 0;
+    }
+    span.headerUser {
+        color: #FFF;
+        font-weight: 700;
+        padding-right: 15px;
+        font-size: 16px;
+        background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' fill='%23ffffff'><polygon points='0,0 100,0 50,50'/></svg>") no-repeat;
+        background-size: 9px;
+        background-position: calc(100% ) center;
+    }
     .mobileMenu {
         display: inline-block;
         float: right;
@@ -605,6 +647,30 @@ ul.subMenu li a {
 }
 .walkerSearchForm img {
     height: 18px;
+}
+
+@media (max-width: 991px) {
+    .dashboard-nav li:last-of-type {
+        right: 15px;
+    }
+}
+
+@media (max-width: 768px) {
+    .dashboard-nav {
+        display: block;
+    }
+    .dashboard-nav li:last-of-type {
+        display: block;
+        position: relative;
+        text-align: right;
+    }
+}
+
+@media (max-width: 460px) {
+    .dashboard-nav ul li a {
+        font-size: .8em;
+        padding: 6px;
+    }
 }
 
 /*------------------------Public Pages------------------------------*/
@@ -768,6 +834,9 @@ ul.subMenu li a {
     font-size: .8em;
     margin-bottom: 0;
 }
+.dashboard-booking-row p {
+    margin-bottom: 0;
+}
 .dashboard-status {
     text-transform: capitalize;
 }
@@ -776,6 +845,21 @@ ul.subMenu li a {
 }
 .dashboard-confirmed {
     color: #3c763d;
+}
+
+@media (max-width: 991px) {
+    .dashboard-booking-row {
+        font-size: .9em;
+    }
+}
+@media (max-width: 575px) {
+    .dashboard-booking-row-col {
+        margin-bottom: 10px;
+    }
+    .dashboard-booking-row-col:last-of-type {
+        margin-bottom: 0;
+    }
+
 }
 /*----------------Bookings Overview ------------------*/
 
@@ -819,6 +903,12 @@ ul.subMenu li a {
 }
 .booking-group .booking-row h3 {
     font-size: 1.3em;
+}
+@media (max-width: 768px) {
+    .booking-row-details {
+        padding: 15px;
+        font-size: .9em;
+    }
 }
 /*----------------Bookings Form ------------------*/
 .booking-details img {
@@ -896,6 +986,13 @@ ul.subMenu li a {
     font-weight: bold;
     color: #00618c;
 }
+
+@media (max-width: 768px) {
+    .search-thumb img {
+        max-width: 95px;
+    }
+}
+
 /*---------------Own Profile Page --------------*/
 
 .ownersDogs {
@@ -929,21 +1026,55 @@ ul.subMenu li a {
     display: flex;
     align-items: center;
 }
+.profile-image {
+    padding: 25px;
+}
 
 .profile-image img {
     width: 100px;
     border-radius: 1000px;
-    margin: 25px;
 }
 .profile-header .profile-title h3 {
     margin: 0;
 }
+.profile-right-col {
+    background: #FFF;
+    padding: 25px;
+    box-shadow: 2px 2px 6px rgba(0,0,0,.1)
+}
+.profile-right-col-row {
+    margin-top: 20px;
 
+}
+.profile-right-col-image img {
+    width: 100px;
+    border-radius: 1000px;
+    margin-right: 25px;
+}
+@media (min-width: 992px) {
+    .profile-right-col-row {
+        display: flex;
+    }
+    .dog-profile-right-col-details {
+        display: flex;
+        align-items: center;
+    }
+}
+@media (max-width: 991px) {
+    .profile-right-col-row {
+        text-align: center;
+    }
+    .profile-right-col-image img {
+        margin-bottom: 15px;
+        margin-right: 0;
+    }
+    .profile-header .profile-title h3 {
+        font-size: 1.5em;
+    }
+
+}
 
 /*----------------Walker Profile Page------------*/
-
-
-
 
 .profile-header h3 {
     font-size: 2em;
@@ -1053,29 +1184,12 @@ ul.subMenu li a {
     background-color: #fff;
     box-shadow: 2px 2px 6px rgba(0,0,0,.1);
     padding: 25px;
+    margin-bottom: 30px;
 }
 .dogInfo h3 {
     padding-bottom: 20px;
     margin-bottom: 0;
 }
-.dogInfoOwner {
-    background-color: #fff;
-    box-shadow: 2px 2px 6px rgba(0,0,0,.1);
-    padding: 20px;
-}
-
-.dogInfoOwner .row {
-    margin-top: 20px
-}
-.dogInfoOwner img {
-    width: 100px;
-    border-radius: 1000px;
-}
-.dogInfoOwner .col-7 {
-    padding-left: 0;
-    padding-top: 30px;
-}
-
 .dogInfoBold {
     font-weight: 700;
 }
@@ -1087,6 +1201,7 @@ ul.subMenu li a {
 .btn-wrapper {
     margin-top: 30px;
 }
+
 
 /*----------------Search page---------*/
 

@@ -301,6 +301,17 @@ jQuery(document).ready(function($) {
     //Update the booking status to "confirmed"
     $(".confirmBooking").click(function(event){
         event.preventDefault();
+        var bookingID = $(this).data("bookingid");
+
+        $(".bookingConfirmYes").data("bookingid", bookingID);
+
+        //Display booking summary modal
+        $('#bookingConfirmPop').modal('show');
+    });
+
+    $(".bookingConfirmYes").click(function(event){
+        event.preventDefault();
+
 
         var bookingID = $(this).data("bookingid");
 
@@ -317,6 +328,7 @@ jQuery(document).ready(function($) {
                             '<button class="blue-btn" type="button" name="button" value="Cancel Booking Request" data-bookingID="'+bookingID+'">Cancel Booking Request</button>'+
                         '</div>'
                    );
+                   $('#bookingConfirmPop').modal('hide');
               } else {
                    console.log('did not update ');
               }
@@ -324,8 +336,20 @@ jQuery(document).ready(function($) {
        });
     });
 
+
+
     //Update the booking status to "Cancelled"
     $(".cancelBooking").click(function(event){
+        event.preventDefault();
+        var bookingID = $(this).data("bookingid");
+
+        $(".bookingCancelYes").data("bookingid", bookingID);
+
+        //Display booking summary modal
+        $('#bookingCancelPop').modal('show');
+    });
+
+    $(".bookingCancelYes").click(function(event){
         event.preventDefault();
 
         var bookingID = $(this).data("bookingid");
@@ -334,12 +358,13 @@ jQuery(document).ready(function($) {
            type: "GET",
            url: '?controller=bookings&action=cancel&bookingid=' + $(this).data("bookingid"),
            success: function(response) {
-               if (response == 'true') {
+              if (response == 'true') {
                    $('.cancelBooking[data-bookingid="'+bookingID+'"]').closest( ".col-md-4" ).empty().append(
                        '<div class="alert alert-danger centre-content">'+
                             '<span><strong>Cancelled</strong></span>'+
                         '</div>'
                    );
+                   $('#bookingCancelPop').modal('hide');
               } else {
                    console.log('did not update ');
               }
@@ -350,7 +375,16 @@ jQuery(document).ready(function($) {
     //Update the booking status to "completed"
     $(".completeBooking").click(function(event){
         event.preventDefault();
+        var bookingID = $(this).data("bookingid");
 
+        $(".bookingCompleteYes").data("bookingid", bookingID);
+
+        //Display booking summary modal
+        $('#bookingCompletePop').modal('show');
+    });
+
+    $(".bookingCompleteYes").click(function(event){
+        event.preventDefault();
         var bookingID = $(this).data("bookingid");
 
         $.ajax({
@@ -363,12 +397,15 @@ jQuery(document).ready(function($) {
                             '<span><strong>Completed</strong></span>'+
                         '</div>'
                    );
+                   $('#bookingCompletePop').modal('hide');
               } else {
                    console.log('did not update ');
               }
            }
        });
     });
+
+
     //--------------- Member sub menu -------------------
     // sub menu functionality
     $(function() {

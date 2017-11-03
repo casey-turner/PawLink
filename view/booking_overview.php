@@ -30,7 +30,7 @@
                                 <h4><?php echo $booking[$prefix.'FirstName']." ".substr($booking[$prefix.'LastName'], 0,1); ?></h4>
                             </div>
                         </div>
-                        <div class="col-md-5">
+                        <div class="col-md-5 booking-row-details">
                             <h3><?php echo $booking['duration']; ?> minute dog walk</h3>
                             <p><strong>Date: </strong> <?php echo date('l j F Y',strtotime($booking['dateTime'])); ?></p>
                             <p><strong>Time: </strong><?php echo date('g:ia',strtotime($booking['dateTime'])); ?></p>
@@ -197,6 +197,90 @@
                 <?php
                 }
             } ?>
+        </div>
+    </div>
+</div>
+<!-- Confirm Booking Modal -->
+<div id="bookingConfirmPop" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Woof!</h3>
+                <button type="button" class="close modal-close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                 </button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to confirm this booking?</p>
+                <div class="row booking-status-modal-row">
+                    <div class="col-2">
+                    </div>
+                    <div class="col-4">
+                        <button class="blue-btn bookingConfirmYes" type="button" name="button">Yes</button>
+                    </div>
+                    <div class="col-4">
+                        <button class="blue-btn" type="button" name="button" data-dismiss="modal">No</button>
+                    </div>
+                    <div class="col-2">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Cancel Booking Modal -->
+<div id="bookingCancelPop" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Woof!</h3>
+                <button type="button" class="close modal-close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                 </button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to cancel this booking?</p>
+                <div class="row booking-status-modal-row">
+                    <div class="col-2">
+                    </div>
+                    <div class="col-4">
+                        <button class="blue-btn bookingCancelYes" type="button" name="button">Yes</button>
+                    </div>
+                    <div class="col-4">
+                        <button class="blue-btn" type="button" name="button" data-dismiss="modal">No</button>
+                    </div>
+                    <div class="col-2">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Complete Booking Modal -->
+<div id="bookingCompletePop" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Woof!</h3>
+                <button type="button" class="close modal-close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                 </button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure this booking has been completed?</p>
+                <div class="row booking-status-modal-row">
+                    <div class="col-2">
+                    </div>
+                    <div class="col-4">
+                        <button class="blue-btn bookingCompleteYes" type="button" name="button">Yes</button>
+                    </div>
+                    <div class="col-4">
+                        <button class="blue-btn" type="button" name="button" data-dismiss="modal">No</button>
+                    </div>
+                    <div class="col-2">
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

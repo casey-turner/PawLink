@@ -79,41 +79,29 @@
                             } ?>
                             <div class="dashboard-booking-row">
                                 <div class="row">
-                                    <div class="col-sm-2">
+                                    <div class="col-sm-2 dashboard-booking-row-col">
                                         <h4>Date</h4>
+                                        <p><?php echo date('d/m/y ',strtotime($booking['dateTime'])); ?></p>
                                     </div>
-                                    <div class="col-sm-3">
+                                    <div class="col-sm-3 dashboard-booking-row-col">
                                         <h4><?php echo $title; ?></h4>
+                                        <p><?php echo $booking[$prefix.'FirstName']." ".substr($booking[$prefix.'LastName'], 0,1); ?></p>
                                     </div>
-                                    <div class="col-sm-4">
+                                    <div class="col-sm-4 dashboard-booking-row-col">
                                         <h4>Service</h4>
+                                        <p><?php echo $booking['duration']; ?> minute dog walk</p>
                                     </div>
-                                    <div class="col-sm-3">
+                                    <div class="col-sm-3 dashboard-booking-row-col">
                                         <h4>Status</h4>
+                                        <?php
+                                        if ($booking['status'] == 'unconfirmed') {?>
+                                                <p><strong class="dashboard-unconfirmed"><?php echo $booking['status']; ?></strong></p>
+                                        <?php
+                                        } else { ?>
+                                                <p><strong class="dashboard-confirmed"><?php echo $booking['status']; ?></strong></p>
+                                        <?php
+                                        } ?>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-sm-2">
-                                        <?php echo date('d/m/y ',strtotime($booking['dateTime'])); ?>
-                                    </div>
-                                    <div class="col-sm-3">
-                                        <?php echo $booking[$prefix.'FirstName']." ".substr($booking[$prefix.'LastName'], 0,1); ?>
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <?php echo $booking['duration']; ?> minute dog walk
-                                    </div>
-                                    <?php
-                                    if ($booking['status'] == 'unconfirmed') {?>
-                                        <div class="col-sm-3 dashboard-status dashboard-unconfirmed">
-                                            <strong><?php echo $booking['status']; ?></strong>
-                                        </div>
-                                    <?php
-                                    } else { ?>
-                                        <div class="col-sm-3 dashboard-status dashboard-confirmed ">
-                                            <strong><?php echo $booking['status']; ?></strong>
-                                        </div>
-                                    <?php
-                                    } ?>
                                 </div>
                             </div>
                         <?php

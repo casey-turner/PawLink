@@ -79,13 +79,13 @@
 						<div class="search-profile">
 	                        <a href="?controller=profiles&action=profile&profileID=<?php echo $result['profileID']; ?>">
 	                            <div class="row">
-	                                <div class="col-3 ">
+	                                <div class="col-md-3 ">
 	                                    <div class="search-thumb">
 	                                        <img src="view/uploads/<?php echo $result['profileImage']; ?>" >
 	                                        <p><?php echo $result['firstName'].' '.substr($result['lastName'], 0, 1); ?></p>
 	                                    </div>
 	                                </div>
-	                                <div class="col-9 search-result">
+	                                <div class="col-md-9 search-result">
 	                                    <h3><?php echo $result['profileTitle']; ?></h3>
 	                                    <h4><?php echo $result['suburb']; ?></h4>
 	                                    <p><?php echo substr($result['profileDescription'],0,250).'...' ?></p>

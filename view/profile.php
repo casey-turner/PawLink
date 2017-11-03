@@ -59,7 +59,7 @@
             <div class="col-md-4">
                 <?php
                 if ( ($_SESSION['profileID'] == $profile['profileID'] && !empty($dogs)) || ($_SESSION['profileID'] != $profile['profileID'] && $rates['status'] != 'active') ) { ?>
-                    <div class="ownersDogs">
+                    <div class="profile-right-col">
                         <h3>
                             <?php
                              if (count($dogs) > 1) {
@@ -70,8 +70,8 @@
                         </h3>
                     <?php
                     foreach ($dogs as $dog) { ?>
-                        <div class="row">
-                            <div class="col-5">
+                        <div class="profile-right-col-row">
+                            <div class="profile-right-col-image">
                                 <a href="?controller=profiles&action=dog_profile&dogID=<?php echo $dog['dogID']; ?>">
                                     <img src= "<?php if ( isset($dog['dogProfileImage']) ) {
                                         echo 'view/uploads/'.$dog['dogProfileImage'];
@@ -80,7 +80,7 @@
                                     }?>">
                                 </a>
                             </div>
-                            <div class="col-7">
+                            <div class="profile-right-col-details">
                                 <a href="?controller=profiles&action=dog_profile&dogID=<?php echo $dog['dogID']; ?>">
                                     <h4><?php echo $dog['dogName']; ?></h4>
                                 </a>
