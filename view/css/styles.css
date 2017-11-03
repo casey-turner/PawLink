@@ -919,21 +919,32 @@ ul.subMenu li a {
     width: 50%;
     float: left;
 }
-
-/*----------------Walker Profile Page------------*/
+/*-----------------Profile Page Common --------*/
 
 .profile-header {
     background-color: #f1f1f1;
     margin: 0;
     border: 1px solid #ccc;
     box-shadow: 2px 2px 6px rgba(0,0,0,.1);
+    display: flex;
+    align-items: center;
 }
 
-.profile-header img {
+.profile-image img {
     width: 100px;
     border-radius: 1000px;
-    margin: 20px;
+    margin: 25px;
 }
+.profile-header .profile-title h3 {
+    margin: 0;
+}
+
+
+/*----------------Walker Profile Page------------*/
+
+
+
+
 .profile-header h3 {
     font-size: 2em;
     margin: 20px 0 5px 0;
@@ -1043,7 +1054,10 @@ ul.subMenu li a {
     box-shadow: 2px 2px 6px rgba(0,0,0,.1);
     padding: 25px;
 }
-
+.dogInfo h3 {
+    padding-bottom: 20px;
+    margin-bottom: 0;
+}
 .dogInfoOwner {
     background-color: #fff;
     box-shadow: 2px 2px 6px rgba(0,0,0,.1);
@@ -1053,8 +1067,7 @@ ul.subMenu li a {
 .dogInfoOwner .row {
     margin-top: 20px
 }
-.dogInfoOwner img,
-.dogInfo img {
+.dogInfoOwner img {
     width: 100px;
     border-radius: 1000px;
 }
@@ -1062,16 +1075,7 @@ ul.subMenu li a {
     padding-left: 0;
     padding-top: 30px;
 }
-.dogInfoRow {
-    border-top: 1px solid #ccc;
-    padding: 7px;
-}
-.dogInfoRow:first-of-type {
-    border-top: 0;
-}
-.dogInfoRow:nth-child(even) {
-    background-color: #ededed
-}
+
 .dogInfoBold {
     font-weight: 700;
 }

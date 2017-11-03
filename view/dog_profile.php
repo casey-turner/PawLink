@@ -2,16 +2,18 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8">
-                <div class="row  profile-header">
-                    <div class="col-sm-3 dogInfoImage">
+                <div class="profile-header">
+                    <div class="profile-image">
                         <img src= "<?php if ( isset($dog['dogProfileImage']) ) {
                             echo 'view/uploads/'.$dog['dogProfileImage'];
                         } else {
                             echo 'view/uploads/defaultDog.png';
                         }?>">
                     </div>
-                    <div class="col-sm-9">
+                    <div class="profile-title">
                         <h3> <?php echo $dog['dogName']; ?></h3>
+                    </div>
+                    <div class="clear">
                     </div>
                 </div>
                     <div class="dogInfo">

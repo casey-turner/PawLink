@@ -2,15 +2,15 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8">
-                <div class="row profile-header">
-                    <div class="col-sm-2">
+                <div class="profile-header">
+                    <div class="profile-image">
                         <img src= "<?php if (isset($profile['profileImage'])) {
                                             echo 'view/uploads/'.$profile['profileImage'];
                                         } else {
                                             echo 'view/uploads/defaultProfile';
                                         } ?> " />
                     </div>
-                    <div class="col-sm-10">
+                    <div class="profile-title">
                         <h3><?php echo $profile['profileTitle']; ?></h3>
                         <p><?php echo $profile['firstName'].' '.substr($profile['lastName'], 0, 1); ?></p>
                         <div class="profile-location">
