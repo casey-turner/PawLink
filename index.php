@@ -15,7 +15,7 @@ if (isset($_SESSION['userstate']) && ($_SESSION['userstate'] == 'member')) {
         $availableControllers = array('users', 'publicpages', 'profiles');
     }
 } else {
-    $availableControllers = array('users', 'publicpages');
+    $availableControllers = array('users', 'publicpages', 'search');
 }
 
 // Get controller name from query string and set to variable

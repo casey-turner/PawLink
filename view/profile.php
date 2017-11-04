@@ -32,25 +32,28 @@
                                 echo $profile['firstName']."'s dog";
                             }?>
                         </h3>
-                        <?php
-                        foreach ($dogs as $dog) { ?>
-                            <div class="row walker-profile-dog-details">
-                                <div class="col-5">
-                                    <a href="?controller=profiles&action=dog_profile&dogID=<?php echo $dog['dogID']; ?>">
-                                        <img src= "<?php if ( isset($dog['dogProfileImage']) ) {
-                                            echo 'view/uploads/'.$dog['dogProfileImage'];
-                                        } else {
-                                            echo 'view/uploads/defaultDog.png';
-                                        }?>">
-                                    </a>
+                        <div class="walker-profile-dog-details">
+                            <?php
+                            foreach ($dogs as $dog) { ?>
+                                <div class="row">
+                                    <div class="col-md-5">
+                                        <a href="?controller=profiles&action=dog_profile&dogID=<?php echo $dog['dogID']; ?>">
+                                            <img src= "<?php if ( isset($dog['dogProfileImage']) ) {
+                                                echo 'view/uploads/'.$dog['dogProfileImage'];
+                                            } else {
+                                                echo 'view/uploads/defaultDog.png';
+                                            }?>">
+                                        </a>
+                                    </div>
+                                    <div class="col-md-7">
+                                        <h4><?php echo $dog['dogName']; ?></h4>
+                                        <a class="edit-profile-btn" href="?controller=profiles&action=dog_profile&dogID=<?php echo $dog['dogID']; ?>">View profile</a>
+                                    </div>
                                 </div>
-                                <div class="col-7">
-                                    <h4><?php echo $dog['dogName']; ?></h4>
-                                    <a class="edit-profile-btn" href="?controller=profiles&action=dog_profile&dogID=<?php echo $dog['dogID']; ?>">View profile</a>
-                                </div>
-                            </div>
-                        <?php
-                        } ?>
+                            <?php
+                            } ?>
+                        </div>
+
                         <div class="clear"></div>
                     <?php
                     } ?>
@@ -126,7 +129,7 @@
                                     </div>
                                     <script>
 
-                                    $("#walk30minDateTime").flatpickr({enableTime: true});
+                                    $("#walk30minDateTime").flatpickr({enableTime: true, minDate: "today", maxDate: new Date().fp_incr(365)});
 
                                     </script>
                                     <div class="input-group">
@@ -169,7 +172,7 @@
                                     </div>
                                     <script>
 
-                                    $("#walk60minDateTime").flatpickr({enableTime: true});
+                                    $("#walk60minDateTime").flatpickr({enableTime: true, minDate: "today", maxDate: new Date().fp_incr(365) });
 
                                     </script>
                                     <div class="input-group">

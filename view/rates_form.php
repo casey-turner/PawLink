@@ -20,17 +20,17 @@
                         <label>Rate for 30 minute dog walk</label>
                         <div class="input-group">
                             <span class="input-icon"><img src="view/images/dollar.png" class="dollar-icon" alt=""></span>
-                            <input type="text" name="walk30" value="<?php if ( isset($rates['walk30']) ) {echo $rates['walk30'];} ?>" required >
+                            <input type="text" name="walk30" value="<?php if ( isset($rates['walk30']) ) {echo $rates['walk30'];} ?>" required data-parsley-type="digits" data-parsley-max="100">
                         </div>
                         <label>Rate for 60 mintue dog walk</label>
                         <div class="input-group">
                             <span class="input-icon"><img src="view/images/dollar.png" class="dollar-icon" alt=""></span>
-                            <input type="text" name="walk60" value="<?php if ( isset($rates['walk60']) ) {echo $rates['walk60'];} ?>" required>
+                            <input type="text" name="walk60" value="<?php if ( isset($rates['walk60']) ) {echo $rates['walk60'];} ?>" requireddata-parsley-type="digits" data-parsley-max="100">
                         </div>
                         <label>Rate for each additional dog</label>
                         <div class="input-group">
                             <span class="input-icon"><img src="view/images/dollar.png" class="dollar-icon" alt=""></span>
-                            <input type="text" name="extraDog" value="<?php if ( isset($rates['extraDog']) ) {echo $rates['extraDog'];} ?>" required >
+                            <input type="text" name="extraDog" value="<?php if ( isset($rates['extraDog']) ) {echo $rates['extraDog'];} ?>" required data-parsley-type="digits" data-parsley-max="100">
                         </div>
                         <div class="centre-content">
                             <input class="orange-btn" type="submit" value="Save">

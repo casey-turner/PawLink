@@ -1104,7 +1104,11 @@ ul.subMenu li a {
     padding-top: 25px;
 }
 .walker-profile-dog-details {
+    display: flex;
+}
+.walker-profile-dog-details .row {
     width: 50%;
+    margin: 0;
 }
 .walker-profile-dog-details .col-7 {
     padding-left: 0;
@@ -1175,6 +1179,23 @@ ul.subMenu li a {
     font-weight: 700;
     float: right;
     margin-top: 15px;
+}
+@media (max-width: 575px) {
+
+    .walker-profile-dog-details .row {
+        margin-bottom: 25px;
+        width: 100%;
+        text-align: center;
+    }
+    .walker-profile-dog-details .row:last-of-type {
+        margin-bottom: 0;
+    }
+    .walker-profile-dog-details {
+        display: block;
+    }
+    .walker-profile-dog-details .row .col-md-5 {
+        margin-bottom: 10px;
+    }
 }
 /*----------------Dog Profile Page------------*/
 

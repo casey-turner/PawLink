@@ -26,11 +26,11 @@
     <body>
         <header class="hp-header">
             <div class="container">
-                <a href="/pawlink"><img class="logo" src="view/images/logo.png" alt="PawLink"/></a>
+                <a href="<?php echo $site_URL; ?>"><img class="logo" src="view/images/logo.png" alt="PawLink"/></a>
                 <img class="mobileMenu" src="view/images/mobile-menu.png" alt="mobile menu" />
                 <nav class="primary-nav">
                     <ul>
-                        <li><a href="/pawlink">Home</a></li>
+                        <li><a href="<?php echo $site_URL; ?>">Home</a></li>
                         <li><a href="?controller=publicpages&action=faq">FAQ</a></li>
                         <li><a href="?controller=publicpages&action=about">About</a></li>
                         <li><a href="?controller=publicpages&action=gallery">Wall of Dogs</a></li>

@@ -66,7 +66,7 @@
                         </div>
                         <div class="col-md-6 input-group">
                             <span class="input-icon"><img src="view/images/phone.png" alt=""></span>
-                            <input placeholder="Phone number" type="text" name="phone" required>
+                            <input placeholder="Phone number" type="text" name="phone" required data-parsley-type="digits">
                         </div>
                     </div>
                     <div class="row">
@@ -82,22 +82,22 @@
                     <div class="row">
                         <div class="col-md-6 input-group">
                             <span class="input-icon"><img src="view/images/address.png" alt=""></span>
-                            <input placeholder="State" type="text" name="state" required data-storage="false">
+                            <input placeholder="State" type="text" name="state" required data-parsley-pattern="[a-zA-Z]+">
                         </div>
                         <div class="col-md-6 input-group">
                             <span class="input-icon"><img src="view/images/address.png" alt=""></span>
-                            <input placeholder="Postcode" type="text" name="postcode" minlength="4" maxlength="4" required data-storage="false">
+                            <input placeholder="Postcode" type="text" name="postcode" minlength="4" maxlength="4" required  data-parsley-type="digits">
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-6 input-group">
                             <span class="input-icon"><img src="view/images/password.png" alt=""></span>
-                            <input placeholder="Password" type="password" name="password" id="password" required minlength="8" data-storage="false">
+                            <input placeholder="Password" type="password" name="password" id="password" required minlength="8" data-parsley-maxlength="16" >
                         </div>
 
                         <div class="col-md-6 input-group">
                             <span class="input-icon"><img src="view/images/password.png" alt=""></span>
-                            <input placeholder="Confirm password" type="password" name="confirmpassword" data-parsley-equalto="#password" required data-storage="false">
+                            <input placeholder="Confirm password" type="password" name="confirmpassword" data-parsley-equalto="#password" required >
                         </div>
                     </div>
 
