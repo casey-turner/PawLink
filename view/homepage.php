@@ -1,3 +1,4 @@
+<div class="flexContainerWrapper">
     <div class="banner homepage">
         <div class="container">
             <h2>The #1 Dog Walking App for Busy Dog Owners</h2>
@@ -14,6 +15,7 @@
 
         </div>
     </div>
+</div>
     <div class="hp-about">
         <div class="container">
             <h1>How PawLink Works</h1>
@@ -93,6 +95,7 @@
                         <div class="col-md-6 input-group">
                             <span class="input-icon"><img src="view/images/password.png" alt=""></span>
                             <input placeholder="Password" type="password" name="password" id="password" required minlength="8" data-parsley-maxlength="16" >
+                            <p>Password must be between 8-16 characters</p>
                         </div>
 
                         <div class="col-md-6 input-group">

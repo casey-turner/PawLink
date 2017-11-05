@@ -70,11 +70,9 @@
         <div class="row">
             <div class="searchResults">
 				<?php
-				for ($i = 1; $i <= $numPages; $i++) { ?>
-				    <a href="?controller=search&action=search&location=<?php if(!empty(urlencode($search_location))) { echo $search_location; } ?>&p=<?php echo $i; ?>"><?php echo $i; ?></a>
-				<?php
-				}
 				if (!empty($results)) {
+					searchPagination($page, $numPages, $search_location);
+
 				    foreach ($results as $result) { ?>
 						<div class="search-profile">
 	                        <a href="?controller=profiles&action=profile&profileID=<?php echo $result['profileID']; ?>">
@@ -95,6 +93,7 @@
 	                    </div>
 					<?php
 		            }
+					searchPagination($page, $numPages, $search_location);
 				} else { ?>
 					<div class="noAlerts">
 						<p>Sorry, we don't have any walkers in your area yet. Become the first walker in your area.</p>
