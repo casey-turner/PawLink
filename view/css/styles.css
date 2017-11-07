@@ -996,6 +996,21 @@ ul.subMenu li a {
 .search-profile:hover {
     background-color: rgba(221, 231, 252, 0.5);
 }
+.search-result-rates p {
+    margin-bottom: 0;
+    font-size: .9em;
+    margin-top: 15px;
+}
+.search-result-rates h4 {
+    display: inline-block;
+    font-size: 1.3em;
+}
+.search-result-rates span {
+    font-size: .9em;
+}
+.searchResults .noAlerts {
+    margin: 75px 0;
+}
 .gmap-info{
     width: auto;
 }

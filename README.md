@@ -22,11 +22,12 @@ Application runs relative to the index.php file.
 
 ***Ensure that the uploads directory inside the View folder has write permissions***
 
-# Major To Do Items
+# Major To Do Items as of 7/11/17
 
-- Profile & dog photo upload (and possibly edit) :ballot_box_with_check:
-- Rates Form and associated isset conditions, distinguishing dog walkers from owners :ballot_box_with_check:
-- Dog walker search functionality
-- Booking Form functionality
+- Profile & dog photo upload (and possibly edit) :white_check_mark:
+- Rates Form and associated isset conditions, distinguishing dog walkers from owners :white_check_mark:
+- Dog walker search functionality :white_check_mark:
+- Booking Form functionality :white_check_mark:
 - Messaging functionality
-- Display of all registered dogs as "Wall of Dogs" using masonry.js :ballot_box_with_check:
+- Feedback functionality
+- Display of all registered dogs as "Wall of Dogs" using masonry.js :white_check_mark:

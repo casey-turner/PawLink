@@ -65,7 +65,7 @@
 </script>
 <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
 <script async defer	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBSsYbifNcYXGACnsjxO8OQtp5h9s9KCfU&callback=initMap"></script>
-<div class="wrapper memberPage">
+<div class="wrapper">
     <div class="container centre-content">
         <div class="row">
             <div class="searchResults">
@@ -77,17 +77,21 @@
 						<div class="search-profile">
 	                        <a href="?controller=profiles&action=profile&profileID=<?php echo $result['profileID']; ?>">
 	                            <div class="row">
-	                                <div class="col-md-3 ">
+	                                <div class="col-md-2 ">
 	                                    <div class="search-thumb">
 	                                        <img src="view/uploads/<?php echo $result['profileImage']; ?>" >
 	                                        <p><?php echo $result['firstName'].' '.substr($result['lastName'], 0, 1); ?></p>
 	                                    </div>
 	                                </div>
-	                                <div class="col-md-9 search-result">
+	                                <div class="col-md-8 search-result">
 	                                    <h3><?php echo $result['profileTitle']; ?></h3>
 	                                    <h4><?php echo $result['suburb']; ?></h4>
 	                                    <p><?php echo substr($result['profileDescription'],0,250).'...' ?></p>
 	                                </div>
+									<div class="col-md-2 search-result-rates">
+										<p>from</p>
+										<h4>$<?php echo $result['walk30'] ?></h4><span> / walk</span>
+									</div>
 	                            </div>
 	                        </a>
 	                    </div>

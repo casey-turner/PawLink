@@ -56,13 +56,13 @@ function search() {
     }
 
     // Define search arguments
-    $search_args['latitude'] = !empty($search_latitude) ? $search_latitude : null;
-    $search_args['longitude'] = !empty($search_longitude) ? $search_longitude : null;
+    $search_args['latitude'] = !empty($search_latitude) ? (float)$search_latitude : null;
+    $search_args['longitude'] = !empty($search_longitude) ? (float)$search_longitude : null;
     $search_args['radius'] = 2;
 
     // Pagination
     $limit = 15;
-    $page = !empty($_GET['p']) ? $_GET['p'] : null;
+    $page = !empty($_GET['p']) ? (int)$_GET['p'] : null;
 
     if(empty($page)) {
         $page=1;
@@ -163,9 +163,9 @@ function getSearchResults($search_args,$limit,$returnType) {
     }
 
     $searchSQL = "
-    SELECT userID, latitude, longitude, profileTitle, profileDescription, profileImage, profileID, status, suburb, firstName, left(lastName,1) AS lastName {$geo_search_fields} {$geo_search_distance_field}
+    SELECT userID, latitude, longitude, profileTitle, profileDescription, profileImage, profileID, status, walk30, suburb, firstName, left(lastName,1) AS lastName {$geo_search_fields} {$geo_search_distance_field}
     FROM (
-        SELECT users.userID, users.latitude, users.longitude, profiles.profileTitle, profiles.profileDescription, profiles.profileImage, profiles.profileID, rates.status, users.suburb, users.firstName, users.lastName {$geo_search_fields} {$geo_search_distance}
+        SELECT users.userID, users.latitude, users.longitude, profiles.profileTitle, profiles.profileDescription, profiles.profileImage, profiles.profileID, rates.status, rates.walk30, users.suburb, users.firstName, users.lastName {$geo_search_fields} {$geo_search_distance}
         FROM users
         JOIN profiles ON users.userID = profiles.userID
         JOIN rates ON profiles.profileID = rates.profileID AND rates.status = 'active'

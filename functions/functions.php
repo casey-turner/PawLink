@@ -13,7 +13,11 @@ function searchPagination($page, $numPages, $search_location) { ?>
 
         if ($page <= 2) {
             $paginationStart = 1;
-            $paginationEnd = 3;
+            if ($numPages <= 3) {
+                $paginationEnd = $numPages;
+            } else {
+                $paginationEnd = 3;
+            }
         } elseif ($page >= $numPages - 1) {
             $paginationStart = $numPages - 2;
             $paginationEnd = $numPages;
